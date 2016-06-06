@@ -198,6 +198,7 @@ angular.module('homeApp.student')
 			getStuName(stuId, function(result) {
 				console.log(result);
 				$scope.formData.stu_name = result.stu_name;
+				$scope.$apply();
 			})
 		}
 		
