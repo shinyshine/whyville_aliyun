@@ -1,0 +1,37 @@
+<div class="edu-container">
+	<div class="info-header">
+		<span>课程名称: {{data.courseInfo.course_name}}</span>
+		<span>学期: {{data.courseInfo.course_year}} {{data.courseInfo.course_session}}</span>
+		<span>时间: {{data.courseInfo.course_weekday | numberToWeek}} {{data.courseInfo.start_time}}~{{data.courseInfo.end_time}}</span>
+	</div>
+	<div class="btns">
+	    <div class="add-btn"><a href="#/stuAttendList/{{data.courseInfo.course_id}}">查看考勤表</a></div>
+	</div>
+	<div class="table-container">
+		<table class="table table-striped" id="table">
+			<thead>
+				<tr>
+					<td>节数</td>
+					<td>时间</td>
+					<td>学生考勤</td>
+					<td>课程作业评价</td>
+					<td>课程记录</td>
+					<td>操作</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in data.classes">
+					<td>第 {{$index+1}} 节</td>
+					<td>{{item.date}} {{item.start_time}}-{{item.end_time}}</td>
+					<td><a href="#/teaStuAttend/{{item.id}}" ng-class="{'warning': !item.attend_state}">{{item.attend_state | checkAttend}}</a></td>
+					<td><a href="#/homework/{{item.id}}" ng-class="{'warning': !item.comment_state}">{{item.comment_state | checkAttend}}</a></td>
+					<td class="input-td" ng-class="{'editing': item.isEditing}"><input type="text" ng-model="item.note" ng-disabled="!item.isEditing"></td>
+					<td class="operate-btns">
+		    			<a href="javascript:void(0);" ng-click="modify($index)">{{'修改' | editing: item.isEditing}}</a>
+		    			<!-- <a class="btn-delete" href="#">删除</a> -->
+		    		</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

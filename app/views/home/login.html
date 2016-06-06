@@ -1,0 +1,23 @@
+<div class="home-container">
+	<div class="form-container">
+		<div class="login-container">
+			<header>登录</header>
+			<form name="form" novalidate ng-submit="login(form.$valid)">
+				<div class="input-row">
+					<label><span ng-show="form.userId.$dirty && form.userId.$invalid" class="text-danger">*</span>编号</label>
+					<div class="input-text">
+						<input type="text" name="userId" placeholder="请输入编号" ng-model="user.user_id" required>
+					</div>
+				</div>
+				<div class="input-row">
+					<label><span ng-show="form.pwd.$dirty && form.pwd.$invalid" class="text-danger">*</span>密码</label>
+					<div class="input-text">
+						<input type="password" name="pwd" placeholder="请输入密码" ng-model="user.user_pwd" required>
+					</div>
+				</div>
+				<!-- <div class="text-danger">用户名不能为空</div> -->
+				<div class="submit-btn"><button type="submit" ng-disabled="form.$invalid">登录</button></div>
+			</form>
+		</div>
+	</div>
+</div>

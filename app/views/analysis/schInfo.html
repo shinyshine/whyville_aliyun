@@ -1,0 +1,47 @@
+<div class="analysis-container">
+	<div class="btns">
+		<div my-select select-options="options.schools" which-school="filter.school" send-filter="sendFilter()"></div>
+		<div select-item select-options="options.year" which-item="filter.year" send-filter="sendFilter()"></div>
+		<div my-select select-options="options.session" which-school="filter.session" send-filter="sendFilter()"></div>
+	</div>
+	<div class="table-container" id="tableWrap">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<td width="240">校区</td>
+					<td width="240">在读人数</td>
+					<td width="240">课程报读量</td>
+					<td width="240">续报率</td>
+					<td width="240">上学期续报率</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in data.list1">
+					<td>{{item.school}}</td>
+					<td>{{item.cur_study_num}}</td>
+					<td>{{item.course_sign_num}}</td>
+					<td>{{item.keep_rate}}</td>
+					<td>{{item.last_keep_rate}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<td width="300">校区</td>
+					<td width="300">国家</td>
+					<td width="300">在读人数</td>
+					<td width="300">所占比例</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in data.list2">
+					<td>{{item.school}}</td>
+					<td>{{item.country}}</td>
+					<td>{{item.cur_study_num}}</td>
+					<td>{{item.percent}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,33 @@
+<div class="stu-container">
+	<div class="btns">
+		<div my-select select-options="options.schools" which-school="filter.selectSchool" send-filter="sendFilter()"></div>
+		<div class="add-btn"><a href="javascript:void(0);" ng-click="addStu()">添加学生</a></div>
+	</div>
+	<div class="table-container">
+		<table class="table table-striped" id="table">
+			<thead>
+				<tr>
+					<th width="200">校区</th>
+					<th width="200">学号</th>
+					<th width="200">姓名</th>
+					<th width="200">国籍</th>
+					<th width="200">入读时间</th>
+					<th width="280">操作</th>
+				</tr>		
+		    </thead>
+		    <tbody>
+		    	<tr ng-repeat="stu in students">
+		    		<td>{{stu.stu_sch}}</td>
+		    		<td><a href="#/stuInfo/{{stu.stu_id}}">{{stu.stu_id}}</a></td>
+		    		<td><a href="#/stuInfo/{{stu.stu_id}}">{{stu.stu_name}}</a></td>
+		    		<td>{{stu.stu_country}}</td>
+		    		<td>{{stu.stu_time}}</td>
+		    		<td class="operate-btns">
+		    			<a href="#/modifyStuInfo/{{stu.stu_id}}">修改</a>
+		    		</td>
+		    	</tr>
+		    </tbody>
+		</table>
+	</div>
+	<tm-pagination conf="paginationConf"></tm-pagination>
+</div>

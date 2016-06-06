@@ -1,0 +1,25 @@
+<div class="stu-container">
+	<div class="btns">
+		<div my-select select-options="options.bus_number" which-school="filter.selectBus" send-filter="sendFilter()"></div>
+		<!-- <div select-item select-options="options.years" which-item="filter.selectYear" send-filter="sendFilter()"></div> -->
+		<div date-select which-date="filter.date" send-filter="sendFilter()"></div>
+	</div>
+	<div class="table-container">
+		<table class="table table-striped" id="table">
+			<thead>
+				<tr>
+					<th width="400">车牌号码</th>
+					<th width="400">出发时间</th>
+					<th width="400">考勤</th>
+				</tr>		
+		    </thead>
+		    <tbody>
+		    	<tr ng-repeat="item in data">
+		    		<td>{{item.bus_number.name}}</td>
+		    		<td>{{item.date}}</td>
+		    		<td><a ng-class="{'warning': !item.attend_state}" href="#/busStuAttend/{{item.bus_number.id}}/{{item.date}}">{{item.attend_state | checkAttend}}</a></td>
+		    	</tr>
+		    </tbody>
+		</table>
+	</div>
+</div>

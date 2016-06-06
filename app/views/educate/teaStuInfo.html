@@ -1,0 +1,122 @@
+<div class="edu-container">
+	<div class="stu-info">
+		<div class="sidebar-container">
+	        <ul>
+	            <li class="active-tab"><a href="#">基本信息</a></li>
+	            <li><a href="#">家长信息</a></li>
+	            <!-- <li><a href="#">课程评价</a></li> -->
+	        </ul>
+	    </div>
+	    <div class="form-container">
+	    	<div class="info-card">
+	    		<div class="upload-container">
+	                <div class="pic-container"><span>点击此处<br/>上传照片</span></div>
+	            </div>
+	            <div class="input-row">
+	                <label>中文名</label>
+	                <div class="input-text">{{stuInfo.stu_basic.stu_zh_name}}</div>
+	            </div>
+	            <div class="input-row">
+	                <label>英文名</label>
+	                <div class="input-text">{{stuInfo.stu_basic.stu_en_name}}</div>
+	            </div>
+	            <div class="input-row">
+	                <label>性别</label>
+	                <div class="input-text">{{stuInfo.stu_basic.stu_sex | sex}}</div>
+	            </div>
+	            <div class="input-row">
+	                <label>学号</label>
+	                <div class="input-text">{{stuInfo.stu_basic.stu_id}}</div>
+	            </div>
+	            <div class="input-row">
+	                <label>国籍</label>
+	                <div class="input-text">{{stuInfo.stu_basic.stu_country}}</div>
+	            </div>
+	            <div class="input-row">
+	                <label>生日</label>
+	                <div class="input-text">{{stuInfo.stu_basic.stu_birth.year}}-{{stuInfo.stu_basic.stu_birth.month}}-{{stuInfo.stu_basic.stu_birth.day}}</div>
+	            </div>
+	            <div class="input-row">
+	                <label>年龄</label>
+	                <div class="input-text">{{stuInfo.stu_basic.stu_age}}</div>
+	            </div>
+	            <div class="input-row">
+	                <label>家庭住址</label>
+	                <div class="input-text">{{stuInfo.stu_basic.stu_ads}}</div>
+	            </div>
+	            <div class="input-row">
+	                <label>就读学校</label>
+	                <div class="input-text">{{stuInfo.stu_basic.stu_study_sch}}</div>
+	            </div>
+	            <div class="input-row">
+	                <label>年级</label>
+	               <div class="input-text">{{stuInfo.stu_basic.stu_grade}}</div>
+	            </div>
+	            <div class="input-row">
+	                <label>生源</label>
+	                <div class="input-text">{{stuInfo.stu_basic.stu_birth_sch}}</div>
+	            </div>
+	            <div class="input-row">
+	                <label>宣传方式</label>
+	                <div class="input-text">{{stuInfo.stu_basic.publics}}</div>
+	            </div>
+	            <div class="input-row">
+	                <label>学习经历</label>
+	                <div class="input-text">{{stuInfo.stu_basic.study_exp}}</div>
+	            </div>
+	            <div class="input-row">
+	                <label>Application内容</label>
+	            </div>
+	            <div class="input-row input-row-son">
+	                <label>兴趣爱好</label>
+	                <div class="input-text">{{stuInfo.stu_basic.intersts}}</div>
+	            </div>
+	            <div class="input-row input-row-son">
+	                <label>性格</label>
+	                <div class="input-text">{{stuInfo.stu_basic.character}}</div>
+	            </div>
+	            <div class="input-row input-row-son">
+	                <label>学习期望(英语)</label>
+	                <div class="input-text">{{stuInfo.stu_basic.expectations}}</div>
+	            </div>
+	    	</div>
+	    	<div class="info-card">
+	    		<div class="input-row">
+	                <label>联系人</label>
+	                <div class="input-text">{{stuInfo.stu_parent.par_name}}</div>
+	            </div>
+	           <!--  <div class="input-row">
+	                <label>联系人关系</label>
+	                <div my-select select-options="jobs" which-school=""></div>
+	            </div> -->
+	            <div class="input-row">
+	                <label>联系方式</label>
+	                <div class="input-text">{{stuInfo.stu_parent.par_tel}}</div>
+	            </div>
+	            <div class="input-row">
+	                <label>电子邮箱</label>
+	                <div class="input-text">{{stuInfo.stu_parent.par_email}}</div>
+	            </div>
+	            <div class="input-row">
+	                <label>家长性格</label>
+	                <div class="input-text">{{stuInfo.stu_parent.par_character}}</div>
+	            </div>
+	    	</div>
+	    	<!-- <div class="info-card">
+	    		<div ng-repeat="course in stuInfo.comment" class="table-container">
+	    			<p>{{course.course_name}}</p>
+	    			<table class="table table-bordered">
+	    				<tr>
+	    					<td width="120">节数</td>
+	    					<td width="820">课程作业评价</td>
+	    				</tr>
+	    				<tr ng-repeat="comment in course.comments">
+	    					<td>第{{comment.id}}节</td>
+	    					<td>{{comment.content}}</td>
+	    				</tr>
+	    			</table>
+	    		</div>
+	    	</div> -->
+	    </div>
+	</div>
+</div>

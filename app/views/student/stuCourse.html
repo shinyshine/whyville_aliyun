@@ -1,0 +1,57 @@
+<div class="stu-container">
+	<div class="info-header">
+		<span>课程名称: {{courseInfo.course_name}}</span>
+		<span>老师: {{courseInfo.course_teacher}}</span>
+		<span>学期: {{courseInfo.course_year}} {{courseInfo.course_session}}</span>
+		<span>时间: {{courseInfo.weekday}} {{courseInfo.start_time}}~{{courseInfo.end_time}}</span>
+	</div>
+	<div class="form-container form-container-bg add-course-form add-stu-into-course">
+	    <div class="input-row">
+            <label>学生编号</label>
+            <div class="input-text dobble-input"><input type="text" name="" placeholder="请输入学生编号" ng-blur="getStuName()" ng-model="formData.stu_id"/><span>{{formData.stu_name}}</span></div>
+        </div>
+        <div class="input-row">
+            <label>学费</label>
+            <div class="input-text">{{courseInfo.per_price*formData.sum_count}}</div>
+        </div>
+		<div class="input-row input-row-son">
+            <label>计费方式</label>
+            <div class="text-no-input">每节 {{courseInfo.per_price}} 元</div>
+            <div class="text-no-input">还剩 {{courseInfo.sum_count}} 节</div>
+            <div class="input-text input-short-text">预订<input type="text" ng-model="formData.sum_count">节</div>
+        </div>
+        <div class="input-row input-row-son">
+            <label>折扣</label>
+            <div my-select select-options="options.discount" which-school="formData.discount_type"></div>
+           
+        </div>
+        <div class="input-row input-row-son">
+            <label>折扣额度</label>
+             <div class="input-text"><input type="text" placeholder="请输入折扣额度" ng-model="formData.discount"></div>
+        </div>
+        <div class="input-row input-row-son">
+            <label>收费方式</label>
+            <div link-select select-options="options.pay_method" tab-options="tabOptions" first-one="formData.fee_method" second-one="formData.fee_to"></div>
+        </div>
+
+        <div class="input-row">
+            <label>书费</label>
+            <div class="input-text"><input type="text" placeholder="参考金额 {{courseInfo.book_fee}}" ng-model="formData.book_fee"/></div>
+        </div>
+       <!--  <div class="input-row input-row-son">
+            <label>折扣</label>
+            <div class="input-text input-short-text">打<input type="text" ng-model="formData.book_discount">折</div>
+            <div class="input-text input-short-text">减<input type="text" ng-model="formData.book_cut">元</div>
+        </div> -->
+        <div class="input-row input-row-son">
+            <label>书费收费方式</label>
+            <div link-select select-options="options.pay_method" tab-options="tabOptions" first-one="formData.book_fee_method" second-one="formData.book_fee_to"></div>
+        </div>
+
+         <div class="input-row">
+            <label>备注</label>
+            <div class="input-text"><input type="text" placeholder="请填写备注" ng-model="formData.remark"/></div>
+        </div>
+        <div class="submit-btn"><button type="button" ng-click="submitData()">完成</button></div>
+	</div>
+</div>

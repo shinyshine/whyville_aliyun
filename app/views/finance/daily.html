@@ -1,0 +1,43 @@
+<div class="finance-container">
+	<p class="daily-header"><span>2016-06-06</span> <span>收支情况</span></p>
+	<div class="table-container" id="tableWrap">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<td width="300">校区</td>
+					<td width="300">收入</td>
+					<td width="300">支出</td>
+					<td width="300">利润</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="sch in daily.schools">
+					<td>{{sch.school}}</td>
+					<td>￥ {{sch.income}}</td>
+					<td>￥ {{sch.pay}}</td>
+					<td>￥ {{sch.profit}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<td width="240">一级支付类型</td>
+					<td width="240">二级支付类型</td>
+					<td width="240">收入</td>
+					<td width="240">支出</td>
+					<td width="240">余额</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in daily.pay_method">
+					<td>{{item.first}}</td>
+					<td>{{item.second}}</td>
+					<td>￥ {{item.income}}</td>
+					<td>￥ {{item.pay}}</td>
+					<td>￥ {{item.profit}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

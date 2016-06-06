@@ -1,0 +1,42 @@
+<div class="analysis-container">
+	<div class="btns">
+		<div my-select select-options="options.schools" which-school="filter.school" send-filter="sendFilter()"></div>
+		<div select-item select-options="options.year" which-item="filter.year" send-filter="sendFilter()"></div>
+		<div select-item select-options="options.session" which-item="filter.session" send-filter="sendFilter()"></div>
+		<div class="link-select" select-item select-options="options.time" which-item="filter.startTime" send-filter="sendFilter()"></div>
+		<i class="to-icon-select"></i>
+		<div select-item select-options="options.time" which-item="filter.endTime" send-filter="sendFilter()"></div>
+	</div>
+	<div class="btns">
+		<div link-select select-options="options.courseType" first-one="filter.courseType" second-one="filter.course" send-filter="sendFilter()"></div>
+	</div>
+	<div class="table-container">
+		<table class="table table-striped hover-table" id="table">
+			<thead>
+				<tr>
+					<td width="150">校区</td>
+					<td width="150">年份</td>
+					<td width="150">学期</td>
+					<td width="150">课程类型</td>
+					<td width="150">课程名称</td>
+					<td width="150">报读人数</td>
+					<td width="150">书费单价</td>
+					<td width="150">总价</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in data.list" ng-click="skipToStuBook(item.course_name.id, item.course_type.id, item.course_name.name, item.course_type.name)">
+					<td>{{item.school}}</td>
+					<td>{{item.year}}</td>
+					<td>{{item.session}}</td>
+					<td>{{item.course_type.name}}</td>
+					<td>{{item.course_name.name}}</td>
+					<td>{{item.sign_num}}</td> 
+					<td>{{item.per_price}}</td> 
+					<td>{{item.total_price}}</td> 
+				</tr>
+			</tbody>
+		</table>
+		<p class="total-cal"><span>合计: ￥{{data.total}}</span></p>
+	</div>
+</div>

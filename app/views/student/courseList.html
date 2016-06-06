@@ -1,0 +1,41 @@
+<div class="stu-container">
+	<div class="btns">
+		<div select-item select-options="options.years" which-item="filter.selectYear" send-filter="sendFilter()"></div>
+		<div my-select select-options="options.sessions" which-school="filter.selectSession" send-filter="sendFilter()"></div>
+		<div my-select select-options="options.schools" which-school="filter.selectSchool" send-filter="sendFilter()"></div>
+		<div my-select select-options="options.courseType" which-school="filter.courseType" send-filter="sendFilter()"></div>
+		<div class="search-btn" ng-click="sendFilter()"><a href="javascript:void(0);" ng-click="addEmp()">搜索</a></div>
+		<div class="search-input"><input type="text" placeholder="搜索课程名称" ng-model="filter.search" /></div>
+	</div>
+	<div class="table-container">
+		<table class="table table-striped" id="table">
+			<thead>
+				<tr>
+					<th width="200">课程名称</th>
+					<th width="200">任课老师</th>
+					<th width="200">学生人数</th>
+					<th width="200">星期</th>
+					<th width="200">上课时间</th>
+					<th width="200">操作</th>
+				</tr>		
+		    </thead>
+		    <tbody>
+		    	<tr ng-repeat="course in courses">
+		    		<td><a href="#/courseStuList/{{course.course_id}}">{{course.course_name}}</a></td>
+		    		<td>{{course.teach_name}}</td>
+		    		<td>{{course.stu_num}}</td>
+		    		<td>{{course.course_weekday}}</td>
+		    		<td>{{course.start_time}}~{{course.end_time}}</td>
+		    		<td class="operate-btns">
+		    			<a class="btn-delete" href="javascript:void(0);" ng-click="deleteCourse(course.course_id)">删除</a>
+		    		</td>
+		    	</tr>
+		    </tbody>
+		</table>
+	</div>
+	<div class="btns">
+		<div class="add-btn"><a href="#/planCourse">排课</a></div>
+		<div class="add-btn"><a href="#/addCourse">添加课程</a></div>
+	</div>
+	<!-- <tm-pagination conf="paginationConf"></tm-pagination> -->
+</div>

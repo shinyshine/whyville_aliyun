@@ -1,0 +1,27 @@
+<div class="finance-container">
+	<div class="btns">
+		<div my-select select-options="options.method" which-school="filter.method" send-filter="sendFilter()"></div>
+	</div>
+	<div class="table-container">
+		<table class="table table-striped" id="table">
+			<thead>
+				<tr>
+					<td width="300">二级支付类型</td>
+					<td width="300">余额</td>
+					<td width="600">操作</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="acc in account.list">
+					<td>{{acc.sec_type.name}}</td>
+					<td class="input-td" ng-class="{'editing': acc.isEditing}"><input type="text" ng-model="acc.remain" ng-disabled="!acc.isEditing"></td>
+					<td class="operate-btns">
+		    			<a href="javascript:void(0);" ng-click="modify($index)">{{'修改' | editing: acc.isEditing}}</a>
+		    		</td>
+				</tr>
+				
+			</tbody>
+		</table>
+		<p class="total-cal"><span>合计: ￥{{account.total}}</span></p>
+	</div>
+</div>

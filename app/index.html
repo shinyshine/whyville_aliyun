@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="homeApp">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+	<title>英维国际教育</title>
+	<link rel="shortcut icon" type="image/x-icon" href="images/meta_logo.jpg">
+	<link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/clndr.css">
+
+	<style>
+        .page-list .pagination {float:left;}
+        .page-list .pagination span {cursor: pointer;}
+        .page-list .pagination .separate span{cursor: default; border-top:none;border-bottom:none;}
+        .page-list .pagination .separate span:hover {background: none;}
+        .page-list .page-total {float:left; margin: 25px 20px;}
+        .page-list .page-total input, .page-list .page-total select{height: 26px; border: 1px solid #ddd;}
+        .page-list .page-total input {width: 40px; padding-left:3px;}
+        .page-list .page-total select {width: 50px;}
+    </style>
+
+</head>
+<body ng-controller="homeApp">
+<div class="mask"></div>
+<div class="wrapper">
+	
+	<header class="header"  ng-controller="homeApp.header" id="header">
+		<div class="w-container">
+			<div class="logo-container">
+				<a href="#"><img src="images/logo.jpg" alt=""></a>
+			</div>
+			<nav class="nav-container">
+				<ul id="nav">
+					<li role="presentation" class="active-li" ng-click="underline(0)">
+						<a href="#/{{user.id}}">首页</a>
+						<ul>
+							<li ng-click="underline(0)"><a href="#/{{user.id}}">月历</a></li>
+							<li ng-click="underline(0)"><a href="#/applications">申请表</a></li>
+						</ul>
+					</li>
+					<li role="presentation" ng-click="underline(1)">
+						<a href="#/stuList">学生管理</a>
+						<ul>
+							<li ng-click="underline(1)"><a href="#/stuList">学生基本信息</a></li>
+							<li ng-click="underline(1)"><a href="#/courseList">课程信息</a></li>
+							<li ng-click="underline(1)"><a href="#/stuBusList">司机表</a></li>
+						</ul>
+					</li>
+					<li role="presentation" ng-click="underline(2)"><a href="#/eduCourseList">教师管理</a></li>
+					<li role="presentation" ng-click="underline(3)" >
+						<a href="#/employees">经营管理</a>
+						<ul>
+							<li ng-click="underline(3)"><a href="#/employees">员工管理</a></li>
+							<li ng-click="underline(3)"><a href="#/schoolManage">校区管理</a></li>
+						</ul>
+					</li>
+					<li role="presentation" ng-click="underline(4)">
+						<a href="#/payList">财务管理</a>
+						<ul>
+							<li ng-click="underline(4)"><a href="#/payList">支出记录信息</a></li>
+							<li ng-click="underline(4)"><a href="#/incomeList">收入记录信息</a></li>
+							<li ng-click="underline(4)"><a href="#/appList">代付款申请表</a></li>
+							<li ng-click="underline(4)"><a href="#/daily">财务日报</a></li>
+							<li ng-click="underline(4)"><a href="#/account">账户余额</a></li>
+						</ul>
+					</li>
+					<li role="presentation" ng-click="underline(5)">
+						<a href="#">统计分析</a>
+						<ul>
+							<li ng-click="underline(5)"><a href="#/teaSalary">教师工资统计</a></li>
+							<li ng-click="underline(5)"><a href="#/schInfo">校区情况</a></li>
+							<li ng-click="underline(5)"><a href="#/schFeeIncome">课程收入</a></li>
+							<li ng-click="underline(5)"><a href="#/schBookIncome">书费收入</a></li>
+							<li ng-click="underline(5)"><a href="#/schBusIncome">校车收入</a></li>
+						</ul>
+					</li>
+					<li role="presentation" ng-click="underline(6)">
+						<a href="#">个人中心</a>
+						<ul>
+							<li ng-click="underline(6)"><a href="#/modifyPwd">修改密码</a></li>
+							<li><a href="javascript:void(0);" ng-click="logOut()">退出登录</a></li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<div class="main">
+		<div class="w-container" ng-view="">
+			
+		</div>
+	</div>
+</div>
+
+	<script src="../bower_components/jquery/dist/jquery.js"></script>
+	<script src="../bower_components/moment/moment.js"></script>
+	<script src="js/public/ajaxfileupload.js"></script>
+	<script src="js/public/jquery.form.js"></script>
+	
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../node_modules/angular-route/angular-route.js"></script>
+    <script src="../node_modules/angular-cookies/angular-cookies.js"></script>
+    <script src="js/public/tm.pagination.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="./js/public/clndr.js"></script>
+    <script src="../bower_components/underscore/underscore-min.js"></script>
+    
+    <script src="js/controllers/public/service.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/public/Util.js"></script>
+    <script src="js/controllers/public/directive.js"></script>
+    <script src="js/controllers/public/filter.js"></script>
+
+	<!-- <script src="js/min-controller/operating.js"></script> -->
+    <script src="js/controllers/operating/operating.js"></script>
+    <script src="js/controllers/operating/service.js"></script>
+    <script src="js/controllers/operating/employees.js"></script>
+    <script src="js/controllers/operating/EmployeeInfo.js"></script>
+    <script src="js/controllers/operating/school.js"></script>
+
+    <script src="js/controllers/home/home.js"></script>
+    <script src="js/controllers/home/service.js"></script>
+    <script src="js/controllers/home/calendar.js"></script>
+    <script src="js/controllers/home/editNotice.js"></script>
+    <script src="js/controllers/home/apply.js"></script>
+    <script src="js/controllers/home/login.js"></script>
+
+    <script src="js/controllers/student/student.js"></script>
+    <script src="js/controllers/student/service.js"></script>
+    <script src="js/controllers/student/stuInfo.js"></script>
+    <script src="js/controllers/student/course.js"></script>
+    <script src="js/controllers/student/attendence.js"></script>
+    <script src="js/controllers/student/schoolbus.js"></script>
+
+    <script src="js/controllers/educate/educate.js"></script>
+    <script src="js/controllers/educate/service.js"></script>
+    <script src="js/controllers/educate/course.js"></script>
+    <script src="js/controllers/educate/attendence.js"></script>
+    <script src="js/controllers/educate/stuInfo.js"></script>
+
+    <script src="js/controllers/finance/finance.js"></script>
+    <script src="js/controllers/finance/service.js"></script>
+    <script src="js/controllers/finance/pay.js"></script>
+    <script src="js/controllers/finance/income.js"></script>
+    <script src="js/controllers/finance/applicate.js"></script>
+
+    <script src="js/controllers/analysis/analysis.js"></script>
+    <script src="js/controllers/analysis/service.js"></script>
+    <script src="js/controllers/analysis/controller.js"></script>
+
+	 <script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+    <script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/exporting.js"></script>
+</body>
+</html>

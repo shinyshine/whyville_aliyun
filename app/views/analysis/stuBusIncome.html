@@ -1,0 +1,41 @@
+<div class="analysis-container">
+	<div class="btns">
+		<div my-select select-options="options.schools" which-school="filter.school" send-filter="sendFilter()"></div>
+		<div class="link-select" select-item select-options="options.yearMonth" which-item="filter.startTime" send-filter="sendFilter()"></div>
+		<i class="to-icon-select"></i>
+		<div select-item select-options="options.yearMonth" which-item="filter.endTime" send-filter="sendFilter()"></div>
+		<div select-item select-options="options.year" which-item="filter.year" send-filter="sendFilter()"></div>
+		<div my-select select-options="options.busNumber" which-school="filter.busNumber" send-filter="sendFilter()"></div>
+	</div>
+	<div class="table-container">
+		<table class="table table-striped" id="table">
+			<thead>
+				<tr>
+					<td width="150">学生编号</td>
+					<td width="100">学生姓名</td>
+					<td width="150">报名时间</td>
+					<td width="80">预订次数</td>
+					<td width="100">每次收费</td>
+					<td width="150">折扣/减价</td>
+					<td width="200">支付方式</td>
+					<td width="150">付款时间</td>
+					<td width="120">总价</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in data.list">
+					<td>{{item.stu_id}}</td>
+					<td>{{item.stu_name}}</td>
+					<td>{{item.date}}</td>
+					<td>{{item.total_times}}</td>
+					<td>{{item.per_price}}</td>
+					<td>{{item.discount}}</td>
+					<td>{{item.pay_method}}-{{item.pay_to}}</td>
+					<td>{{item.pay_date}}</td> 
+					<td>{{item.total_price}}</td> 
+				</tr>
+			</tbody>
+		</table>
+		<p class="total-cal"><span>合计: ￥{{data.total}}</span></p>
+	</div>
+</div>

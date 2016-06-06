@@ -1,0 +1,41 @@
+<div class="stu-container">
+	<div class="btns">
+		<div my-select select-options="options.schools" which-school="filter.selectSchool" send-filter="sendFilter()"></div>
+		<div my-select select-options="options.bus_number" which-school="filter.selectBus" send-filter="sendFilter()"></div>
+		<div my-select select-options="options.type" which-school="filter.type" send-filter="sendFilter()"></div>
+		<div select-item select-options="options.years" which-item="filter.selectYear" send-filter="sendFilter()"></div>
+		<div select-item select-options="options.sessions" which-item="filter.selectSession" send-filter="sendFilter()"></div>
+	</div>
+	<div class="table-container">
+		<table class="table table-striped" id="table">
+			<thead>
+				<tr>
+					<th width="140">车牌号码</th>
+					<th width="140">学生姓名</th>
+					<th width="160">地点</th>
+					<th width="100">接送</th>
+					<th width="120">接送次数</th>
+					<th width="300">时间</th>
+					<th width="200">操作</th>
+				</tr>		
+		    </thead>
+		    <tbody>
+		    	<tr ng-repeat="item in stuBus">
+		    		<td>{{item.bus_number}}</td>
+		    		<td>{{item.stu_name}}</td>
+		    		<td>{{item.place}}</td>
+		    		<td>{{item.type | busType}}</td>
+		    		<td>{{item.finished_num}}/{{item.sum_count}}</td>
+		    		<td><span ng-repeat="week in item.weekdays">{{week.weekday | numberToWeek}} {{week.time}};</span></td>
+		    		<td class="operate-btns">
+		    			<a class="btn-delete" href="javascript:void(0);" ng-click="deleteBus(item.ser_id)">删除</a>
+		    		</td>
+		    	</tr>
+		    </tbody>
+		</table>
+	</div>
+	<div class="btns">
+	    <div class="add-btn"><a href="#/addStuToBus">添加学生</a></div>
+		<div class="add-btn"><a href="#/busStuAttendList">考勤</a></div>
+	</div>
+</div>

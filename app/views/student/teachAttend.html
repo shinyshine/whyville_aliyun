@@ -1,0 +1,38 @@
+<div class="stu-container">
+	<div class="info-header">
+		<span>课程名称: {{courseInfo.courseInfo.course_name}}</span>
+		<span>老师: {{courseInfo.courseInfo.course_teacher.name}}</span>
+		<span>学期: {{courseInfo.courseInfo.course_session}} {{courseInfo.courseInfo.course_year}}</span>
+		<span>时间: {{courseInfo.courseInfo.course_weekday}} {{courseInfo.courseInfo.start_time}}~{{courseInfo.courseInfo.end_time}}</span>
+	</div>
+	<div class="btns btns-special">
+		<div class="add-btn"><a href="#/attendList/{{courseInfo.courseInfo.course_id}}">查看考勤表</a></div>
+	</div>
+	<div class="table-container">
+		<table class="table table-striped" id="table">
+			<thead>
+				<tr>
+					<th width="200">第1节</th>
+					<th width="200">时间</th>
+					<th width="200">任课老师</th>
+					<th width="200">教师考勤</th>
+					<th width="200">学生考勤</th>
+					<th width="200">操作</th>
+				</tr>		
+		    </thead>
+		    <tbody>
+		    	<tr ng-repeat="course in courseInfo.courseList">
+		    		<td>第{{$index+1}}节</td>
+		    		<td class="input-td" ng-class="{'editing': course.isEditing}"><input type="text" ng-model="course.course_date_time" ng-disabled="!course.isEditing"></td>
+		    		<td class="input-td"><div my-select-attend select-options="options.teachers" which-school="course.course_teacher" icon-show="course.isEditing"></div></td>
+		    		<td class="input-td"><div class="teacher-attend" teach-attend select-options="attendType" which-item="course.teacher_state" icon-show="course.isEditing"></div></td>
+		    		<td><a href="#/stuAttend/{{course.course_id}}">已填写</a></td>
+		    		<td class="operate-btns">
+		    			<a href="javascript:void(0);" ng-click="modify($index)">{{'修改' | editing: course.isEditing}}</a>
+		    			<!-- <a class="btn-delete" href="#">删除</a> -->
+		    		</td>
+		    	</tr>
+		    </tbody>
+		</table>
+	</div>
+</div>

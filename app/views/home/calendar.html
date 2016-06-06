@@ -1,0 +1,63 @@
+<div class="home-container">
+	<div class="calendar-container">
+	<div class="btns">
+		<div my-select select-options="options.schools" which-school="filter.selectSchool" send-filter="sendFilter()">
+		</div>
+		<div class="add-btn" ng-hide="{{emp_type.type != 0 && emp_type.type != 1 && emp_type.type != 2}}"><a href="#/addSchedule">添加日程</a></div>
+		<div class="add-btn" ng-hide="{{emp_type.type != 0 && emp_type.type != 1 && emp_type.type != 2}}"><a href="#/addNotice">添加公告</a></div>
+	</div>
+	<div class="calendar-and-bulletin">
+		<div class="calendar">
+		   <div class="cal1"></div>
+		</div>
+		<div class="notice-container">
+			<header><span class="ch-text">公告栏</span><br/><span class="eng-text">Bulletin</span></header>
+			<div class="date">{{options.cur_date}}</div>
+			<div class="day-schedule-container">
+				<span ng-hide="home1.sche_len" class="zero-item">无日程</span>
+				<ul ng-show="home1.sche_len">
+					<li ng-repeat="schedule in home1.schedule">
+						<span>{{schedule.title}}</span>
+						<a class="modify-btn" ng-class='{disabled: schedule.status == 0}' href="javascript:void(0)" ng-click="modifySche(schedule.status, schedule.ntc_id)">修改</a>
+						<a class="delete-btn" ng-class='{disabled: schedule.status == 0}' href="javascript:void(0)" ng-click="deleteSche(schedule.status, schedule.ntc_id)">删除</a>
+					</li>
+				</ul>
+			</div>
+			<div class="notice-items-container">
+				<span ng-hide="home1.ntc_len" class="zero-item">无公告</span>
+				<ul>
+					<li ng-repeat="notice in home1.notice">
+						<span>{{notice.title}}</span>
+						<a class="modify-btn" ng-class='{disabled: notice.status == 0}' href="javascript:void(0)" ng-click="modifyNtc(notice.status, notice.ntc_id)">修改</a>
+						<a class="delete-btn" ng-class='{disabled: notice.status == 0}' href="javascript:void(0)" ng-click="deleteNtc(notice.status, notice.ntc_id)">删除</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="table-container">
+		<table class="table table-striped" id="table">
+			<thead>
+				<tr>
+					<td width="200">发布人</td>
+					<td width="400">标题</td>
+					<td width="200">校区</td>
+					<td width="200">时间</td>
+					<td width="200">操作</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="notice in home1.cur_mon_ntc">
+					<td>{{notice.emp_id}}</td>
+					<td class="notice-title"><a href="#/notice/{{notice.ntc_id}}">{{notice.title}}</a></td>
+					<td>{{notice.ntc_sch}}</td>
+					<td>{{notice.startDate}} <span ng-hide='notice.startDate == notice.endDate'>~ {{notice.endDate}}</span></td>
+					<td><a ng-class='{disabled: notice.status == 0}' href="javascript:void(0)" ng-click="modifyNtc(notice.status, notice.ntc_id)">修改</a><a class="delete-btn" ng-class='{disabled: notice.status == 0}' href="javascript:void(0)" ng-click="deleteNtc(notice.status, notice.ntc_id)">删除</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+</div>
+</div>
+

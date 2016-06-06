@@ -1,0 +1,22 @@
+<div class="edu-container">
+	<div class="table-container">
+		<table class="table table-striped" id="table">
+			<thead>
+				<tr>
+					<th width="300">课程名称</th>
+					<th width="300">学生人数</th>
+					<th width="300">星期</th>
+					<th width="300">上课时间</th>
+				</tr>		
+		    </thead>
+		    <tbody>
+		    	<tr ng-repeat="course in courseList">
+		    		<td><a href="#/eduStuList/{{course.course_id}}">{{course.course_name}}</a></td>
+		    		<td>{{course.stu_num}}</td>
+		    		<td>{{course.weekday | numberToWeek}}</td>
+		    		<td>{{course.start_time}}~{{course.end_time}}</td>
+		    	</tr>
+		    </tbody>
+		</table>
+	</div>
+</div>

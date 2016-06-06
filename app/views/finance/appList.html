@@ -1,0 +1,39 @@
+<div class="finance-container">
+	<div class="btns">
+		<div my-select select-options="options.schools" which-school="filter.selectSchool" send-filter="sendFilter()"></div>
+		<div my-select select-options="options.type" which-school="filter.type" send-filter="sendFilter()"></div>
+		<div class="link-select" select-item select-options="options.yearMonth" which-item="filter.startTime" send-filter="sendFilter()"></div>
+		<i class="to-icon-select"></i>
+		<div select-item select-options="options.yearMonth" which-item="filter.endTime" send-filter="sendFilter()"></div>
+	</div>
+	<div class="table-container">
+		<table class="table table-striped" id="table">
+			<thead>
+				<tr>
+					<td width="200">校区</td>
+					<td width="200">申请人</td>
+					<td width="200">标题</td>
+					<td width="200">时间</td>
+					<td width="200">支付方式</td>
+					<td width="200">操作</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="app in app">
+					<td>{{app.app_sch}}</td>
+					<td>{{app.emp_name}}</td>
+					<td>{{app.app_title}}</td>
+					<td>{{app.app_time}}</td>
+					<td ng-hide="{{app.status == 1}}"><span ng-class="{'warning': app.status}">{{app.status | pay_or_not}}</span></td>
+					<td ng-hide="{{app.status == 0}}">{{app.pay_method}}--{{app.pay_to}}</td>
+					<td class="operate-btns">
+		    			<a ng-hide="{{app.status == 1}}" href="#/payForApp/{{app.app_id}}">付款</a>
+		    			<a ng-hide="{{app.status == 0}}" href="#/checkApp/{{app.app_id}}">查看</a>
+		    		</td>
+				</tr>
+			</tbody>
+		</table>
+		<tm-pagination conf="paginationConf"></tm-pagination>
+		<!-- <p class="total-cal"><span>共 {{app.total.number}} 项</span><span>合计: ￥{{app.total.cost}}</span></p> -->
+	</div>
+</div>

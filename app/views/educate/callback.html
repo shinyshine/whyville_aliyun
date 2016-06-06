@@ -1,0 +1,30 @@
+<div class="stu-container">
+	<div class="form-container callback-container">
+		<div class="info-card">
+			<h1>CALLBACK RECORDS</h1>
+			<div class="stu-info">
+				<table>
+					<tr>
+						<td width="560">Student Name: {{callback.stuInfo.stu_name}}</td>
+						<td width="560">Course Name: {{callback.stuInfo.course_name}}</td>
+					</tr>
+					<tr>
+						<td width="560">Start: {{callback.stuInfo.start_date}}</td>
+						<td width="560">End: {{callback.stuInfo.end_date}}</td>
+					</tr>
+				</table>
+			</div>
+			<div class="callback-item">
+                <label>Please enter the latest callback:</label>
+                <textarea ng-model="postData.new_callback"></textarea>
+            </div>
+            <div class="submit-btn"><button type="button" ng-click="submitCallback()">保存</button></div>
+			<div class="callback-item" ng-repeat="callback in callback.callbacks">
+                <label>第{{($index+1)*10}}节课记录</label>
+                <textarea ng-model="callback.teacher_comment"></textarea>
+                <div class="submit-btn"><button type="button" ng-click="modify($index)">保存</button></div>
+            </div>
+            
+		</div>		
+	</div>
+</div>

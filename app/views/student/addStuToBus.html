@@ -1,0 +1,80 @@
+<div class="stu-container">
+    <form name="form" ng-submit="submitData(form.$valid)">
+        <div class="form-container form-container-bg add-course-form">
+            <div class="input-row">
+                <label>学生编号</label>
+                <div class="input-text dobble-input"><input type="text" placeholder="请输入学生编号" ng-blur="getStuName()" ng-model="formData.stu_id" required/><span>{{formData.stu_name}}</span></div>
+            </div>
+            <div class="input-row">
+                <label>学期</label>
+                <div select-item which-item="formData.year" select-options="options.years"></div>
+                <div select-item which-item="formData.session" select-options="options.sessions"></div>
+            </div>
+            <div class="input-row">
+                <label>接/送</label>
+                <div my-select select-options="options.type" which-school="formData.type"></div>
+            </div>
+            <div class="input-row">
+                <label>接送地点</label>
+                <div class="input-text"><input type="text" name="" placeholder="请输入接送地点" ng-model="formData.place" required/></div>
+            </div>
+            <div class="input-row">
+                <label>星期</label>
+                <div class="input-checkbox">
+
+                    <div class="check-box check-box-bus"><input type="checkbox" value="1" ng-model="formData.weekdays[0].choose"> 星期一</div>
+                    <div class="check-box check-box-bus"><input type="checkbox" value="2" ng-model="formData.weekdays[1].choose"> 星期二</div>
+                    <div class="check-box check-box-bus"><input type="checkbox" value="3" ng-model="formData.weekdays[2].choose"> 星期三</div>
+                    <div class="check-box check-box-bus"><input type="checkbox" value="4" ng-model="formData.weekdays[3].choose"> 星期四</div>
+                    <div class="check-box check-box-bus"><input type="checkbox" value="5" ng-model="formData.weekdays[4].choose"> 星期五</div>
+                </div>
+            </div>
+            <div class="input-row">
+                <label>接送时间</label>
+                <div class="input-text input-short-text"><input type="text" name="" placeholder="接送时间" ng-model="formData.weekdays[0].time"/></div>
+                <div class="input-text input-short-text"><input type="text" name="" placeholder="接送时间" ng-model="formData.weekdays[1].time"/></div>
+                <div class="input-text input-short-text"><input type="text" name="" placeholder="接送时间" ng-model="formData.weekdays[2].time"/></div>
+                <div class="input-text input-short-text"><input type="text" name="" placeholder="接送时间" ng-model="formData.weekdays[3].time"/></div>
+                <div class="input-text input-short-text"><input type="text" name="" placeholder="接送时间" ng-model="formData.weekdays[4].time"/></div>
+            </div>
+            <div class="input-row">
+                <label>星期</label>
+                <div class="input-checkbox">
+                    <div class="check-box"><input type="checkbox" ng-model="formData.weekdays[5].choose"> 星期六</div>
+                    <div class="check-box"><input type="checkbox" ng-model="formData.weekdays[6].choose"> 星期日</div>
+                </div>
+            </div>
+            <div class="input-row">
+                <label>接送时间</label>
+                <div class="input-text input-short-text"><input type="text" name="" placeholder="接送时间" ng-model="formData.weekdays[5].time"/></div>
+                <div class="input-text input-short-text"><input type="text" name="" placeholder="接送时间" ng-model="formData.weekdays[6].time"/></div>
+            </div>
+            <div class="input-row">
+                <label>车牌号</label>
+                <div my-select select-options="options.bus_number" which-school="formData.bus_number"></div>
+            </div>
+            <div class="input-row">
+                <label>车费</label>
+                <div class="input-text">{{formData.per_price*formData.sum_count}}</div>
+            </div>
+            <div class="input-row input-row-son">
+                <label>计费方式</label>
+                <div class="input-text input-short-text">￥<input type="text" ng-model="formData.per_price" required>/次</div>
+                <div class="input-text input-short-text">共<input type="text" ng-model="formData.sum_count" required>次</div>
+            </div>
+            <div class="input-row input-row-son">
+                <label>折扣</label>
+                <div my-select select-options="options.discount" which-school="formData.discount_type"></div>
+            </div>
+            <div class="input-row input-row-son">
+                <label>折扣额度</label>
+                 <div class="input-text"><input type="text" placeholder="请输入折扣额度" ng-model="formData.discount" required></div>
+            </div>
+            <div class="input-row input-row-son">
+                <label>收费方式</label>
+                <div link-select select-options="options.pay_method" first-one="formData.pay_method" second-one="formData.pay_to"></div>
+            </div>
+            <div class="submit-btn"><button type="submit" ng-disabled="form.$invalid">添加学生</button></div>
+        </div>
+	</form>
+</div>

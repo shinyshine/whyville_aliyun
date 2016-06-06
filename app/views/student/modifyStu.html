@@ -1,0 +1,175 @@
+<div class="stu-container">
+	<div class="stu-info">
+		<div class="sidebar-container">
+	        <ul>
+	        	<li ng-repeat="item in sidebar" ng-class="{'active-tab': item.default}" sidebar item-name="item.name" item-link="item.link"></li>
+	        </ul>
+	    </div>
+	    <div class="form-container">
+	    	<form name="stuForm" ng-submit="submitStuInfo(stuForm.$valid)">
+		    	<div class="info-card" id="basic">
+		    		<div class="upload-container">
+						<img src="./images/test.jpg" />
+		            </div>
+		            <div class="input-row">
+		                <label><span class="text-danger">*</span>中文名</label>
+		                <div class="input-text"><input type="text" placeholder="请输入中文名" ng-model="stuInfo.stu_basic.stu_zh_name" required/></div>
+		            </div>
+		            <div class="input-row">
+		                <label><span class="text-danger">*</span>英文名</label>
+		                <div class="input-text"><input type="text" placeholder="请输入英文名" ng-model="stuInfo.stu_basic.stu_en_name" required/></div>
+		            </div>
+		            <div class="input-row">
+		                <label>性别</label>
+		                <div choose-sex radio-value="stuInfo.stu_basic.stu_sex" class="radio-container">
+		                	<div>
+			                    <span><i class="radio-btn radio-true" value="0"></i>男</span>
+			                    <span><i class="radio-btn" value="1"></i>女</span>
+			                </div>
+		                </div>
+		            </div>
+		            <div class="input-row">
+		                <label>学号</label>
+		                <div class="input-text">{{stuInfo.stu_basic.stu_id}}</div>
+		            </div>
+		            <div class="input-row">
+		                <label>国籍</label>
+		                <div class="input-text"><input type="text" placeholder="请输入国籍" ng-model="stuInfo.stu_basic.stu_country"/></div>
+		            </div>
+		            <div class="input-row">
+		                <label>生日</label>
+		                <div date-select which-date="stuInfo.stu_basic.stu_birth"></div> 
+		            </div>
+		            <div class="input-row">
+		                <label>年龄</label>
+		                <div class="input-text">{{stuInfo.stu_basic.stu_birth.year | countAge}}</div>
+		            </div>
+		            <div class="input-row">
+		                <label>家庭住址</label>
+		                <div class="input-text"><input type="text" name="" placeholder="请输入家庭住址" ng-model="stuInfo.stu_basic.stu_ads"/></div>
+		            </div>
+		            <div class="input-row">
+		                <label>就读学校</label>
+		                <div class="input-text"><input type="text" name="" placeholder="请输入就读学校" ng-model="stuInfo.stu_basic.stu_study_sch"/></div>
+		            </div>
+		            <div class="input-row">
+		                <label>年级</label>
+		               <div class="input-text"><input type="text" name="" placeholder="请输入年级" ng-model="stuInfo.stu_basic.stu_grade"/></div>
+		            </div>
+
+		            
+		            <div class="input-row">
+		                <label>宣传方式</label>
+		                <div my-select select-options="options.publics" which-school="stuInfo.stu_basic.publics"></div>
+		            </div>
+		            <div class="input-row">
+		                <label>学习经历</label>
+		                <div class="input-text"><input type="text" name="" placeholder="请输入学习经历" ng-model="stuInfo.stu_basic.study_exp"/></div>
+		            </div>
+		            <div class="input-row">
+		                <label>Application内容</label>
+		            </div>
+		            <div class="input-row input-row-son">
+		                <label>兴趣爱好</label>
+		                <div class="input-text"><input type="text" name="" placeholder="请描述兴趣爱好" ng-model="stuInfo.stu_basic.intersts"/></div>
+		            </div>
+		            <div class="input-row input-row-son">
+		                <label>性格</label>
+		                <div class="input-text"><input type="text" name="" placeholder="请描述性格" ng-model="stuInfo.stu_basic.character"/></div>
+		            </div>
+		            <div class="input-row input-row-son">
+		                <label>学习期望(英语)</label>
+		                <div class="input-text"><input type="text" name="" placeholder="请输入学习期望" ng-model="stuInfo.stu_basic.expectations"/></div>
+		            </div>
+		    	</div>
+		    	<div class="info-card" id="parent">
+		    		<div class="input-row">
+		                <label><span class="text-danger">*</span>联系人</label>
+		                <div class="input-text"><input type="text" placeholder="请输入联系人姓名" ng-model="stuInfo.stu_parent.par_name" required/></div>
+		            </div>
+		           <!--  <div class="input-row">
+		                <label>联系人关系</label>
+		                <div my-select select-options="jobs" which-school=""></div>
+		            </div> -->
+		            <div class="input-row">
+		                <label><span class="text-danger">*</span>联系方式</label>
+		                <div class="input-text"><input type="text" placeholder="请输入联系人的联系方式" ng-model="stuInfo.stu_parent.par_tel" required/></div>
+		            </div>
+		            <div class="input-row">
+		                <label>电子邮箱</label>
+		                <div class="input-text"><input type="text" placeholder="请输入联系人的电子邮箱" ng-model="stuInfo.stu_parent.par_email"/></div>
+		            </div>
+		            <div class="input-row">
+		                <label>家长性格</label>
+		                <div class="input-text"><input type="text" placeholder="请描述家长性格" ng-model="stuInfo.stu_parent.par_character"/></div>
+		            </div>
+		    	</div>
+		    	<div class="info-card" id="learn">
+		    		<div class="input-row">
+		                <label><span class="text-danger">*</span>校区</label>
+		                <div class="input-text">{{stuInfo.learn_info.stu_sch.name}}</div>
+		            </div>
+		            <div class="input-row">
+		                <label><span class="text-danger">*</span>学期</label>
+		                <div class="input-text">{{stuInfo.learn_info.stu_learn_year}}   {{stuInfo.learn_info.stu_learn_season}}</div>
+		                
+		            </div>
+		            <div class="input-row">
+		                <label>学习状态</label>
+		                <div my-radio options="options.learningStatus" radio-value="stuInfo.learn_info.stu_learn_status" class="radio-container">
+		                </div>
+		            </div>
+		    	</div>
+		    	<div class="submit-btn"><button type="submit" ng-disabled="stuForm.$invalid">保存</button></div>
+	    	</form>
+	    	<!-- <div class="info-card" id="service">
+	    		<div class="table-container">
+	    			<table class="table table-bordered">
+	    				<thead>
+		            		<tr>
+		            			<td width="140">类型</td>
+		            			<td width="200">地点</td>
+		            			<td width="140">时间</td>
+		            			<td width="140">周次</td>
+		            			<td width="140">金额</td>
+		            		</tr>
+		            	</thead>
+	            		<tbody>
+	            			<tr ng-repeat="bus in stuInfo.school_bus">
+		            			<td>{{bus.type | busType}}</td>
+		            			<td>{{bus.pick_ads}}</td>
+		            			<td>{{bus.weekday | numberToWeek}} {{bus.pick_time}}</td>
+		            			<td>{{bus.times_per_week}}次/周</td>
+		            			<td>￥ {{bus.total_price}}</td>
+		            		</tr>
+	            		</tbody>
+	    			</table>
+	    		</div>
+	    	</div>
+	    	<div class="info-card" id="fee">
+	    		<div class="table-container">
+	    			<table class="table table-bordered">
+	    				<thead>
+		            		<tr>
+		            			<td width="150">课程名称</td>
+		            			<td width="400">学费明细</td>
+		            			<td width="120">学费合计</td>
+		            			<td width="120">书费</td>
+		            			<td width="210">备注</td>
+		            		</tr>
+		            	</thead>
+	            		<tbody>
+	            			<tr ng-repeat="fee in stuInfo.course_fee">
+		            			<td>{{fee.course_name}}</td>
+		            			<td>{{fee.per_price}} 元/节; 打{{fee.discount}}折; 减价:{{fee.cut}}元; 共{{fee.sum_count}}节课</td>
+		            			<td>{{fee.per_price*fee.discount*fee.sum_count/10 - fee.cut}}</td>
+		            			<td>{{fee.book_fee}}</td>
+		            			<td>学费:<a href="javascript:void(0);" ng-class="{'warning': !fee.fee_or_not}" ng-click="pay(fee.sch_id, fee.per_price*fee.discount*fee.sum_count/10 - fee.cut, fee.fee_or_not)">{{fee.fee_or_not | feeOrNot}}</a> 书费:<a href="javascript:void(0);" ng-class="{'warning': !fee.book_fee_or_not}" ng-click="pay(fee.sch_id, fee.book_fee, fee.book_fee_or_not)">{{fee.book_fee_or_not | feeOrNot}}</a></td>
+		            		</tr>
+	            		</tbody>
+	    			</table>
+	    		</div>
+	    	</div>  	 -->
+	    </div>
+	</div>
+</div>

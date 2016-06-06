@@ -1,0 +1,61 @@
+<div class="finance-container">
+	<div class="apply-container">
+		<h2>付款申请审核单</h2>
+		<div id="tables">
+			<table class="table table-bordered table-1" width="1200">
+				<tr>
+					<td>编号: {{appForm.app_id}}</td>
+					<td>日期: {{appForm.app_date}}</td>
+				</tr>
+				<tr>
+					<td>校区: {{appForm.school}}</td>
+					<td>申请人: {{appForm.emp_name}}</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="app-title">标题: <span>{{appForm.app_title}}</span></td>
+				</tr>
+			</table>
+			<table class="table table-bordered table-2" width="1200">
+				<tr class="thead">
+					<td>内容</td>
+					<td width="145">单价</td>
+					<td width="145">数量</td>
+					<td width="145">总价</td>
+				</tr>
+				<tr ng-repeat="item in appForm.app">
+					<td>{{item.app_content}}</td>
+					<!-- <td><input type="text" ng-model="item.app_content" required/></td> -->
+					<td>{{item.app_pri}}</td>
+					<td>{{item.app_num}}</td>
+					<td>{{item.app_pri * item.app_num}}</td>
+				</tr>
+			</table>
+			<div class="date-container">
+				<p class="date-row">
+					<label>审批日期: </label>
+					<span>{{appForm.acc_date}}</span>
+				</p>
+				<p class="date-row">
+					<label>支付日期: </label>
+					<span>{{autoData.pay_date}}</span>
+				</p>
+			</div>
+			<div class="pay-method-container">
+				<div class="pay-row">
+					<label>费用类型: </label>
+					<div link-select class="select" select-options="options.pay_type" first-one="postData.type.payFisrt" second-one="postData.type.paySec"></div>
+				</div>
+				<div class="pay-row">
+					<label>支付方式: </label>
+					<div link-select class="select" select-options="options.pay_method" first-one="postData.method.payMethod" second-one="postData.method.payTo"
+					></div>
+				</div>
+			</div>
+
+			<footer>
+				<div class="footer-logo"></div>
+			</footer>
+		</div>
+	</div>	
+	<div class="submit-btn"><button type="button" ng-click="payForApp()">付款</button></div>
+</div>

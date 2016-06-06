@@ -1,0 +1,94 @@
+<div class="employee-info">
+    <div class="sidebar-container">
+        <ul>
+            <li ng-repeat="item in sidebar" ng-class="{'active-tab': item.default}" sidebar item-name="item.name" item-link="item.link"></li>
+        </ul>
+    </div>
+    <div class="form-container">
+        <div class="info-card" id="basic">
+            <div class="upload-container">
+                <div class="pic-container"><span>点击此处<br/>上传照片</span></div>
+            </div>
+            <div class="input-row">
+                <label>编号</label>
+                <div class="input-text">{{employeeInfo.info.emp_id}}</div>
+            </div>
+            <div class="input-row">
+                <label>姓名</label>
+                <div class="input-text">{{employeeInfo.info.emp_name}}</div>
+            </div>
+            <div class="input-row">
+                <label>生日</label>
+                <div class="input-text">{{employeeInfo.info.emp_birth}}</div> 
+            </div>
+            <div class="input-row">
+                <label>性别</label>
+                <div class="input-text">{{employeeInfo.info.emp_sex | sex}}</div>
+            </div>
+            <div class="input-row">
+                <label>身份证号码</label>
+                <div class="input-text">{{employeeInfo.info.emp_card}}</div>
+            </div>
+            <div class="input-row">
+                <label>手机</label>
+                <div class="input-text">{{employeeInfo.info.emp_tel}}</div>
+            </div>
+            <div class="input-row">
+                <label>邮箱</label>
+                <div class="input-text">{{employeeInfo.info.emp_email}}</div>
+            </div>
+            <div class="input-row">
+                <label>紧急联系</label>
+                <div class="input-text">{{employeeInfo.info.emp_urgent}}</div>
+            </div>
+            <div class="input-row">
+                <label>校区</label>
+                <div class="input-text">{{employeeInfo.info.emp_sch.name}}</div>
+            </div>
+            <div class="input-row">
+                <label>职位</label>
+                <div class="input-text">{{employeeInfo.info.emp_job.name}}</div>
+            </div>
+            <div class="input-row">
+                <label>入职日</label>
+                <div class="input-text">{{employeeInfo.info.start_date.year}}-{{employeeInfo.info.start_date.month}}-{{employeeInfo.info.start_date.day}}</div>
+            </div>
+            <div class="input-row">
+                <label>离职日</label>
+                <div class="input-text">{{employeeInfo.info.end_date}}</div>
+            </div>
+            <div class="input-row">
+                <label>工资</label>
+                <div class="input-text">{{employeeInfo.info.emp_salary}}</div>
+            </div>
+            <div class="textarea-comment">
+                <label>初次评价</label>
+                <textarea disabled>{{employeeInfo.info.first_com}}</textarea>
+            </div>
+        </div>
+        <div class="info-card" id="comment">
+            <div class="input-row">
+                <label>请假</label>
+                <!-- <div my-count how-many="employeeInfo.comment.emp_off" class="count-container">
+                </div> -->
+                <div class="input-text">{{employeeInfo.comment.emp_off}}</div>
+            </div>
+            <div class="input-row">
+                <label>迟到</label>
+                <div class="input-text">{{employeeInfo.comment.emp_late}}</div>
+            </div>
+            <div class="input-row">
+                <label>早退</label>
+                <div class="input-text">{{employeeInfo.comment.emp_early_out}}</div>
+            </div>
+            <div class="input-row">
+                <label>工作能力</label>
+                <div class="input-text">{{employeeInfo.comment.emp_ability}}</div>
+            </div>
+            <div class="textarea-comment">
+                <label>后期评价</label>
+                <textarea disabled>{{employeeInfo.comment.sec_com}}</textarea>
+            </div>
+        </div>   
+    </div>
+</div>

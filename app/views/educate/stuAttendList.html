@@ -1,0 +1,23 @@
+<div class="stu-container attend-list-container">
+	<div class="info-header">
+		<span>课程名称: {{courseAttend.courseInfo.course_name}}</span>
+		<span>老师: {{courseAttend.courseInfo.course_teacher}}</span>
+		<span>学期: {{courseAttend.courseInfo.course_session}} {{courseAttend.courseInfo.course_year}}</span>
+		<span>时间: {{courseAttend.courseInfo.course_weekday}} {{courseAttend.courseInfo.start_time}}~{{courseAttend.courseInfo.end_time}}</span>
+	</div>
+	<div class="btns">
+	    <span class="red-label">未到</span>
+	</div>
+	<div class="attend-list-container">
+		<table class="table table-bordered">
+			<tr>
+				<td>学生姓名</td>
+				<td ng-repeat="item in courseAttend.courseInfo.course_arr" width="25">{{item}}</td>
+			</tr>
+			<tr ng-repeat="stu in courseAttend.attendence">
+				<td width="200">{{stu.stu_name}}</td>
+				<td ng-repeat="item in stu.attend_list" ng-class="{'absence': !item.state, 'attend': item.state == 1}"></td>
+			</tr>
+		</table>
+	</div>
+</div>

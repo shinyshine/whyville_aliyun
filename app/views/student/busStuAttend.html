@@ -1,0 +1,37 @@
+<div class="stu-container">
+	<div class="info-header">
+		<span>车牌号码: {{busAttend.bus_number}}</span>
+		<span>日期: {{busAttend.date}}</span>
+	</div>
+	<div class="btns">
+	    <div my-select select-options="options.type" which-school="filter.type" send-filter="sendFilter()"></div>
+	</div>
+	<div class="table-container">
+		<table class="table table-striped" id="table">
+			<thead>
+				<tr>
+					<th width="150">姓名</th>
+					<th width="300">地点</th>
+					<th width="100">时间</th>
+					<th width="150">接/送</th>
+					<th width="100">是否乘坐</th>
+					<th width="250">备注</th>
+					<th width="150">操作</th>
+				</tr>		
+		    </thead>
+		    <tbody>
+		    	<tr ng-repeat="item in busAttend.list">
+		    		<td>{{item.stu_name}}</td>
+		    		<td>{{item.place}}</td>
+		    		<td>{{item.time}}</td>
+		    		<td>{{item.type | busType}}</td>
+		    		<td class="input-td"><div class="teacher-attend" teach-attend select-options="attendType" which-item="item.attend_state" icon-show="item.isEditing"></div></td>
+		    		<td>{{item.remark}}</td>
+		    		<td class="operate-btns">
+		    			<a href="javascript:void(0);" ng-click="modify($index)">{{'修改' | editing: item.isEditing}}</a>
+		    		</td>
+		    	</tr>
+		    </tbody>
+		</table>
+	</div>
+</div>

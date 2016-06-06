@@ -1,0 +1,80 @@
+<div class="employee-info">
+    <div class="sidebar-container">
+        <ul>
+            <li class="active-tab"><a href="#">员工信息</a></li>
+            
+        </ul>
+    </div>
+    <div class="form-container">
+        <form name="empForm" ng-submit="submitInfo(empForm.$valid)" enctype="multipart/form-data" id="empForm">
+            <div class="info-card">
+                <div class="upload-container">
+                    <div class="upload-btn">点击上传照片<input type="file" name="img" id="image"></div>
+                    <div class="upload-img"></div>  
+                </div>
+                <div class="input-row">
+                    <label>编号</label>
+                    <div class="input-text">{{employeeInfo.emp_id}}</div>
+                </div>
+                <div class="input-row">
+                    <label><span class="text-danger">*</span>姓名</label>
+                    <div class="input-text"><input type="text" name="" placeholder="请输入中文名" ng-model="employeeInfo.emp_name" required/></div>
+                </div>
+                <div class="input-row">
+                    <label><span class="text-danger">*</span>生日</label>
+                    <div date-select which-date="employeeInfo.emp_birth"></div> 
+                </div>
+                <div class="input-row">
+                    <label>性别</label>
+                    <div choose-sex radio-value="employeeInfo.emp_sex" class="radio-container">
+                        <div>
+                            <span><i class="radio-btn radio-true" value="0"></i>男</span>
+                            <span><i class="radio-btn" value="1"></i>女</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-row">
+                    <label><span class="text-danger">*</span>身份证号码</label>
+                    <div class="input-text"><input type="text" name="" placeholder="请输入身份证号码" ng-model="employeeInfo.emp_card" required/></div>
+                </div>
+                <div class="input-row">
+                    <label><span class="text-danger">*</span>手机</label>
+                    <div class="input-text"><input type="text" name="" placeholder="请输入手机号码" ng-model="employeeInfo.emp_tel" required/></div>
+                </div>
+                <div class="input-row">
+                    <label>邮箱</label>
+                    <div class="input-text"><input type="text" name="" placeholder="请输入邮箱地址" ng-model="employeeInfo.emp_email"/></div>
+                </div>
+                <div class="input-row">
+                    <label><span class="text-danger">*</span>紧急联系</label>
+                    <div class="input-text"><input type="text" name="" placeholder="请输入紧急联系方式" ng-model="employeeInfo.emp_urgent" required/></div>
+                </div>
+                <div class="input-row">
+                    <label><span class="text-danger">*</span>校区</label>
+                    <div my-select select-options="options.schools" which-school="employeeInfo.emp_sch"></div>
+                </div>
+                <div class="input-row">
+                    <label><span class="text-danger">*</span>职位</label>
+                    <div my-select select-options="options.jobs" which-school="employeeInfo.emp_job"></div>
+                </div>
+                <div class="input-row">
+                    <label>入职日</label>
+                    <div date-select which-date="employeeInfo.start_date"></div>
+                </div>
+                <!-- <div class="input-row">
+                    <label>离职日</label>
+                    <div date-select which-date="employeeInfo.end_date"></div>
+                </div> -->
+                <div class="input-row">
+                    <label>工资</label>
+                    <div class="input-text"><input type="text" name="" placeholder="请输入工资金额" ng-model="employeeInfo.emp_salary"/></div>
+                </div>
+                <div class="textarea-comment">
+                    <label>初次评价</label>
+                    <textarea ng-model="employeeInfo.first_comment"></textarea>
+                </div>
+                <div class="submit-btn"><button type="submit" ng-disabled="empForm.$invalid" id="submitBtn">保存</button></div>
+            </div>
+        </form>
+    </div>
+</div>

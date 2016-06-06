@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="homeMobile">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+	<title>财务日报</title>
+	<link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+	<div class="mobile-wrapper" ng-view="">
+			<!-- <div class="finance-container">
+				<p class="daily-header"><span>2016-06-06</span> <span>收支情况</span></p>
+				<div class="table-container" id="tableWrap">
+					<table class="table table-striped table-responsive">
+						<thead>
+							<tr>
+								<td>校区</td>
+								<td>收入</td>
+								<td>支出</td>
+								<td>利润</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="sch in daily.schools">
+								<td>{{sch.school}}</td>
+								<td>￥ {{sch.income}}</td>
+								<td>￥ {{sch.pay}}</td>
+								<td>￥ {{sch.profit}}</td>
+							</tr>
+						</tbody>
+					</table>
+					<table class="table table-striped table-responsive">
+						<thead>
+							<tr>
+								<td width="240">一级支付类型</td>
+								<td width="240">二级支付类型</td>
+								<td width="240">收入</td>
+								<td width="240">支出</td>
+								<td width="240">余额</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="item in daily.pay_method">
+								<td>{{item.first}}</td>
+								<td>{{item.second}}</td>
+								<td>￥ {{item.income}}</td>
+								<td>￥ {{item.pay}}</td>
+								<td>￥ {{item.profit}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div> -->
+	</div>
+	<script src="../bower_components/jquery/dist/jquery.js"></script>
+	<script src="../bower_components/moment/moment.js"></script>
+	<script src="js/public/ajaxfileupload.js"></script>
+	<script src="js/public/jquery.form.js"></script>
+	
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../node_modules/angular-route/angular-route.js"></script>
+    <script src="../node_modules/angular-cookies/angular-cookies.js"></script>
+    <script src="js/public/tm.pagination.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="./js/public/clndr.js"></script>
+    <script src="../bower_components/underscore/underscore-min.js"></script>
+    
+    <script src="js/controllers/public/service.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/public/Util.js"></script>
+    <script src="js/controllers/public/directive.js"></script>
+    <script src="js/controllers/public/filter.js"></script>
+    <script src="js/controllers/operating/operating.js"></script>
+    <script src="js/controllers/operating/service.js"></script>
+    <script src="js/controllers/operating/employees.js"></script>
+    <script src="js/controllers/operating/EmployeeInfo.js"></script>
+    <script src="js/controllers/operating/school.js"></script>
+    <script src="js/controllers/home/home.js"></script>
+    <script src="js/controllers/home/service.js"></script>
+    <script src="js/controllers/home/calendar.js"></script>
+    <script src="js/controllers/home/editNotice.js"></script>
+    <script src="js/controllers/home/apply.js"></script>
+    <script src="js/controllers/home/login.js"></script>
+
+    <script src="js/controllers/student/student.js"></script>
+    <script src="js/controllers/student/service.js"></script>
+    <script src="js/controllers/student/stuInfo.js"></script>
+    <script src="js/controllers/student/course.js"></script>
+    <script src="js/controllers/student/attendence.js"></script>
+    <script src="js/controllers/student/schoolbus.js"></script>
+
+    <script src="js/controllers/educate/educate.js"></script>
+    <script src="js/controllers/educate/service.js"></script>
+    <script src="js/controllers/educate/course.js"></script>
+    <script src="js/controllers/educate/attendence.js"></script>
+    <script src="js/controllers/educate/stuInfo.js"></script>
+
+    <script src="js/controllers/finance/finance.js"></script>
+    <script src="js/controllers/finance/service.js"></script>
+    <script src="js/controllers/finance/pay.js"></script>
+    <script src="js/controllers/finance/income.js"></script>
+    <script src="js/controllers/finance/applicate.js"></script>
+
+    <script src="js/controllers/analysis/analysis.js"></script>
+    <script src="js/controllers/analysis/service.js"></script>
+    <script src="js/controllers/analysis/controller.js"></script>
+</body>
+</html>

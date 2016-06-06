@@ -1,0 +1,17 @@
+<div class="stu-container">
+	<div class="form-container form-container-bg add-course-form">
+        <div class="input-row">
+            <label>校区</label>
+            <div my-select select-options="options.schools" which-school="course.school"></div>
+        </div>
+        <div class="input-row">
+            <label>课程类型</label>
+            <div my-select select-options="options.courseType" which-school="course.courseType"></div>
+        </div>
+        <div class="input-row">
+            <label>课程名称</label>
+            <div class="input-text"><input type="text" name="" placeholder="请输入课程名称" ng-model="course.courseName"/></div>
+        </div>
+        <div class="submit-btn"><button type="button" ng-click="addCourse()">添加新课程</button></div>
+	</div>
+</div>

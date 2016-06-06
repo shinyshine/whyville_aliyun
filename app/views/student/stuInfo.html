@@ -1,0 +1,194 @@
+<div class="stu-container">
+	<div class="stu-info">
+		<div class="sidebar-container">
+	        <ul>
+	        	<li ng-repeat="item in sidebar" ng-class="{'active-tab': item.default}" sidebar item-name="item.name" item-link="item.link"></li>
+	        </ul>
+	    </div>
+	    <div class="form-container">
+	    	<div class="info-card" id="basic">
+	    		<div class="upload-container">
+	                <div class="pic-container"><span>点击此处<br/>上传照片</span></div>
+	            </div>
+	            <div class="input-row">
+	                <label>中文名</label>
+	                <div class="input-text">{{stuInfo.stu_basic.stu_zh_name}}</div>
+	            </div>
+	            <div class="input-row">
+	                <label>英文名</label>
+	                <div class="input-text">{{stuInfo.stu_basic.stu_en_name}}</div>
+	            </div>
+	            <div class="input-row">
+	                <label>性别</label>
+	                <div class="input-text">{{stuInfo.stu_basic.stu_sex | sex}}</div>
+	            </div>
+	            <div class="input-row">
+	                <label>学号</label>
+	                <div class="input-text">{{stuInfo.stu_basic.stu_id}}</div>
+	            </div>
+	            <div class="input-row">
+	                <label>国籍</label>
+	                <div class="input-text">{{stuInfo.stu_basic.stu_country}}</div>
+	            </div>
+	            <div class="input-row">
+	                <label>生日</label>
+	                <div class="input-text">{{stuInfo.stu_basic.stu_birth.year}}-{{stuInfo.stu_basic.stu_birth.month}}-{{stuInfo.stu_basic.stu_birth.day}}</div> 
+	            </div>
+	            <div class="input-row">
+	                <label>年龄</label>
+	                <div class="input-text">{{stuInfo.stu_basic.stu_birth.year | countAge}}</div>
+	            </div>
+	            <div class="input-row">
+	                <label>家庭住址</label>
+	                <div class="input-text">{{stuInfo.stu_basic.stu_ads}}</div>
+	            </div>
+	            <div class="input-row">
+	                <label>就读学校</label>
+	                <div class="input-text">{{stuInfo.stu_basic.stu_study_sch}}</div>
+	            </div>
+	            <div class="input-row">
+	                <label>年级</label>
+	               <div class="input-text">{{stuInfo.stu_basic.stu_grade}}</div>
+	            </div>
+	            <!-- <div class="input-row">
+	                <label>生源</label>
+	                <div class="input-text">{{stuInfo.learn_info.stu_sch.name}}</div>
+	            </div> -->
+	            <div class="input-row">
+	                <label>宣传方式</label>
+	                <div class="input-text">{{stuInfo.stu_basic.publics.name}}</div>
+	            </div>
+	            <div class="input-row">
+	                <label>学习经历</label>
+	                <div class="input-text">{{stuInfo.stu_basic.study_exp}}</div>
+	            </div>
+	            <div class="input-row">
+	                <label>Application内容</label>
+	            </div>
+	            <div class="input-row input-row-son">
+	                <label>兴趣爱好</label>
+	                <div class="input-text">{{stuInfo.stu_basic.intersts}}</div>
+	            </div>
+	            <div class="input-row input-row-son">
+	                <label>性格</label>
+	                <div class="input-text">{{stuInfo.stu_basic.character}}</div>
+	            </div>
+	            <div class="input-row input-row-son">
+	                <label>学习期望(英语)</label>
+	                <div class="input-text">{{stuInfo.stu_basic.expectations}}</div>
+	            </div>
+	    	</div>
+	    	<div class="info-card" id="parent">
+	    		<div class="input-row">
+	                <label>联系人</label>
+	                <div class="input-text">{{stuInfo.stu_parent.par_name}}</div>
+	            </div>
+	            <div class="input-row">
+	                <label>联系方式</label>
+	                <div class="input-text">{{stuInfo.stu_parent.par_tel}}</div>
+	            </div>
+	            <div class="input-row">
+	                <label>电子邮箱</label>
+	                <div class="input-text">{{stuInfo.stu_parent.par_email}}</div>
+	            </div>
+	            <div class="input-row">
+	                <label>家长性格</label>
+	                <div class="input-text">{{stuInfo.stu_parent.par_character}}</div>
+	            </div>
+	    	</div>
+	    	<div class="info-card" id="learn">
+	    		<div class="input-row">
+	                <label>校区</label>
+	                <div class="input-text">{{stuInfo.learn_info.stu_sch.name}}</div>
+	            </div>
+	            <div class="input-row">
+	                <label>学期</label>
+	                <div class="input-text">{{stuInfo.learn_info.stu_learn_season}}</div>
+	            </div>
+	            <div class="input-row">
+	                <label>学习状态</label>
+	                <div class="input-text">{{stuInfo.learn_info.stu_learn_status | learningStatus}}</div>
+	            </div>
+	            <div class="table-container">
+	            	<table class="table table-bordered">
+		            	<thead>
+		            		<tr>
+		            			<td width="160">课程名称</td>
+		            			<td width="160">任课老师</td>
+		            			<td width="160">星期</td>
+		            			<td width="160">上课时间</td>
+		            			<td width="280">备注</td>
+		            		</tr>
+		            	</thead>
+	            		<tbody>
+	            			<tr ng-repeat="course in stuInfo.learn_info.courses">
+		            			<td>{{course.course_name}}</td>
+		            			<td>{{course.course_teacher}}</td>
+		            			<td>{{course.course_week_time}}</td>
+		            			<td>{{course.course_time}}</td>
+		            			<td>{{course.course_remark}}</td>
+		            		</tr>
+	            		</tbody>
+	            		
+	            	</table>
+	            </div>
+	    	</div>
+	    	<div class="info-card" id="service">
+	    		<div class="table-container">
+	    			<table class="table table-bordered">
+	    				<thead>
+		            		<tr>
+		            			<td width="100">类型</td>
+		            			<td width="200">地点</td>
+		            			<td width="140">时间</td>
+		            			<td width="260">明细</td>
+		            			<td width="100">合计金额</td>
+		            			<td width="100">备注</td>
+		            		</tr>
+		            	</thead>
+	            		<tbody>
+	            			<tr ng-repeat="bus in stuInfo.school_bus">
+		            			<td>{{bus.type | busType}}</td>
+		            			<td>{{bus.pick_ads}}</td>
+		            			<td>{{bus.weekday | numberToWeek}} {{bus.pick_time}}</td>
+		            			<td>{{bus.per_price}}/次; 打{{bus.discount}}折; 减价:{{bus.cut}}元; 共{{bus.sum_count}}次</td>
+		            			<td>￥ {{bus.total_price}}</td>
+		            			<td><a href="javascript:void(0);" ng-class="{'warning': !bus.bus_fee_state}" ng-click="pay(bus.bus_id, bus.total_price, bus.bus_fee_state)">{{bus.bus_fee_state | feeOrNot}}</a></td>
+		            		</tr>
+	            		</tbody>
+	    			</table>
+	    		</div>
+	    		<!-- <p class="table-footer">
+	    			<span>总金额: ￥ 112.00</span>
+	    		</p> -->
+	    	</div>
+	    	<div class="info-card" id="fee">
+	    		<div class="table-container">
+	    			<table class="table table-bordered">
+	    				<thead>
+		            		<tr>
+		            			<td width="150">课程名称</td>
+		            			<td width="400">学费明细</td>
+		            			<td width="120">学费合计</td>
+		            			<td width="120">书费</td>
+		            			<td width="210">备注</td>
+		            		</tr>
+		            	</thead>
+	            		<tbody>
+	            			<tr ng-repeat="fee in stuInfo.course_fee">
+		            			<td>{{fee.course_name}}</td>
+		            			<td>{{fee.per_price}} 元/节; 打{{fee.discount}}折; 减价:{{fee.cut}}元; 共{{fee.sum_count}}节课</td>
+		            			<td>{{fee.total_price}}</td>
+		            			<td>{{fee.book_fee}}</td>
+		            			<td>学费:<a href="javascript:void(0);" ng-class="{'warning': !fee.fee_or_not}" ng-click="pay(fee.sch_id, fee.total_price, fee.fee_or_not)">{{fee.fee_or_not | feeOrNot}}</a> 书费:<a href="javascript:void(0);" ng-class="{'warning': !fee.book_fee_or_not}" ng-click="pay(fee.sch_id, fee.book_fee, fee.book_fee_or_not)">{{fee.book_fee_or_not | feeOrNot}}</a></td>
+		            		</tr>
+	            		</tbody>
+	    			</table>
+	    		</div>
+	    		<!-- <p class="table-footer">
+	    			<span>总金额: ￥ 00.00</span>
+	    		</p> -->
+	    	</div>
+	    </div>
+	</div>
+</div>

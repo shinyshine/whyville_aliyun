@@ -1,0 +1,34 @@
+<div class="finance-container">
+	<div class="form-container form-container-bg add-course-form">
+		<div class="input-row">
+            <label>校区</label>
+            <div my-select select-options="options.schools" which-school="formData.school"></div>
+        </div>
+        <div class="input-row">
+            <label>日期</label>
+            <!-- <div class="input-text text-no-border">{{formData.pay_date}}</div> -->
+            <div select-no-id select-options="options.date" which-item="formData.pay_date"></div>
+        </div>
+        <div class="input-row">
+            <label>费用类型</label>
+            <div class="link-select" link-select select-options="options.pay_type" first-one="formData.pay_type" second-one="formData.pay_sec_type"></div>
+        </div>
+        <div class="input-row">
+            <label>支付方式</label>
+            <div class="link-select" link-select select-options="options.pay_method" first-one="formData.pay_method" second-one="formData.pay_to"></div>
+        </div>
+        <div class="input-row">
+            <label>金额</label>
+            <div class="input-text"><input type="text" name="" placeholder="请输入具体金额" ng-model="formData.cost"/></div>
+        </div>
+        <div class="input-row">
+            <label>是否申请</label>
+            <div class="input-text text-no-border">{{formData.app_state | yesOrNo}}</div>
+        </div>
+        <div class="input-row">
+            <label>摘要</label>
+            <div class="input-text"><input type="text" name="" placeholder="请输入摘要" ng-model="formData.abstraction"/></div>
+        </div>
+        <div class="submit-btn"><button type="button" ng-click="addPay()">完成</button></div>
+	</div>
+</div>

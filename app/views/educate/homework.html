@@ -1,0 +1,35 @@
+<div class="stu-container">
+	<div class="info-header">
+		<span>课程名称: {{courseStuInfo.courseInfo.course_name}}</span>
+		<span>老师: {{courseStuInfo.courseInfo.course_teacher}}</span>
+		<span>学期: {{courseStuInfo.courseInfo.course_session}} {{courseStuInfo.courseInfo.course_year}}</span>
+		<span>时间: {{courseStuInfo.courseInfo.course_weekday | numberToWeek}} {{courseStuInfo.courseInfo.start_time}}~{{courseStuInfo.courseInfo.end_time}}</span>
+	</div>
+	<div class="btns">
+	    <span>{{courseStuInfo.course_date}}</span>
+		<div class="add-btn"><a href="javascript:void(0);">全勤</a></div>
+	</div>
+	<div class="table-container">
+		<table class="table table-striped" id="table">
+			<thead>
+				<tr>
+					<th width="300">姓名</th>
+					<th width="300">上课次数</th>
+					<th width="300">作业评价</th>
+					<th width="300">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="stu in courseStuInfo.stuInfo">
+					<td>{{stu.stu_name}}</td>
+					<td>{{stu.finish_num}}/{{stu.sum_count}}</td>
+					<td class="input-td" ng-class="{'editing': stu.isEditing}"><input type="text" ng-model="stu.homework_state" ng-disabled="!stu.isEditing"></td>
+					<td class="operate-btns">
+		    			<a href="javascript:void(0);" ng-click="modify($index)">{{'修改' | editing: stu.isEditing}}</a>
+		    			<!-- <a class="btn-delete" href="#">删除</a> -->
+		    		</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

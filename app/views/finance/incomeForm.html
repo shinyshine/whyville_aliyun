@@ -1,0 +1,57 @@
+<div class="finance-container">
+	<div class="form-container form-container-bg add-course-form">
+		<div class="input-row">
+            <label>校区</label>
+            <div my-select select-options="options.schools" which-school="formData.school"></div>
+        </div>
+        <div class="input-row">
+            <label>日期</label>
+            <!-- <div class="input-text text-no-border">{{formData.date}}</div> -->
+            <div select-no-id select-options="options.date" which-item="formData.in_date"></div>
+        </div>
+        <div class="input-row">
+            <label>类型</label>
+            <div my-select select-options="options.type" which-school="formData.type" send-filter="incomeType()"></div>
+            
+        </div>
+        <div class="input-row" ng-class="{'hide': showStu.course == 1}">
+            <label>学生信息</label>
+            <div class="input-text input-short-text"><input type="text" placeholder="学生学号" ng-model="formData.other_data.stu_id"/></div>
+            <div my-select select-options="options.course" which-school="formData.other_data.course" down-click="downClick()"></div>
+        </div>
+        <div class="input-row" ng-class="{'hide': showStu.bus == 1}">
+            <label>学生信息</label>
+            <div class="input-text input-short-text"><input type="text" placeholder="学生学号" ng-model="formData.other_data.stu_id"/></div>
+            <div my-select select-options="options.bus_number" which-school="formData.other_data.bus"></div>
+        </div>
+         <div class="input-row">
+            <label>支付方式</label>
+            <div class="link-select" link-select select-options="options.pay_method" first-one="formData.pay_method" second-one="formData.pay_to"></div>
+        </div>
+        <div class="input-row">
+            <label>金额</label>
+            <div class="input-text"><input type="text" name="" placeholder="请输入具体金额" ng-model="formData.sum"/></div>
+        </div>
+        <div class="input-row">
+            <label>经手人</label>
+            <div class="input-text text-no-border">{{formData.charge_name}}</div>
+        </div>
+        <div class="input-row">
+            <label>摘要</label>
+            <div class="input-text"><input type="text" name="" placeholder="请输入摘要" ng-model="formData.abstraction"/></div>
+        </div>
+        <div class="input-row">
+            <label>收据</label>
+            <div class="input-text"><input type="text" name="" placeholder="请输入收据编号" ng-model="formData.receipt_no"/></div>
+        </div>
+        <!-- <div class="input-row">
+            <label>收据2</label>
+            <div class="input-text"><input type="text" name="" placeholder="请输入收据编号" ng-model="formData.receipt_no[1]"/></div>
+        </div>
+        <div class="input-row">
+            <label>收据3</label>
+            <div class="input-text"><input type="text" name="" placeholder="请输入收据编号" ng-model="formData.receipt_no[2]"/></div>
+        </div> -->
+        <div class="submit-btn"><button type="button" ng-click="addIncome()">完成</button></div>
+	</div>
+</div>

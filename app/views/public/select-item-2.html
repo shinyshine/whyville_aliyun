@@ -1,0 +1,12 @@
+<div class="select-container">
+    <div class="options">
+        <div class="content-wrap" ng-bind="item | chooseForNone"></div>
+        <ul class="options-ul" ng-show="options.show">
+            <li ng-repeat="item in selectOptions" ng-click="clickOptions()">{{item}}</li>
+        </ul>
+    </div>
+    <i class="click-show-btn down-btn-{{options.show}}" ng-init="options.show = false" ng-click="toggleOptions()"></i></div>
+</div>
+
+
+

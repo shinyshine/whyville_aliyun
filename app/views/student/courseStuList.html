@@ -1,0 +1,40 @@
+<div class="stu-container">
+	<div class="info-header">
+		<span>课程名称: {{stuCourse.courseInfo.course_name}}</span>
+		<span>老师: {{stuCourse.courseInfo.course_teacher}}</span>
+		<span>学期: {{stuCourse.courseInfo.course_year}} {{stuCourse.courseInfo.course_session}}</span>
+		<span>时间: {{stuCourse.courseInfo.course_weekday}} {{stuCourse.courseInfo.start_time}}~{{stuCourse.courseInfo.end_time}}</span>
+	</div>
+	<div class="btns btns-special">
+	    <div class="add-btn"><a href="#/addStuToCourse/{{stuCourse.courseInfo.course_id}}">添加学生</a></div>
+		<div class="add-btn"><a href="#/teachAttend/{{stuCourse.courseInfo.course_id}}">考勤</a></div>
+	</div>
+	<div class="table-container">
+		<table class="table table-striped" id="table">
+			<thead>
+				<tr>
+					<th width="160">学号</th>
+					<th width="160">姓名</th>
+					<th width="160">上课次数</th>
+					<th width="160">回访</th>
+					<th width="160">Report</th>
+					<th width="200">备注</th>
+					<th width="200">操作</th>
+				</tr>		
+		    </thead>
+		    <tbody>
+		    	<tr ng-repeat="stu in stuCourse.students">
+		    		<td>{{stu.stu_id}}</td>
+		    		<td>{{stu.stu_name}}</td>
+		    		<td>{{stu.finish_num}}/{{stu.sum_count}}</td>
+		    		<td><a ng-class="{'warning': stu.callback_status == 0}" href="#/callback/{{stuCourse.courseInfo.course_id}}/{{stu.stu_id}}">回访</a></td>
+		    		<td><a href="#/report/{{stuCourse.courseInfo.course_id}}/{{stu.stu_id}}/" target="_blank">report</a></td>
+		    		<td></td>
+		    		<td class="operate-btns">
+		    			<a class="btn-delete" href="javascript:void(0);" ng-click="deleteStu(stu.stu_id)">删除</a>
+		    		</td>
+		    	</tr>
+		    </tbody>
+		</table>
+	</div>
+</div>

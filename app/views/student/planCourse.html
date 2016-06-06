@@ -1,0 +1,90 @@
+<div class="stu-container">
+	<div class="form-container form-container-bg add-course-form">
+        <form name="planForm" ng-submit="submitCourseInfo(planForm.$valid)">
+            <div class="input-row">
+                <label>年份</label>
+                <div select-no-id select-options="options.years" which-item="course.course_year"></div>
+            </div>
+            <div class="input-row">
+                <label>学期</label>
+                <div select-no-id select-options="options.sessions" which-item="course.course_session"></div>
+            </div>
+    		<div class="input-row">
+                <label>课程名称</label>
+                <div my-select select-options="options.courses" which-school="course.course_name"></div>
+            </div>
+            <div class="input-row">
+                <label>任课老师</label>
+                <div my-select select-options="options.teachers" which-school="course.course_teacher"></div>
+            </div>
+            
+            <div class="input-row">
+                <label>星期</label>
+                <div class="input-checkbox">
+                    <div class="check-box"><input type="checkbox" ng-model="course.weekdays[0].choose"> 星期一</div>
+                    <div class="check-box"><input type="checkbox" ng-model="course.weekdays[1].choose"> 星期二</div>
+                    <div class="check-box"><input type="checkbox" ng-model="course.weekdays[2].choose"> 星期三</div>
+                    <div class="check-box"><input type="checkbox" ng-model="course.weekdays[3].choose"> 星期四</div>
+                    <div class="check-box"><input type="checkbox" ng-model="course.weekdays[4].choose"> 星期五</div>
+                </div>
+            </div>
+            <div class="input-row">
+                <label>上课时间</label>
+                <div class="start-end-time">
+                    <div class="input-time"><input type="text" placeholder="开始时间" ng-model="course.weekdays[0].start_time" /><i>-</i></div>
+                    <div class="input-time"><input type="text" placeholder="结束时间" ng-model="course.weekdays[0].end_time" /></div>
+                </div>
+                
+                <div class="start-end-time">
+                     <div class="input-time"><input type="text" placeholder="开始时间" ng-model="course.weekdays[1].start_time" /><i>-</i></div>
+                    <div class="input-time"><input type="text" placeholder="结束时间" ng-model="course.weekdays[1].end_time" /></div>
+                </div>
+               
+                <div class="start-end-time">
+                    <div class="input-time"><input type="text" placeholder="开始时间" ng-model="course.weekdays[2].start_time" /><i>-</i></div>
+                    <div class="input-time"><input type="text" placeholder="结束时间" ng-model="course.weekdays[2].end_time" /></div>
+                </div>
+                <div class="start-end-time">
+                     <div class="input-time"><input type="text" placeholder="开始时间" ng-model="course.weekdays[3].start_time" /><i>-</i></div>
+                    <div class="input-time"><input type="text" placeholder="结束时间" ng-model="course.weekdays[3].end_time" /></div>
+                </div>
+               
+                <div class="start-end-time">
+                    <div class="input-time"><input type="text" placeholder="开始时间" ng-model="course.weekdays[4].start_time" /><i>-</i></div>
+                    <div class="input-time"><input type="text" placeholder="结束时间" ng-model="course.weekdays[4].end_time" /></div>
+                </div>
+            </div>
+            <div class="input-row">
+                <label>星期</label>
+                <div class="input-checkbox">
+                    <div class="check-box"><input type="checkbox" ng-model="course.weekdays[5].choose"> 星期六</div>
+                    <div class="check-box"><input type="checkbox" ng-model="course.weekdays[6].choose"> 星期日</div>
+                </div>
+            </div>
+            <div class="input-row">
+                <label>上课时间</label>
+                <div class="start-end-time">
+                    <div class="input-time"><input type="text" placeholder="开始时间" ng-model="course.weekdays[5].start_time" /><i>-</i></div>
+                    <div class="input-time"><input type="text" placeholder="结束时间" ng-model="course.weekdays[5].end_time" /></div>
+                </div>
+                <div class="start-end-time">
+                     <div class="input-time"><input type="text" placeholder="开始时间" ng-model="course.weekdays[6].start_time" /><i>-</i></div>
+                    <div class="input-time"><input type="text" placeholder="结束时间" ng-model="course.weekdays[6].end_time" /></div>
+                </div>
+            </div>
+            <div class="input-row">
+                <label>课程总次数</label>
+                <div class="input-text"><input type="text" placeholder="课程总次数" ng-model="course.sum_count" required></div>
+            </div>
+            <div class="input-row">
+                <label>每节费用</label>
+                <div class="input-text"><input type="text" placeholder="每节课费用" ng-model="course.per_price" required></div>
+            </div>
+             <div class="input-row">
+                <label>书本费用</label>
+                <div class="input-text"><input type="text" placeholder="书本费用" ng-model="course.book_fee" required></div>
+            </div>
+            <div class="submit-btn"><button type="submit" ng-disabled="planForm.$invalid">完成</button></div>
+        </form>
+	</div>
+</div>

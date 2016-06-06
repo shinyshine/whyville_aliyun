@@ -1,0 +1,49 @@
+<div class="finance-container">
+	<div class="btns">
+		<div my-select select-options="options.schools" which-school="filter.selectSchool" send-filter="sendFilter()"></div>
+		<div class="link-select" select-item select-options="options.yearMonth" which-item="filter.startTime" send-filter="sendFilter()"></div>
+		<i class="to-icon-select"></i>
+		<div select-item select-options="options.yearMonth" which-item="filter.endTime" send-filter="sendFilter()"></div>
+	</div>
+	<div class="btns">
+		<div link-select select-options="options.pay_type" first-one="filter.payFisrt" second-one="filter.paySec" send-filter="sendFilter()"></div>
+		<div link-select select-options="options.pay_method" first-one="filter.payMethod" second-one="filter.payTo" send-filter="sendFilter()"></div>
+		
+		<div class="add-btn" ng-hide="{{emp_type.type != 1}}"><a href="#/addPay">添加记录</a></div>
+	</div>
+	<div class="table-container">
+		<table class="table table-striped" id="table">
+			<thead>
+				<tr>
+					<td width="120">校区</td>
+					<td>支出时间</td>
+					<td>费用类型</td>
+					<td>二级目录</td>
+					<td>支付方式</td>
+					<td width="100">金额</td>
+					<td width="80">是否申请</td>
+					<td width="170">摘要</td>
+					<td width="150">操作</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="pay in payList.payList">
+					<td>{{pay.school}}</td>
+					<td>{{pay.pay_date}}</td>
+					<td>{{pay.pay_type}}</td>
+					<td>{{pay.pay_sec_type}}</td>
+					<td>{{pay.pay_method}}-{{pay.pay_to}}</td>
+					<td>￥{{pay.cost}}</td>
+					<td>{{pay.app_state | yesOrNo}}</td>
+					<td>{{pay.abstraction}}</td>
+					<td class="operate-btns">
+		    			<a href="#/modPay/{{pay.pay_id}}">修改</a>
+		    			<!-- <a class="btn-delete" href="javascript:void(0);" ng-click="">删除</a> -->
+		    		</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="total-cal"><span>共 {{payList.total.number}} 项</span><span>合计: ￥{{payList.total.cost}}</span></p>
+	</div>
+	<tm-pagination conf="paginationConf"></tm-pagination>
+</div>

@@ -1,0 +1,25 @@
+{
+  "name": "manage-system",
+  "version": "1.0.0",
+  "description": "manage system of a school",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "manage",
+    "system"
+  ],
+  "author": "dorry l",
+  "license": "ISC",
+  "dependencies": {
+    "angular-cookies": "^1.5.5",
+    "angular-route": "^1.5.3"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-connect": "^1.0.1",
+    "grunt-contrib-less": "^1.3.0",
+    "grunt-contrib-watch": "^1.0.0"
+  }
+}

@@ -1,0 +1,50 @@
+<div class="home-container">
+	<div class="apply-container">
+		<h2>付款申请审核单</h2>
+		<div id="tables">
+			<table class="table table-bordered table-1" width="1200">
+				<tr>
+					<td>编号: {{appForm.user.emp_id}}</td>
+					<td>日期: {{appForm.user.date}}</td>
+				</tr>
+				<tr>
+					<td>校区: {{appForm.user.emp_sch}}</td>
+					<td>申请人: {{appForm.user.emp_name}}</td>
+				</tr>
+				<tr>
+					<td colspan="2"><label>标题: </label><input class="app-title" type="text" ng-model="appForm.user.app_title" /></td>
+				</tr>
+			</table>
+			<div class="btns"><div class="add-btn"><a href="javascript:void(0);" ng-click="addItem()">添加一项</a></div></div>
+			<table class="table table-bordered table-2" width="1200">
+				<tr class="thead">
+					<td>内容</td>
+					<td width="145">单价</td>
+					<td width="145">数量</td>
+					<td width="145">总价</td>
+				</tr>
+				<tr ng-repeat="item in appForm.app">
+					<td><textarea ng-model="item.app_content"></textarea></td>
+					<!-- <td><input type="text" ng-model="item.app_content" required/></td> -->
+					<td><input type="text" ng-model="item.app_per" ng-change="countTotal()" required/></td>
+					<td><input type="text" ng-model="item.app_num" ng-change="countTotal()" required/></td>
+					<td><input type="text" value="{{item.app_per * item.app_num}}" disabled /></td>
+					<!-- <td><input type="text" ng-model="appForm.app.app_content" /></td>
+					<td><input type="text" ng-model="appForm.app.app_per" /></td>
+					<td><input type="text" ng-model="appForm.app.app_num" /></td>
+					<td><input type="text" value="{{appForm.app.app_per * appForm.app.app_num}}" /></td> -->
+				</tr>
+			</table>
+			<p class="total-cal"><span>合计: ￥{{total_price}}</span></p>
+			<div class="accept-container">
+				<p>总经理: {{appForm.user.sign_name}}</p>
+				<textarea ng-model="appForm.user.remark" disabled>审批意见: </textarea>
+			</div>
+			
+			<footer>
+				<div class="footer-logo"></div>
+			</footer>
+		</div>
+	</div>	
+	<div class="submit-btn"><button type="button" ng-click="submitApp()">保存</button></div>
+</div>
