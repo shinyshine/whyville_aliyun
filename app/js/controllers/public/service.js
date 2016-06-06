@@ -39,9 +39,6 @@ angular.module('publicService', [])
 	.factory('getStuName', function(API) {
 		return function(data, callBack) {
 			getData(API.getStuName, callBack, data);
-			// return {
-			// 	stu_name: 'luoxiaotong'
-			// }
 		}
 	})
 	.factory('fetchCourseByStu', function(API) {
