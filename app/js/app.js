@@ -19,11 +19,6 @@ var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'p
         templateUrl: 'views/home/calendar.html',
         controller: 'calendar'
       })
-      
-      
-  	  // .otherwise({
-  	  // 	redirectTo: '/'
-  	  // });
   })
   .controller('homeApp', function($scope, $cookies) {
     $scope.user = {
