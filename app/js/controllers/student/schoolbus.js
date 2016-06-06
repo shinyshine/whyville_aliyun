@@ -101,11 +101,11 @@ angular.module('homeApp.student')
 				stu_id: $scope.formData.stu_id
 			}
 
-			$scope.formData.stu_name = getStuName().stu_name;
-			// getStuName(stuId, function(result) {
-			// 	console.log(result)
-			// 	$scope.formData.stu_name = result.stu_name;
-			// })
+			//$scope.formData.stu_name = getStuName().stu_name;
+			getStuName(stuId, function(result) {
+				console.log(result);
+				$scope.formData.stu_name = result.stu_name;
+			})
 		}
 
 

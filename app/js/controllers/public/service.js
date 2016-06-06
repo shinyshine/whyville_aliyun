@@ -31,17 +31,17 @@ angular.module('publicService', [])
 			"fetchSchCourseType": server + 'get_schools_coursetype',
 			"fetchOptions": server + 'common_data',
 			"fetchCourseByStu": server + 'get_sch_by_stu',
-			"getStuName": server + '',
+			"getStuName": server + 'get_student_name',
 		}
 	})
 
 	//get student's name by his id
 	.factory('getStuName', function(API) {
 		return function(data, callBack) {
-			//getData(API.getStuName, callBack, data);
-			return {
-				stu_name: 'luoxiaotong'
-			}
+			getData(API.getStuName, callBack, data);
+			// return {
+			// 	stu_name: 'luoxiaotong'
+			// }
 		}
 	})
 	.factory('fetchCourseByStu', function(API) {
