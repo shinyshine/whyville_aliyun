@@ -1,5 +1,5 @@
 //var ROOT = 'http://10.173.125.162:8000/app/#/';
-var ROOT = 'http://120.25.229.249:8000/app/#/';
+var ROOT = 'http://120.25.229.249:8000/app/#/';   //some problems here
 
 function transformSchArr(arr) {
 	var options = [];
