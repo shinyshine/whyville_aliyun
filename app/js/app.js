@@ -1,7 +1,7 @@
 'use strict';
-var user = {
-  authority: ''
-}
+//var ROOT = 'http://10.173.125.162:8000/app/#/';
+var ROOT = 'http://120.25.229.249:8000/app/#/';   //some problems here
+
 var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'publicService', 'homeApp.home', 'homeApp.operating', 'homeApp.student', 'homeApp.educate', 'homeApp.finance', 'homeApp.analysis'])
   .config(function($routeProvider) {
         
