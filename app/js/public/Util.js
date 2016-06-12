@@ -1,4 +1,4 @@
-
+var ROOT = 'http://120.25.229.249:80/app/#/';
 
 function transformSchArr(arr) {
 	var options = [];
