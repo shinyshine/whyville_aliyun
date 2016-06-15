@@ -30,16 +30,16 @@ module.exports = function(grunt) {
                 },
             },
         },
-        // connect: {
-        //     server: {
-        //         options: {
-        //             protocol: 'http',
-        //             port: 8000,
-        //             // keepalive: true,
-        //             base: ['app/']  //注意根目录的配置
-        //         }
-        //     }
-        // },
+        connect: {
+            server: {
+                options: {
+                    protocol: 'http',
+                    port: 8000,
+                    // keepalive: true,
+                    base: ['app/']  //注意根目录的配置
+                }
+            }
+        },
         concat: {
             operate: {
                 src: ['<%= config.controller %>operating/operating.js', '<%= config.controller %>operating/service.js','<%= config.controller %>operating/EmployeeInfo.js','<%= config.controller %>operating/employees.js','<%= config.controller %>operating/school.js'],
