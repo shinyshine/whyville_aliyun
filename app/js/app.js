@@ -19,6 +19,9 @@ var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'p
         templateUrl: 'views/home/calendar.html',
         controller: 'calendar'
       })
+
+      // use the HTML5 History API  
+      $locationProvider.html5Mode(true);
   })
   .controller('homeApp', function($scope, $cookies) {
     $scope.user = {
