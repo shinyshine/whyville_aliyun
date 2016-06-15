@@ -21,7 +21,7 @@ var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'p
       })
 
       // use the HTML5 History API  
-      $locationProvider.html5Mode(true);
+      //$locationProvider.html5Mode(true);
   })
   .controller('homeApp', function($scope, $cookies) {
     $scope.user = {
