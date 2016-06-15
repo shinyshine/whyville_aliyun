@@ -36,7 +36,7 @@ module.exports = function(grunt) {
                     protocol: 'http',
                     port: 8000,
                     // keepalive: true,
-                    base: ['./app']  //注意根目录的配置
+                    base: ['app/']  //注意根目录的配置
                 }
             }
         },
