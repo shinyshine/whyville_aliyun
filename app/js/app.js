@@ -31,21 +31,7 @@ var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'p
       "sch_id": $cookies.get('sch_id'),
       "sch_name": $cookies.get('sch_name')
     }
-    // $scope.state = {
-    //   "operating": 0,
-    //   "notice": 0
-    // }
-    // var authority = $scope.user.authority;
-
-    // if(authority == 0 || authority == 1 || authority == 2) {
-    //   $scope.state.operating = 1
-    // }
-    // if(authority == 0 || authority == 1) {
-    //   $scope.state.notice = 1
-    // }
    
-
-    
   })
   .controller('homeApp.header', function($scope, $cookies) {
     $scope.underline = function(index) {

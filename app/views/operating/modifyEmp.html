@@ -8,7 +8,7 @@
         <form name="basicForm" ng-submit="modifyEmp(basicForm.$valid)">
             <div class="info-card" id="basic">
                 <div class="upload-container">
-                    <div class="pic-container"><span>点击此处<br/>上传照片</span></div>
+                    <img src="{{employeeInfo.info.emp_pic}}"/>
                 </div>
                 <div class="input-row">
                     <label>编号</label>
@@ -20,7 +20,7 @@
                 </div>
                 <div class="input-row">
                     <label><span class="text-danger">*</span>生日</label>
-                    <div date-select which-date="employeeInfo.info.emp_birth"></div> 
+                    <div date-select which-date="employeeInfo.emp_birth"></div> 
                 </div>
                 <div class="input-row">
                     <label>性别</label>

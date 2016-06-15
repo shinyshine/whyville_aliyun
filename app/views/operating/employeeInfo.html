@@ -7,7 +7,7 @@
     <div class="form-container">
         <div class="info-card" id="basic">
             <div class="upload-container">
-                <div class="pic-container"><span>点击此处<br/>上传照片</span></div>
+                <img src="{{employeeInfo.info.emp_pic}}"/>
             </div>
             <div class="input-row">
                 <label>编号</label>
@@ -19,7 +19,7 @@
             </div>
             <div class="input-row">
                 <label>生日</label>
-                <div class="input-text">{{employeeInfo.info.emp_birth}}</div> 
+                <div class="input-text">{{employeeInfo.emp_birth.year}}-{{employeeInfo.emp_birth.month}}-{{employeeInfo.emp_birth.day}}</div> 
             </div>
             <div class="input-row">
                 <label>性别</label>
