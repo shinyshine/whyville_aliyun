@@ -1,5 +1,6 @@
 var ROOT = 'http://120.25.229.249:80/app/#/';
 
+var num_per_page = 12;
 function transformSchArr(arr) {
 	var options = [];
 	for (var i = 0, len = arr.length; i < len; i++) {

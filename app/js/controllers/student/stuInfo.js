@@ -8,7 +8,7 @@ angular.module('homeApp.student')
 				"name": '全部校区'
 			},
 			"page": 1,
-			"num": 3
+			"num": num_per_page
 		}
 		//about pagination
 		$scope.paginationConf = {};

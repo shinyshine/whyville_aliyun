@@ -33,7 +33,7 @@ angular.module('homeApp.finance')
 				"name": ''
 			},
 			"page": 1,
-			"num": 3
+			"num": num_per_page
 		}
 		//about pagination
 		$scope.paginationConf = {};

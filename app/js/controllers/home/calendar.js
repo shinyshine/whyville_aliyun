@@ -124,8 +124,17 @@ angular.module('homeApp.home')
 			if (status == 0) {
 				return false;
 			}
+			var ntc = {
+				ntc_id: ntc_id
+			}
 			//执行删除日程的操作
-			alert('delete successfully');
+			deleteSche(ntc, function(result) {
+				if(result.status == 1) {
+					alert('删除成功')
+				}else {
+					alert('出现错误');
+				}
+			})
 		}
 
 		//删除和修改的权限问题
@@ -139,6 +148,19 @@ angular.module('homeApp.home')
 			if (status == 0) {
 				return false;
 			}
+
+			var ntc = {
+				ntc_id: ntc_id
+			}
+
+			deleteNotice(ntc, function(result) {
+				if(result.status == 1) {
+					alert('删除成功')
+				}else {
+					alert('出现错误');
+				}
+			})
+
 			
 		}
 

@@ -13,13 +13,15 @@ angular.module('homeApp.homeService', [])
 			"acceptApp": server + 'change_application_status',
 			"fetchNoticeById": server + 'get_notice',
 			"modifyNotice": server + 'change_notice',
-			"deleteNotice": server + 'deleteNotice',
+			"deleteNotice": server + 'delete_notice',
 			"fetchScheById": server + 'get_schedule',
 			"modifySche": server + 'change_schedule',
-			"deleteSche": server + 'deleteSche',
+			"deleteSche": server + 'delete_schedule',
 			"modifyPwd": server + 'reset_own_password'
-		}
+		}	
 	})
+
+
 	.factory('clickDate', function(homeAPI) {
 		return function(filter, callBack) {
 			getData(homeAPI.clickDate, callBack, filter);

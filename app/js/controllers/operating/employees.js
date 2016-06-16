@@ -8,7 +8,7 @@ angular.module('homeApp.operating')
 				"name": '全部校区'
 			},
 			"page": 1,
-			"num": 3,
+			"num": num_per_page,
 			"authority": $cookies.get('authority')
 		}
 		fetchOptions('', function(result) {
