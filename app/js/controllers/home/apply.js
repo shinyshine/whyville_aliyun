@@ -98,6 +98,10 @@ angular.module('homeApp.home')
 				//pagination
 				var total = result.sum;
 				$scope.paginationConf = pagination(total);
+				$scope.paginationConf.onChange = function() {
+					$scope.filter.page = $scope.paginationConf.currentPage;
+					$scope.pageChange();
+				}
 				$scope.$apply();
 			});
 		}
