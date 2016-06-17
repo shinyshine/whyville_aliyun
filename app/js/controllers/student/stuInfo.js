@@ -143,10 +143,10 @@ angular.module('homeApp.student')
 		$scope.stuInfo = initStuForm.fetchData($routeParams.stu_id);
 
 		//图片预览效果
-		// previewImage(function(ext_name) {
-		// 	$scope.stuInfo.stu_basic.stu_pic.ext_name = ext_name;
-		// 	$scope.$apply();
-		// })
+		previewImage(function(ext_name) {
+			$scope.stuInfo.stu_basic.stu_pic.ext_name = ext_name;
+			$scope.$apply();
+		})
 		$scope.submitStuInfo = function(valid) {
 			if(valid) {
 				console.log($scope.stuInfo);
