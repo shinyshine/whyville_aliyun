@@ -16,8 +16,8 @@ angular.module('homeApp.finance')
 				"id": 0,
 				"name": '未付款'
 			},
-			"page": num_per_page,
-			"num": 3
+			"page": 1,
+			"num": num_per_page
 		}
 		$scope.paginationConf = {};
 
