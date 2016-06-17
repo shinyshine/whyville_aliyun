@@ -130,7 +130,10 @@ angular.module('homeApp.home')
 			//执行删除日程的操作
 			deleteSche(ntc, function(result) {
 				if(result.status == 1) {
-					alert('删除成功')
+					alert('删除成功');
+					$scope.$apply(function() {
+						window.location.reload();
+					})
 				}else {
 					alert('出现错误');
 				}
@@ -155,7 +158,10 @@ angular.module('homeApp.home')
 
 			deleteNotice(ntc, function(result) {
 				if(result.status == 1) {
-					alert('删除成功')
+					alert('删除成功');
+					$scope.$apply(function() {
+						window.location.reload();
+					})
 				}else {
 					alert('出现错误');
 				}

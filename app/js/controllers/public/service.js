@@ -221,7 +221,7 @@ angular.module('publicService', [])
 			return {
 				currentPage: 1,
 				totalItems: totalPage,
-				itemsPerPage: 3,
+				itemsPerPage: num_per_page,
 				pagesLength: 15,
 				perPageOptions: [10, 20, 30, 40, 50],
 				//rememberPerPage: 'perPageItems',
