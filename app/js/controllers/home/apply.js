@@ -48,21 +48,22 @@ angular.module('homeApp.home')
 		//about pagination
 		$scope.paginationConf = {};
 
-		fetchApps($scope.filter, function(result) {
-			console.log(result);
-			$scope.$apply(function() {
-				$scope.applicate = result.result;			
-				
+		var getAllApps = function() {
+			fetchApps($scope.filter, function(result) {
+				console.log(result);
+				$scope.applicate = result.result;
 				//pagination
 				var total = result.sum;
 				$scope.paginationConf = pagination(total);
-
 				$scope.paginationConf.onChange = function() {
 					$scope.filter.page = $scope.paginationConf.currentPage;
 					$scope.pageChange();
 				}
-			})
-		});
+				$scope.$apply();
+			});
+		}
+
+		getAllApps();
 		
 
 
@@ -92,18 +93,7 @@ angular.module('homeApp.home')
 
 		$scope.sendFilter = function() {
 			$scope.filter.page = 1;
-			fetchApps($scope.filter, function(result) {
-				console.log(result);
-				$scope.applicate = result.result;
-				//pagination
-				var total = result.sum;
-				$scope.paginationConf = pagination(total);
-				$scope.paginationConf.onChange = function() {
-					$scope.filter.page = $scope.paginationConf.currentPage;
-					$scope.pageChange();
-				}
-				$scope.$apply();
-			});
+			getAllApps();
 		}
 	})
     .controller('applyfor', function($scope, $cookies, $location, initAppForm, addApp) {
