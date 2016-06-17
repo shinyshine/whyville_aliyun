@@ -23,7 +23,7 @@ angular.module('homeApp.home')
 				"name": '全部申请表'
 			},
 			"page": 1,
-			"num": 3
+			"num": num_per_page
 		}
 		fetchOptions('', function(result) {
 			$scope.$apply(function() {
