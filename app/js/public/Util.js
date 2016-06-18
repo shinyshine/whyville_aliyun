@@ -1,5 +1,5 @@
 var ROOT = 'http://120.25.229.249:80/app/#/';
-var API = 'http://120.25.229.249:8001';
+var API = 'http://120.25.229.249:8001/get_img';
 
 var num_per_page = 12;
 function transformSchArr(arr) {
