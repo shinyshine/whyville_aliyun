@@ -65,7 +65,7 @@ angular.module('homeApp.operating')
       $scope.employeeInfo = result;
 
       var picPath = API + result.info.emp_pic;
-      $scope.employeeInfo.info.emp_pic = picpath;
+      $scope.employeeInfo.info.emp_pic = picPath;
       $scope.$apply();
     })
 
@@ -104,7 +104,7 @@ angular.module('homeApp.operating')
       $scope.employeeInfo = result;
 
       var picPath = API + result.info.emp_pic;
-      $scope.employeeInfo.info.emp_pic = picpath;
+      $scope.employeeInfo.info.emp_pic = picPath;
       $scope.$apply();
     })
   })
