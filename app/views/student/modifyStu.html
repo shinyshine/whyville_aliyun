@@ -9,8 +9,8 @@
 	    	<form name="stuForm" ng-submit="submitStuInfo(stuForm.$valid)">
 		    	<div class="info-card" id="basic">
 		    		<div class="upload-container">
-						<img src="./images/test.jpg" />
-		            </div>
+                		<img src="{{stuInfo.stu_basic.stu_pic}}"/>
+            		</div>
 		            <div class="input-row">
 		                <label><span class="text-danger">*</span>中文名</label>
 		                <div class="input-text"><input type="text" placeholder="请输入中文名" ng-model="stuInfo.stu_basic.stu_zh_name" required/></div>

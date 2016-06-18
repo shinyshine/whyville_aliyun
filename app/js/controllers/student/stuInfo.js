@@ -91,8 +91,11 @@ angular.module('homeApp.student')
 			"link": '#fee'
 		}]
 		fetchStuInfoById($routeParams, function(result) {
-			console.log(result)
+			
 			$scope.stuInfo = result;
+			var picPath = $scope.stuInfo.stu_basic.stu_pic;
+			$scope.stuInfo.stu_basic.stu_pic = API + picPath;
+			console.log(result)
 			$scope.$apply();
 		});
 
@@ -209,6 +212,8 @@ angular.module('homeApp.student')
 		fetchStuInfoById($routeParams, function(result) {
 			console.log(result);
 			$scope.stuInfo = result;
+			var picPath = $scope.stuInfo.stu_basic.stu_pic;
+			$scope.stuInfo.stu_basic.stu_pic = API + picPath;
 			$scope.$apply();
 		})
 		
