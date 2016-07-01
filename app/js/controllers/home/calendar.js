@@ -24,8 +24,10 @@ angular.module('homeApp.home')
 		// 	}
 		// })
 		//init select options
+		var options = localStorage.getItem('options');
+		options = JSON.parse(options);
 		$scope.options = {
-			schools: localStorage.getItem('schools'),
+			schools: options.schools,
 			cur_date: moment().format('YYYY-MM-DD')
 		}
 

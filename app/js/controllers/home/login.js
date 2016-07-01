@@ -27,12 +27,12 @@ angular.module('homeApp.home')
 				$cookies.put('type', result.type);*/
 				$scope.$apply(function() {
 					fetchOptions('', function(result) {
-						localStorage.setItem('pay_type', result.pay_type);
-						localStorage.setItem('pay_method', result.pay_method);
-						localStorage.setItem('linkCourse', result.linkCourse);
-						localStorage.setItem('schools', result.schools);
-						localStorage.setItem('jobs', result.jobs);
-						localStorage.setItem('publics', result.publics);
+						localStorage.setItem('options', JSON.sringify(result));
+						// localStorage.setItem('pay_method', result.pay_method);
+						// localStorage.setItem('linkCourse', result.linkCourse);
+						// localStorage.setItem('schools', result.schools);
+						// localStorage.setItem('jobs', result.jobs);
+						// localStorage.setItem('publics', result.publics);
 					})
 					$location.path("/" + $cookies.get('user_id')); 
 				});	
