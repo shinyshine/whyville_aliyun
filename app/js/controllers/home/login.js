@@ -1,6 +1,6 @@
 'use strict';
 angular.module('homeApp.home')
-	.controller('login', function($scope, $location, $cookies, login) {
+	.controller('login', function($scope, $location, $cookies, login, fetchOptions) {
 		$scope.user = {
 			"user_id": '',
 			"user_pwd": ''
@@ -18,13 +18,22 @@ angular.module('homeApp.home')
 		var callBack = function(result) {
 			var status = result.status;
 			if(status == 1) {
-				$cookies.put('authority', result.authority);
+
+				/*$cookies.put('authority', result.authority);
 				$cookies.put('user_name', result.user_name);
 				$cookies.put('sch_name', result.sch_name);
 				$cookies.put('user_id', result.user_id);
 				$cookies.put('sch_id', result.sch_id);
-				$cookies.put('type', result.type);
-				$scope.$apply(function() { 
+				$cookies.put('type', result.type);*/
+				$scope.$apply(function() {
+					fetchOptions('', function(result) {
+						localStorage.setItem('pay_type', result.pay_type);
+						localStorage.setItem('pay_method', result.pay_method);
+						localStorage.setItem('linkCourse', result.linkCourse);
+						localStorage.setItem('schools', result.schools);
+						localStorage.setItem('jobs', result.jobs);
+						localStorage.setItem('publics', result.publics);
+					})
 					$location.path("/" + $cookies.get('user_id')); 
 				});	
 			}else{
