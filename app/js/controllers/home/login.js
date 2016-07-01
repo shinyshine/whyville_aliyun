@@ -27,7 +27,7 @@ angular.module('homeApp.home')
 				$cookies.put('type', result.type);*/
 				$scope.$apply(function() {
 					fetchOptions('', function(result) {
-						localStorage.setItem('options', JSON.sringify(result));
+						localStorage.setItem('options', JSON.stringify(result));
 						// localStorage.setItem('pay_method', result.pay_method);
 						// localStorage.setItem('linkCourse', result.linkCourse);
 						// localStorage.setItem('schools', result.schools);
