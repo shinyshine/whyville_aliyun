@@ -1,6 +1,6 @@
 'use strict';
 angular.module('homeApp.home')
-	.controller('calendar', function($scope, $rootScope, $cookies, $location, fetchOptions, $routeParams, clickDate, fetchHomeInfo, fetchHomeByYearM, deleteNotice, deleteSche) {
+	.controller('calendar', function($scope, $rootScope, $cookies, $location, $routeParams, clickDate, fetchHomeInfo, fetchHomeByYearM, deleteNotice, deleteSche) {
 		if($location.search().s_id) {
 			$scope.filter = {
 				"selectSchool": {
@@ -17,12 +17,17 @@ angular.module('homeApp.home')
 			}
 		}
 		
-		fetchOptions('', function(result) {
-			$scope.options = {
-				"schools": result.schools,
-				cur_date: moment().format('YYYY-MM-DD')
-			}
-		})
+		// fetchOptions('', function(result) {
+		// 	$scope.options = {
+		// 		"schools": result.schools,
+		// 		cur_date: moment().format('YYYY-MM-DD')
+		// 	}
+		// })
+		//init select options
+		$scope.options = {
+			schools: localStorage.getItem('schools'),
+			cur_date: moment().format('YYYY-MM-DD')
+		}
 
 		fetchHomeInfo($scope.filter, function(result){
 			if(result.status == 2) {
