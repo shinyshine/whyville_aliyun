@@ -28,7 +28,7 @@ angular.module('homeApp.home')
 		fetchHomeInfo($scope.filter, function(result){
 			if(result.status == 2) {
 				alert('没有权限查看');
-			}else if(status == 1) {
+			}else if(result.status == 1) {
 				console.log(result);
 				$scope.home1 = result;
 				
