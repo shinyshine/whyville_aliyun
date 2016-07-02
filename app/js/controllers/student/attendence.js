@@ -16,7 +16,7 @@ angular.module('homeApp.student')
 		// })
 
 		var options = localStorage.getItem('options'),
-			courses = localStorage.getItem('course');
+			courses = localStorage.getItem('courses');
 
 		options = JSON.parse(options);
 		courses = JSON.parse(courses);
