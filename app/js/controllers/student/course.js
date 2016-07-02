@@ -108,8 +108,6 @@ angular.module('homeApp.student')
 					})
 				})
 			}
-			
-			
 		}
 	})
 	.controller('planCourse', function($scope, fetchPlanCouOp, initPlanForm, getYearSessions, getWeekDays, planCourse) {

@@ -1,6 +1,6 @@
 'use strict';
 angular.module('homeApp.analysis')
-	.controller('teaSalary', function($scope, fetchTeaSalary, getYearMonth, fetchOptions) {
+	.controller('teaSalary', function($scope, fetchTeaSalary, getYearMonth) {
 		$scope.filter = {
 			"selectSchool": {
 				"id": '1',
@@ -22,21 +22,19 @@ angular.module('homeApp.analysis')
 				$scope.data = result;
 			})
 		})
-		fetchOptions('', function(result) {
-			$scope.$apply(function() {
-				$scope.options = {
-					"schools": result.schools,
-					"yearMonth": getYearMonth,
-					"type": [{
-						"id": 1,
-						"name": '全职老师'
-					},{
-						"id": 2,
-						"name": '兼职老师'
-					}]
-				}
-			})
-		})
+
+		var options = getDataFromStorage('options');
+		$scope.options = {
+			schools: options.schools,
+			yearMonth: getYearMonth,
+			type: [{
+				"id": 1,
+				"name": '全职老师'
+			},{
+				"id": 2,
+				"name": '兼职老师'
+			}]
+		}
 		
 		$scope.sendFilter = function() {
 			console.log($scope.filter);
@@ -47,7 +45,7 @@ angular.module('homeApp.analysis')
 			})
 		}
 	})
-	.controller('stuFeeIncome', function($scope, $location, $routeParams, fetchStuFee, fetchOptions, getYearMonth, getYearSessions) {
+	.controller('stuFeeIncome', function($scope, $location, $routeParams, fetchStuFee, getYearMonth, getYearSessions) {
 		console.log($routeParams)
 		$scope.filter = {
 			"selectSchool": {
@@ -81,17 +79,15 @@ angular.module('homeApp.analysis')
 				$scope.data = result;
 			})
 		})
-		fetchOptions('', function(result) {
-			$scope.$apply(function() {
-				$scope.options = {
-					"schools": result.schools,
-					"year": getYearSessions.year,
-					"session": getYearSessions.session,
-					"yearMonth": getYearMonth,
-					"courseType": result.linkCourse,
-				}
-			})
-		})
+
+		var options = getDataFromStorage('options');
+		$scope.options = {
+			schools: options.schools,
+			year: getYearSessions.year,
+			session: getYearSessions.session,
+			yearMonth: getYearMonth,
+			courseType: options.linkCourse,
+		}
 
 		$scope.sendFilter = function() {
 			console.log($scope.filter);
@@ -102,7 +98,7 @@ angular.module('homeApp.analysis')
 			})
 		}
 	})
-	.controller('schFeeIncome', function($scope, $location, fetchSchFee, fetchOptions, getYearMonth, getYearSessions) {
+	.controller('schFeeIncome', function($scope, $location, fetchSchFee, getYearMonth, getYearSessions) {
 		$scope.filter = {
 			"selectSchool": {
 				"id": 1,
@@ -135,21 +131,18 @@ angular.module('homeApp.analysis')
 				$scope.data = result;
 			})
 		})
-		fetchOptions('', function(result) {
-			$scope.$apply(function() {
-				$scope.options = {
-					"schools": result.schools,
-					"year": getYearSessions.year,
-					"session": getYearSessions.session,
-					"yearMonth": getYearMonth,
-					"courseType": result.linkCourse,
-				}
-			})
-		})
+		
+		var options = getDataFromStorage('options');
+		$scope.options = {
+			schools: options.schools,
+			year: getYearSessions.year,
+			session: getYearSessions.session,
+			yearMonth: getYearMonth,
+			courseType: options.linkCourse,
+		}
 
 		$scope.skipToStuCourse = function(course_id, type_id, course_name, course_type) {
 			$location.path('/stuFeeIncome/' + type_id + '/' + course_id).search({c_n: course_name, c_t: course_type});
-			//$location.path('/stuFeeIncome/2/2')
 		}
 
 		$scope.sendFilter = function() {
@@ -161,7 +154,7 @@ angular.module('homeApp.analysis')
 			})
 		}
 	})
-	.controller('stuBookIncome', function($scope, $routeParams, $location, fetchStuBookFee, fetchOptions, getYearMonth, getYearSessions) {
+	.controller('stuBookIncome', function($scope, $routeParams, $location, fetchStuBookFee, getYearMonth, getYearSessions) {
 		$scope.filter = {
 			"selectSchool": {
 				"id": 1,
@@ -199,17 +192,15 @@ angular.module('homeApp.analysis')
 				$scope.data = result;
 			})
 		})
-		fetchOptions('', function(result) {
-			$scope.$apply(function() {
-				$scope.options = {
-					"schools": result.schools,
-					"year": getYearSessions.year,
-					"session": getYearSessions.session,
-					"yearMonth": getYearMonth,
-					"courseType": result.linkCourse,
-				}
-			})
-		})
+
+		var options = getDataFromStorage('options');
+		$scope.options = {
+			schools: options.schools,
+			year: getYearSessions.year,
+			session: getYearSessions.session,
+			yearMonth: getYearMonth,
+			courseType: options.linkCourse,
+		}
 
 		$scope.sendFilter = function() {
 			console.log($scope.filter);
@@ -220,7 +211,7 @@ angular.module('homeApp.analysis')
 			})
 		}
 	})
-	.controller('schBookIncome', function($scope, $location, fetchSchBookFee, fetchOptions, getYearMonth, getYearSessions) {
+	.controller('schBookIncome', function($scope, $location, fetchSchBookFee, getYearMonth, getYearSessions) {
 		$scope.filter = {
 			"selectSchool": {
 				"id": 1,
@@ -253,17 +244,15 @@ angular.module('homeApp.analysis')
 				$scope.data = result;
 			})
 		})
-		fetchOptions('', function(result) {
-			$scope.$apply(function() {
-				$scope.options = {
-					"schools": result.schools,
-					"year": getYearSessions.year,
-					"session": getYearSessions.session,
-					"yearMonth": getYearMonth,
-					"courseType": result.linkCourse,
-				}
-			})
-		})
+
+		var options = getDataFromStorage('options');
+		$scope.options = {
+			schools: options.schools,
+			year: getYearSessions.year,
+			session: getYearSessions.session,
+			yearMonth: getYearMonth,
+			courseType: options.linkCourse,
+		}
 
 		$scope.sendFilter = function() {
 			console.log($scope.filter);
@@ -279,7 +268,7 @@ angular.module('homeApp.analysis')
 
 		}
 	})
-	.controller('stuBusIncome', function($scope, fetchStuBusFee, fetchOptions, getYearMonth, getYears) {
+	.controller('stuBusIncome', function($scope, fetchStuBusFee, getYearMonth, getYears) {
 		$scope.filter = {
 			"school": {
 				"id": 1,
@@ -304,14 +293,14 @@ angular.module('homeApp.analysis')
 				$scope.data = result;
 			})
 		})
-		fetchOptions('', function(result) {
-			$scope.options = {
-				"schools": result.schools,
-				"year": getYears,
-				"yearMonth": getYearMonth,
-				"busNumber": result.bus_number
-			}
-		})
+
+		var options = getDataFromStorage('options');
+		$scope.options = {
+			schools: options.schools,
+			year: getYearSessions.year,
+			yearMonth: getYearMonth,
+			busNumber: options.bus_number
+		}
 
 		$scope.sendFilter = function() {
 			fetchStuBusFee($scope.filter, function(result) {
@@ -321,7 +310,7 @@ angular.module('homeApp.analysis')
 			})
 		}
 	})
-	.controller('schBusIncome', function($scope, fetchSchBusFee, fetchOptions, getYearMonth, getYears) {
+	.controller('schBusIncome', function($scope, fetchSchBusFee, getYearMonth, getYears) {
 		$scope.filter = {
 			"school": {
 				"id": 1,
@@ -346,15 +335,14 @@ angular.module('homeApp.analysis')
 				$scope.data = result;
 			})
 		})
-		fetchOptions('', function(result) {
-			console.log(result);
-			$scope.options = {
-				"schools": result.schools,
-				"year": getYears,
-				"yearMonth": getYearMonth,
-				"busNumber": result.bus_number
-			}
-		})
+
+		var options = getDataFromStorage('options');
+		$scope.options = {
+			schools: options.schools,
+			year: getYearSessions.year,
+			yearMonth: getYearMonth,
+			busNumber: options.bus_number
+		}
 
 		$scope.sendFilter = function() {
 			fetchSchBusFee($scope.filter, function(result) {
@@ -364,7 +352,7 @@ angular.module('homeApp.analysis')
 			})
 		}
 	})
-	.controller('schInfo', function($scope, fetchSchInfo, fetchOptions, getYearSessions) {
+	.controller('schInfo', function($scope, fetchSchInfo, getYearSessions) {
 		$scope.filter = {
 			"school": {
 				"id": 1,
@@ -379,17 +367,16 @@ angular.module('homeApp.analysis')
 			}
 		}
 		fetchSchInfo($scope.filter, function(result) {
-			console.log(result);
 			$scope.data = result;
 			$scope.$apply();
 		})
-		fetchOptions('', function(result) {
-			$scope.options = {
-				"schools": result.schools,
-				"year": getYearSessions.year,
-				"session": getYearSessions.sessions
-			}
-		})
+
+		var options = getDataFromStorage('options');
+		$scope.options = {
+			schools: options.schools,
+			year: getYearSessions.year,
+			session: getYearSessions.sessions,
+		}
 
 		$scope.sendFilter = function() {
 			fetchSchInfo($scope.filter, function(result) {
