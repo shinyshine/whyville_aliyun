@@ -19,25 +19,25 @@ angular.module('homeApp.home')
 			var status = result.status;
 			if(status == 1) {
 
-				$cookies.put('authority', result.authority);
-				$cookies.put('user_name', result.user_name);
-				$cookies.put('sch_name', result.sch_name);
-				$cookies.put('user_id', result.user_id);
-				$cookies.put('sch_id', result.sch_id);
-				$cookies.put('type', result.type);
+				// $cookies.put('authority', result.authority);
+				// $cookies.put('user_name', result.user_name);
+				// $cookies.put('sch_name', result.sch_name);
+				// $cookies.put('user_id', result.user_id);
+				// $cookies.put('sch_id', result.sch_id);
+				// $cookies.put('type', result.type);
 				$scope.$apply(function() {
-					fetchOptions('', function(result) {
-						localStorage.setItem('options', JSON.stringify(result));
-						// localStorage.setItem('pay_method', result.pay_method);
-						// localStorage.setItem('linkCourse', result.linkCourse);
-						// localStorage.setItem('schools', result.schools);
-						// localStorage.setItem('jobs', result.jobs);
-						// localStorage.setItem('publics', result.publics);
-					})
-
-					fetchPlanCouOp('', function(result) {
-						localStorage.setItem('courses', JSON.stringify(result));
-					})
+					var options = localStorage.getItem('options');
+					if(!options) {
+						fetchOptions('', function(result) {
+							localStorage.setItem('options', JSON.stringify(result));
+						})
+					}
+					var courses = localStorage.getItem('courses');
+					if(!courses) {
+						fetchPlanCouOp('', function(result) {
+							localStorage.setItem('courses', JSON.stringify(result));
+						})
+					}	
 					$location.path("/" + $cookies.get('user_id')); 
 				});	
 			}else{

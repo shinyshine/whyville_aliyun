@@ -46,8 +46,9 @@ var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'p
       // $cookies.remove('user_id');
       logOut('', function(result) {
         callbackAlert(result.status, '已退出登录');
+        window.location.href = ROOT + 'login';
       })
-      window.location.href = ROOT + 'login';
+      
     }
 
   })
