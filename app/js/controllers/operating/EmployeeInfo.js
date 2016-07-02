@@ -4,14 +4,6 @@
 'use strict';
 angular.module('homeApp.operating')
   .controller('addEmp', function($scope, $location, $routeParams, fetchOptions, initEmpForm, submitEmpInfo, previewImage) {
-    // fetchOptions('', function(result) {
-    //   $scope.$apply(function() {
-    //     $scope.options = {
-    //       "schools": result.schools,
-    //       "jobs": result.jobs
-    //     }
-    //   })
-    // })
 
     var options = getDataFromStorage('options');
     $scope.options = {
@@ -39,7 +31,7 @@ angular.module('homeApp.operating')
                 fetchOptions('', function(result1) {
                   localStorage.setItem('options', JSON.stringify(result1));
                 })
-                
+
                 $location.path('/employees');
               }else{
                 alert('出现错误，稍后重试');
@@ -53,7 +45,7 @@ angular.module('homeApp.operating')
       
     }
   })
-  .controller('modifyEmp', function($scope, $location, $routeParams, fetchOptions, fetchEmpById, modifyEmp, modifyComment) {
+  .controller('modifyEmp', function($scope, $location, $routeParams, fetchEmpById, modifyEmp, modifyComment) {
     $scope.sidebar = [{
       "name": '基本信息',
       "link": '#basic',
@@ -63,14 +55,12 @@ angular.module('homeApp.operating')
       "link": '#comment'
     }]
 
-    fetchOptions('', function(result) {
-      $scope.$apply(function() {
-        $scope.options = {
-          "schools": result.schools,
-          "jobs": result.jobs
-        }
-      })
-    })
+    var options = getDataFromStorage('options');
+    $scope.options = {
+      schools: options.schools,
+      jobs: options.jobs
+    }
+
     fetchEmpById($routeParams, function(result) {
       console.log(result)
       $scope.employeeInfo = result;
@@ -83,8 +73,8 @@ angular.module('homeApp.operating')
     $scope.modifyEmp = function() {
       console.log($scope.employeeInfo.info);
       modifyEmp($scope.employeeInfo.info, function(result) {
+        callbackAlert(result.status, '修改成功');
         if(result.status == 1) {
-          alert('修改成功');
           $scope.$apply(function() {
             $location.path('/employees');
           })
@@ -95,8 +85,8 @@ angular.module('homeApp.operating')
     $scope.submitCom = function() {
       $scope.employeeInfo.comment.emp_id = $routeParams.emp_id
       modifyComment($scope.employeeInfo.comment, function(result) {
+        callbackAlert(result.status, '修改成功');
         if(result.status == 1) {
-          alert('修改成功');
           $scope.$apply(function() {
             $location.path('/employees');
           })

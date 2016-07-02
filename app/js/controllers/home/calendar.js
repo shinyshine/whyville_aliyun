@@ -28,7 +28,7 @@ angular.module('homeApp.home')
 		fetchHomeInfo($scope.filter, function(result){
 			if(result.status == 2) {
 				alert('没有权限查看');
-			}else if(result.status == 1) {
+			}else {
 				console.log(result);
 				$scope.home1 = result;
 				
@@ -39,8 +39,6 @@ angular.module('homeApp.home')
 
 				calendar(result.cur_mon_sche);
 				$scope.$apply();
-			}else {
-				alert('未登录');
 			}
 			
 		});

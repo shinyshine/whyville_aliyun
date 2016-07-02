@@ -55,7 +55,7 @@ angular.module('homeApp.operating')
 			console.log($scope.schInfo);
 			$scope.schInfo.sch_id = $routeParams.sch_id;
 			modifySchInfo($scope.schInfo, function(result) {
-				if (result.status) {
+				if (result.status == 1) {
 					window.location.href = ROOT + 'schoolManage';
 				}
 			})
