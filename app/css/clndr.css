@@ -211,7 +211,7 @@ html[xmlns] .clearfix {
   background: #ddd;
 }
 .cal1 .clndr .clndr-table tr .empty:last-child,
-.cal1 .clndr .clndr-table tr .adjacent-month:last-child,
+/*.cal1 .clndr .clndr-table tr .adjacent-month:last-child,*/
 .cal1 .clndr .clndr-table tr .my-empty:last-child,
 .cal1 .clndr .clndr-table tr .my-adjacent-month:last-child {
   border-right: 1px solid #000000;

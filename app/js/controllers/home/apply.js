@@ -25,24 +25,7 @@ angular.module('homeApp.home')
 			"page": 1,
 			"num": num_per_page
 		}
-		// fetchOptions('', function(result) {
-		// 	$scope.$apply(function() {
-		// 		$scope.options = {
-		// 			"schools": result.schools,
-		// 			"app_status": [{
-		// 				"id": '0',
-		// 				"name": '全部申请表'
-		// 			},{
-		// 				"id": '1',
-		// 				"name": '已审核申请表'
-		// 			},{
-		// 				"id": '2',
-		// 				"name": '待审核申请表'
-		// 			}]
-		// 		}
-		// 	})
-		// })
-
+		
 		var options = localStorage.getItem('options');
 
 		options = JSON.parse(options);
@@ -200,7 +183,8 @@ angular.module('homeApp.home')
     		}
     		modifyApp(data, function(result) {
     			callbackAlert(result.status, '修改成功');
-    			$location.path('/applications');
+    			//$location.path('/applications');
+    			window.location.href = ROOT + 'applications'
     		})
     	}
     })
@@ -224,11 +208,9 @@ angular.module('homeApp.home')
     	$scope.acceptApp = function() {
     		console.log($scope.postData);
     		acceptApp($scope.postData, function(result) {
+    			callbackAlert(result.status, '审批成功');
     			if(result.status == 1) {
-    				alert('审批成功');
-    				//window.location.href = ROOT + 'applications';
-    			}else{
-    				alert('操作失败，请尝试重新提交');
+    				window.location.href = ROOT + 'applications';
     			}
     		})
     	}
