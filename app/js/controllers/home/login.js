@@ -34,6 +34,10 @@ angular.module('homeApp.home')
 						// localStorage.setItem('jobs', result.jobs);
 						// localStorage.setItem('publics', result.publics);
 					})
+
+					fetchPlanCouOp('', function(result) {
+						localStorage.setItem('courses', JSON.stringify(result));
+					})
 					$location.path("/" + $cookies.get('user_id')); 
 				});	
 			}else{
@@ -59,7 +63,7 @@ angular.module('homeApp.home')
 					return false;
 				}
 				modifyPwd($scope.postData, function(result) {
-					if(result.status) {
+					if(result.status == 1) {
 						alert('成功修改密码');
 						$scope.$apply(function() {
 							$location.path('/');

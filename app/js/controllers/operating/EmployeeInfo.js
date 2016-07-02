@@ -26,8 +26,9 @@ angular.module('homeApp.operating')
         var postData = $scope.employeeInfo;
         if(postData.emp_sch.id && postData.emp_job.id) {
            submitEmpInfo(postData, function(result) {
-              if(result.status) {
+              if(result.status == 1) {
                 alert('添加成功');
+                $location.path('/employees');
               }else{
                 alert('出现错误，稍后重试');
               }
@@ -39,8 +40,6 @@ angular.module('homeApp.operating')
       
       
     }
-
-    
   })
   .controller('modifyEmp', function($scope, $location, $routeParams, fetchOptions, fetchEmpById, modifyEmp, modifyComment) {
     $scope.sidebar = [{
@@ -72,7 +71,7 @@ angular.module('homeApp.operating')
     $scope.modifyEmp = function() {
       console.log($scope.employeeInfo.info);
       modifyEmp($scope.employeeInfo.info, function(result) {
-        if(result.status) {
+        if(result.status == 1) {
           alert('修改成功');
           $scope.$apply(function() {
             $location.path('/employees');
@@ -84,8 +83,11 @@ angular.module('homeApp.operating')
     $scope.submitCom = function() {
       $scope.employeeInfo.comment.emp_id = $routeParams.emp_id
       modifyComment($scope.employeeInfo.comment, function(result) {
-        if(result.status) {
+        if(result.status == 1) {
           alert('修改成功');
+          $scope.$apply(function() {
+            $location.path('/employees');
+          })
         }
       })
     }

@@ -40,7 +40,7 @@
 					</thead>
 					<tbody ng-repeat="item in data.basic.items">
 						<tr>
-							<td style="line-height: {{60*item.branches_num}}px;" rowspan="{{item.branches_num}}"><input type="text" ng-model="item.item_name"></td>
+							<td style="line-height: {{60*item.branches_num}}px;" rowspan="{{item.branches_num}}">{{item.item_name}}</td>
 							<td style="line-height: {{60*item.branches_num}}px;" rowspan="{{item.branches_num}}">{{item.score[0]}}</td>
 							<td style="line-height: {{60*item.branches_num}}px;" rowspan="{{item.branches_num}}">{{item.score[1]}}</td>
 							<td style="line-height: {{60*item.branches_num}}px;" rowspan="{{item.branches_num}}">{{item.score[2]}}</td>

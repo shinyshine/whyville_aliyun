@@ -1,19 +1,30 @@
 'use strict';
 angular.module('homeApp.student')
-	.controller('teachAttend', function($scope, $routeParams, fetchPlanCouOp, fetchOptions, fetchCourseRecord, modifyClassInfo) {
+	.controller('teachAttend', function($scope, $routeParams, fetchPlanCouOp, fetchCourseRecord, modifyClassInfo) {
 		//console.log($routeParams);  排课id
-		fetchOptions('', function(result1) {
+		// fetchOptions('', function(result1) {
 			
-			fetchPlanCouOp('', function(result2) {
-				// $scope.options.teachers = result2.teachers;
-				// $scope.$apply();
-				$scope.options = {
-					"schools": result1.schools,
-					"teachers": result2.teachers
-				}
-			})
-			$scope.$apply();
-		})
+		// 	fetchPlanCouOp('', function(result2) {
+		// 		// $scope.options.teachers = result2.teachers;
+		// 		// $scope.$apply();
+		// 		$scope.options = {
+		// 			"schools": result1.schools,
+		// 			"teachers": result2.teachers
+		// 		}
+		// 	})
+		// 	$scope.$apply();
+		// })
+
+		var options = localStorage.getItem('options'),
+			courses = localStorage.getItem('course');
+
+		options = options.JSON.parse(options);
+		courses = courses.JSON.parse(courses);
+
+		$scope.options = {
+			schools: options.schools,
+			teachers: courses.teachers
+		}
 
 		$scope.attendType = [{
 			"id": 0,
@@ -50,7 +61,7 @@ angular.module('homeApp.student')
 					}
 
 					modifyClassInfo(data, function(result) {
-						if(result.status) {
+						if(result.status == 1) {
 							alert('修改成功');
 						}
 					})
@@ -101,7 +112,7 @@ angular.module('homeApp.student')
 
 		$scope.allParticipated = function() {
 			allParticipated($routeParams, function(result) {
-				if(result.status) {
+				if(result.status == 1) {
 					window.location.reload();
 				}
 			})

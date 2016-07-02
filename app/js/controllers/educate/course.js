@@ -63,7 +63,7 @@ angular.module('homeApp.educate')
 		}
 		$scope.submitCallback = function() {
 			postCallback($scope.postData, function(result) {
-				if(result.status) {
+				if(result.status == 1) {
 					alert('submit successfully');
 				}
 			})
@@ -74,7 +74,7 @@ angular.module('homeApp.educate')
 			data.course_id = $routeParams.course_id;
 			data.stu_id = $routeParams.stu_id
 			modifyCallback(data, function(result) {
-				if(result.status) {
+				if(result.status == 1) {
 					alert('modify successfully');
 				}
 			})
@@ -99,20 +99,11 @@ angular.module('homeApp.educate')
 			$scope.data.stu_id = $routeParams.stu_id;
 			$scope.data.course_id = $routeParams.course_id;
 			submitReport($scope.data, function(result) {
-				if(result.status) {
+				if(result.status == 1) {
 					alert('操作成功');
 				}else{
 					alert('请完善信息');
 				}
 			})
 		}
-		
-		// $scope.submitReport = function() {
-		// 	console.log($scope.data);
-		// 	$scope.data.stu_id = $routeParams.stu_id;
-		// 	$scope.data.course_id = $routeParams.course_id;
-		// 	submitReport($scope.data, function(result) {
-		// 		console.log(result);
-		// 	})
-		// }
 	})
