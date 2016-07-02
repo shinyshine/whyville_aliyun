@@ -39,7 +39,7 @@ angular.module('homeApp.student')
 		// 	}
 		// })
 
-		var options getDataFromStorage('options');
+		var options = getDataFromStorage('options');
 		$scope.options = {
 			schools: options.schools,
 			bus_number: options.bus_number,

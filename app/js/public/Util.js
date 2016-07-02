@@ -140,5 +140,3 @@ function getDataFromStorage(name) {
 
 	return data;
 }
-
-

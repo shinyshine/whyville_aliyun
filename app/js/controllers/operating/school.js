@@ -1,6 +1,6 @@
 'use strict'
 angular.module('homeApp.operating')
-	.controller('SchoolManage', function($scope, $cookies, $location, fetchAllSchools) {
+	.controller('SchoolManage', function($scope, $cookies, fetchOptions, $location, fetchAllSchools) {
 		$scope.emp_type = {
 			authority: $cookies.get('authority')
 		}
@@ -15,6 +15,10 @@ angular.module('homeApp.operating')
 				alert('没有权限');
 				return false;
 			}else {
+				//update data in localstorage
+                fetchOptions('', function(result1) {
+                  localStorage.setItem('options', JSON.stringify(result1));
+                })
 				$location.path('/addSchool');
 			}
 		}

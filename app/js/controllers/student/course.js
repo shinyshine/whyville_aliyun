@@ -73,7 +73,7 @@ angular.module('homeApp.student')
 			})
 		}
 	})
-	.controller('addCourse', function($scope, fetchOptions, postCourse) {
+	.controller('addCourse', function($scope, fetchPlanCouOp, postCourse) {
 		var options = localStorage.getItem('options');
 		options = JSON.parse(options);
 
@@ -101,6 +101,11 @@ angular.module('homeApp.student')
 					if(result.status == 1) {
 						window.location.href = ROOT + 'courseList';
 					}
+
+					//update data in localstorage
+					fetchPlanCouOp('', function(result) {
+						localStorage.setItem('courses', JSON.stringify(result));
+					})
 				})
 			}
 			

@@ -4,14 +4,20 @@
 'use strict';
 angular.module('homeApp.operating')
   .controller('addEmp', function($scope, $location, $routeParams, fetchOptions, initEmpForm, submitEmpInfo, previewImage) {
-    fetchOptions('', function(result) {
-      $scope.$apply(function() {
-        $scope.options = {
-          "schools": result.schools,
-          "jobs": result.jobs
-        }
-      })
-    })
+    // fetchOptions('', function(result) {
+    //   $scope.$apply(function() {
+    //     $scope.options = {
+    //       "schools": result.schools,
+    //       "jobs": result.jobs
+    //     }
+    //   })
+    // })
+
+    var options = getDataFromStorage('options');
+    $scope.options = {
+      schools: options.schools,
+      jobs: options.jobs
+    }
 
     $scope.employeeInfo = initEmpForm($routeParams.emp_id);
     
@@ -28,6 +34,12 @@ angular.module('homeApp.operating')
            submitEmpInfo(postData, function(result) {
               if(result.status == 1) {
                 alert('添加成功');
+
+                //update data in localstorage
+                fetchOptions('', function(result1) {
+                  localStorage.setItem('options', JSON.stringify(result1));
+                })
+                
                 $location.path('/employees');
               }else{
                 alert('出现错误，稍后重试');

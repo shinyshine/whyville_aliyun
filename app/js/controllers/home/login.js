@@ -26,18 +26,14 @@ angular.module('homeApp.home')
 				// $cookies.put('sch_id', result.sch_id);
 				// $cookies.put('type', result.type);
 				$scope.$apply(function() {
-					var options = localStorage.getItem('options');
-					if(!options) {
-						fetchOptions('', function(result) {
-							localStorage.setItem('options', JSON.stringify(result));
-						})
-					}
-					var courses = localStorage.getItem('courses');
-					if(!courses) {
-						fetchPlanCouOp('', function(result) {
-							localStorage.setItem('courses', JSON.stringify(result));
-						})
-					}	
+					// 将options存入本地存储
+					fetchOptions('', function(result) {
+						localStorage.setItem('options', JSON.stringify(result));
+					})
+
+					fetchPlanCouOp('', function(result) {
+						localStorage.setItem('courses', JSON.stringify(result));
+					})
 					$location.path("/" + $cookies.get('user_id')); 
 				});	
 			}else{
