@@ -1,19 +1,6 @@
 'use strict';
 angular.module('homeApp.student')
 	.controller('teachAttend', function($scope, $routeParams, fetchPlanCouOp, fetchCourseRecord, modifyClassInfo) {
-		//console.log($routeParams);  排课id
-		// fetchOptions('', function(result1) {
-			
-		// 	fetchPlanCouOp('', function(result2) {
-		// 		// $scope.options.teachers = result2.teachers;
-		// 		// $scope.$apply();
-		// 		$scope.options = {
-		// 			"schools": result1.schools,
-		// 			"teachers": result2.teachers
-		// 		}
-		// 	})
-		// 	$scope.$apply();
-		// })
 
 		var options = localStorage.getItem('options'),
 			courses = localStorage.getItem('courses');
@@ -61,9 +48,7 @@ angular.module('homeApp.student')
 					}
 
 					modifyClassInfo(data, function(result) {
-						if(result.status == 1) {
-							alert('修改成功');
-						}
+						callbackAlert(result.status, '修改成功');
 					})
 				}else {
 					alert('请按照正确的日期和时间格式');
