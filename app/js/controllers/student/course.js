@@ -19,16 +19,6 @@ angular.module('homeApp.student')
 			},
 			"search": '',
 		}
-		// fetchOptions('', function(result) {
-		// 	//console.log(result)
-		// 	$scope.options = {
-		// 		"schools": result.schools,
-		// 		"years": getYearSessions.year,
-		// 		"sessions": getYearSessions.sessions,
-		// 		"courseType": result.courseType
-		// 	}
-		// 	$scope.$apply();
-		// })
 
 		var options = localStorage.getItem('options');
 		options = JSON.parse(options);
@@ -80,23 +70,10 @@ angular.module('homeApp.student')
 			}
 			deleteStuInCourse(data, function(result) {
 				callbackAlert(result.status, '成功删除一门课程');
-				// if(result.status == 1) {
-				// 	alert('成功删除一位学生');
-				// }else{
-				// 	alert('该学生不可被删除');
-				// }
 			})
 		}
 	})
 	.controller('addCourse', function($scope, fetchOptions, postCourse) {
-		// fetchOptions('', function(result) {
-		// 	console.log(result);
-		// 	$scope.options = {
-		// 		schools: result.schools,
-		// 		courseType: result.courseType
-		// 	}
-		// 	$scope.$apply();
-		// })
 		var options = localStorage.getItem('options');
 		options = JSON.parse(options);
 
@@ -136,7 +113,7 @@ angular.module('homeApp.student')
 		$scope.options = {
 			teachers: courses.teachers,
 			courses: courses.courses,
-			year: getYearSessions.year,
+			years: getYearSessions.year,
 			sessions: getYearSessions.session,
 			weekdays: getWeekDays
 		}

@@ -1,6 +1,6 @@
 'use strict';
 angular.module('homeApp.student')
-	.controller('stuBusList', function($scope, fetchOptions, getYearSessions, fetchStuBus, deleteBus) {
+	.controller('stuBusList', function($scope, getYearSessions, fetchStuBus, deleteBus) {
 		$scope.filter = {
 			"selectSchool": {
 				"id": '1',
@@ -22,29 +22,43 @@ angular.module('homeApp.student')
 				"name": '2016'
 			},
 		}
-		fetchOptions('', function(result) {
-			console.log(result)
-			$scope.options = {
-				"schools": result.schools,
-				"bus_number": result.bus_number,
-				"type": [{
-					"id": '0',
-					"name": '送'
-				}, {
-					"id": '1',
-					"name": '接'
-				}],
-				"years": getYearSessions.year,
-				"sessions": getYearSessions.session
-			}
-		})
+		// fetchOptions('', function(result) {
+		// 	console.log(result)
+		// 	$scope.options = {
+		// 		"schools": result.schools,
+		// 		"bus_number": result.bus_number,
+		// 		"type": [{
+		// 			"id": '0',
+		// 			"name": '送'
+		// 		}, {
+		// 			"id": '1',
+		// 			"name": '接'
+		// 		}],
+		// 		"years": getYearSessions.year,
+		// 		"sessions": getYearSessions.session
+		// 	}
+		// })
+
+		var options getDataFromStorage('options');
+		$scope.options = {
+			schools: options.schools,
+			bus_number: options.bus_number,
+			type: [{
+				"id": '0',
+				"name": '送'
+			}, {
+				"id": '1',
+				"name": '接'
+			}],
+			years: getYearSessions.year,
+			sessions: getYearSessions.session
+		}
 		fetchStuBus($scope.filter, function(result) {
 			$scope.$apply(function() {
 				$scope.stuBus = result;
 			})
 		})
 
-		//$scope.stuBus = fetchStuBus($scope.filter);
 
 		$scope.sendFilter = function() {
 			fetchStuBus($scope.filter, function(result) {
@@ -59,38 +73,57 @@ angular.module('homeApp.student')
 				ser_id: ser_id
 			}
 			deleteBus(data, function(result) {
-				if(result.status == 1) {
-					alert('删除成功');
-				}else{
-					alert('无法删除');
-				}
+				callbackAlert(result.status, '删除成功');
 			})
 		}
 	})
-	.controller('addStuToBus', function($scope, addStuToBus, getYearSessions, getStuName, fetchOptions, getWeekDays, initAddToBusForm) {
-		fetchOptions('', function(result) {
-			$scope.options = {
-				"type": [{
-					"id": '0',
-					"name": '送'
-				}, {
-					"id": '1',
-					"name": '接'
-				}],
-				"years": getYearSessions.year,
-				"sessions": getYearSessions.session,
-				"bus_number": result.bus_number,
-				"discount": [{
-					"id": 0,
-					"name": '打折'
-				},{
-					"id": 1,
-					"name": '减价'
-				}],
-				"pay_method": result.pay_method,
-				"weekdays": getWeekDays
-			}
-		})
+	.controller('addStuToBus', function($scope, addStuToBus, getYearSessions, getStuName, getWeekDays, initAddToBusForm) {
+		// fetchOptions('', function(result) {
+		// 	$scope.options = {
+		// 		"type": [{
+		// 			"id": '0',
+		// 			"name": '送'
+		// 		}, {
+		// 			"id": '1',
+		// 			"name": '接'
+		// 		}],
+		// 		"years": getYearSessions.year,
+		// 		"sessions": getYearSessions.session,
+		// 		"bus_number": result.bus_number,
+		// 		"discount": [{
+		// 			"id": 0,
+		// 			"name": '打折'
+		// 		},{
+		// 			"id": 1,
+		// 			"name": '减价'
+		// 		}],
+		// 		"pay_method": result.pay_method,
+		// 		"weekdays": getWeekDays
+		// 	}
+		// })
+
+		var options = getDataFromStorage('options');
+		$scope.options = {
+			type: [{
+				"id": '0',
+				"name": '送'
+			}, {
+				"id": '1',
+				"name": '接'
+			}],
+			years: getYearSessions.year,
+			sessions: getYearSessions.session,
+			bus_number: options.bus_number,
+			discount: [{
+				"id": 0,
+				"name": '打折'
+			},{
+				"id": 1,
+				"name": '减价'
+			}],
+			pay_method: options.pay_method,
+			weekdays: getWeekDays
+		}
 
 		//init form data, almost empty value
 		$scope.formData = initAddToBusForm;
@@ -103,7 +136,6 @@ angular.module('homeApp.student')
 
 			//$scope.formData.stu_name = getStuName().stu_name;
 			getStuName(stuId, function(result) {
-				console.log(result);
 				$scope.formData.stu_name = result.stu_name;
 				$scope.$apply();
 			})
@@ -112,7 +144,6 @@ angular.module('homeApp.student')
 
 		$scope.submitData = function() {
 			var data = $scope.formData;
-			console.log(data);
 			if(data.bus_number.id && data.type.id && data.discount_type.id && data.session.name && data.year.name) {
 				
 				//filter time format
@@ -130,19 +161,15 @@ angular.module('homeApp.student')
 				}
 
 				addStuToBus($scope.formData, function(result) {
-					if(result.status == 1) {
-						alert('操作成功');
-					}
+					callbackAlert(result.status);
 				})
 			}else{
 				alert('请完善信息');
 			}	
 		}
 	})
-	.controller('modStuBus', function($scope) {
-		//修改约车记录
-	})
-	.controller('busStuAttendList', function($scope, fetchOptions, getYears, fetchBusRecord) {
+
+	.controller('busStuAttendList', function($scope, getYears, fetchBusRecord) {
 		$scope.filter = {
 			"selectBus": {
 				"id": '0',
@@ -153,25 +180,26 @@ angular.module('homeApp.student')
 				"month": moment().format('MM'),
 				"day": moment().format('DD')
 			}
-			// "selectYear": {
-			// 	"name": new Date().getFullYear()
-			// }
 		}
-		fetchOptions('', function(result) {
-			$scope.options = {
-				"bus_number": result.bus_number,
-				"years": getYears
-			}
-		})
+		// fetchOptions('', function(result) {
+		// 	$scope.options = {
+		// 		"bus_number": result.bus_number,
+		// 		"years": getYears
+		// 	}
+		// })
+
+		var options = getDataFromStorage('options');
+		$scope.options = {
+			bus_number: options.bus_number,
+			years: getYears
+		}
 
 		fetchBusRecord($scope.filter, function(result) {
-			console.log(result);
 			$scope.data = result;
 			$scope.$apply();
 		})
 
 		$scope.sendFilter = function() {
-			console.log($scope.filter);
 			fetchBusRecord($scope.filter, function(result) {
 				$scope.data = result;
 				$scope.$apply();
@@ -197,7 +225,7 @@ angular.module('homeApp.student')
 			}
 		}
 		$scope.options = {
-			"type": [{
+			type: [{
 				"id": -1,
 				"name": '接或送'
 			},{
@@ -227,11 +255,8 @@ angular.module('homeApp.student')
 					},
 					"state": cur.attend_state
 				}
-				//console.log('发送请求给后台，修改出勤状况');
 				modBusStuAttend(data, function(result) {
-					if(result.status) {
-						alert('考勤成功');
-					}
+					callbackAlert(result.status, '考勤成功');
 				})
 			}
 			$scope.busAttend.list[index].isEditing = !status;

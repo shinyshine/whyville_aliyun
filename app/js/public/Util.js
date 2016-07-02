@@ -133,4 +133,12 @@ function callbackAlert(status, success) {
 	}
 }
 
+//get data from localstorage
+function getDataFromStorage(name) {
+	var data = localStorage.getItem(name);
+	data = JSON.parse(data);
+
+	return data;
+}
+
 
