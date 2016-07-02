@@ -18,8 +18,8 @@ angular.module('homeApp.student')
 		var options = localStorage.getItem('options'),
 			courses = localStorage.getItem('course');
 
-		options = options.JSON.parse(options);
-		courses = courses.JSON.parse(courses);
+		options = JSON.parse(options);
+		courses = JSON.parse(courses);
 
 		$scope.options = {
 			schools: options.schools,
