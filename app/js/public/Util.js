@@ -117,3 +117,20 @@ var checkInputInObj = function(obj) {
 }
 
 
+//common callback function
+
+function callbackAlert(status, success) {
+	if(status == 1) {
+		if(success) {
+			alert(success);
+		}else {
+			alert('操作成功');
+		}
+	}else if(status == 2) {
+		alert('没有权限!');
+	}else{
+		alert('系统错误，请稍后重试!');
+	}
+}
+
+

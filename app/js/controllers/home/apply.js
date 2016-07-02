@@ -1,6 +1,6 @@
 'use strict';
 angular.module('homeApp.home')
-	.controller('applications', function($scope, $cookies, $location, fetchOptions, fetchApps, pagination) {
+	.controller('applications', function($scope, $cookies, $location, fetchApps, pagination) {
 		var emp_type = {
 			type: $cookies.get('type'),
 			user_id: $cookies.get('user_id')
@@ -25,23 +25,40 @@ angular.module('homeApp.home')
 			"page": 1,
 			"num": num_per_page
 		}
-		fetchOptions('', function(result) {
-			$scope.$apply(function() {
-				$scope.options = {
-					"schools": result.schools,
-					"app_status": [{
-						"id": '0',
-						"name": '全部申请表'
-					},{
-						"id": '1',
-						"name": '已审核申请表'
-					},{
-						"id": '2',
-						"name": '待审核申请表'
-					}]
-				}
-			})
-		})
+		// fetchOptions('', function(result) {
+		// 	$scope.$apply(function() {
+		// 		$scope.options = {
+		// 			"schools": result.schools,
+		// 			"app_status": [{
+		// 				"id": '0',
+		// 				"name": '全部申请表'
+		// 			},{
+		// 				"id": '1',
+		// 				"name": '已审核申请表'
+		// 			},{
+		// 				"id": '2',
+		// 				"name": '待审核申请表'
+		// 			}]
+		// 		}
+		// 	})
+		// })
+
+		var options = localStorage.getItem('options');
+
+		options = JSON.parse(options);
+		$scope.options = {
+			schools: options.schools,
+			"app_status": [{
+				"id": '0',
+				"name": '全部申请表'
+			}, {
+				"id": '1',
+				"name": '已审核申请表'
+			}, {
+				"id": '2',
+				"name": '待审核申请表'
+			}]
+		}
 		
 		
 
@@ -65,9 +82,6 @@ angular.module('homeApp.home')
 
 		getAllApps();
 		
-
-
-
 		$scope.accept = function(id, status) {
 			if($scope.emp_type.authority != 0) {
 				return false;
@@ -125,7 +139,6 @@ angular.module('homeApp.home')
 	    		var total = $scope.total.total_price;
 	    		
 	    		if(isNaN(total)) {
-	    			console.log("NaN");
 	    			$scope.total.total_price = 0;
 	    		}
 	    		for(var i = 0, len = $scope.appForm.app.length; i < len; i ++) {
@@ -137,7 +150,7 @@ angular.module('homeApp.home')
 	    	$scope.submitApp = function() {
 	    		console.log($scope.appForm);
 				addApp($scope.appForm, function(result) {
-	    			if(result.status) {
+	    			if(result.status == 1) {
 	    				window.location.href = ROOT + 'applications';
 	    			}
 	    		})
@@ -186,9 +199,8 @@ angular.module('homeApp.home')
     			app: $scope.appForm.app
     		}
     		modifyApp(data, function(result) {
-    			if(result.status) {
-    				alert('修改成功');
-    			}
+    			callbackAlert(result.status, '修改成功');
+    			$location.path('/applications');
     		})
     	}
     })
