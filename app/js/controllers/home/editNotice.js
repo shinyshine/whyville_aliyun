@@ -56,7 +56,7 @@ angular.module('homeApp.home')
 			}
 		}
 	})
-	.controller('modifyNotice', function($scope, $location, $cookies, $routeParams, fetchOptions, fetchNoticeById, modifyNotice) {
+	.controller('modifyNotice', function($scope, $location, $cookies, $routeParams, fetchNoticeById, modifyNotice) {
 		//处理添加公告的权限问题
 		var emp_type = {
 			authority: $cookies.get('authority'),
@@ -74,12 +74,13 @@ angular.module('homeApp.home')
 			// }
 		}else {
 			//是CEO或者是财务
-			fetchOptions('', function(result) {
-				$scope.options = {
-					schools: result.schools
-				}
-				$scope.$apply();
-			})
+			//init select options
+			var options = localStorage.getItem('options');
+			options = JSON.parse(options);
+
+			$scope.options = {
+				schools: options.schools
+			}
 		}
 		
 		fetchNoticeById($routeParams, function(result) {
@@ -97,7 +98,7 @@ angular.module('homeApp.home')
 			})
 		}
 	})
-	.controller('addSchedule', function($scope, $location, $cookies, addScheFormInit, fetchOptions, submitSche) {
+	.controller('addSchedule', function($scope, $location, $cookies, addScheFormInit, submitSche) {
 		// init the form og add schedule
 		$scope.formData = addScheFormInit;
 
@@ -118,12 +119,13 @@ angular.module('homeApp.home')
 			}
 		}else {
 			//是CEO或者是财务
-			fetchOptions('', function(result) {
-				$scope.options = {
-					schools: result.schools
-				}
-				$scope.$apply();
-			})
+			//init select options
+			var options = localStorage.getItem('options');
+			options = JSON.parse(options);
+
+			$scope.options = {
+				schools: options.schools
+			}
 		}
 
 		
@@ -142,7 +144,7 @@ angular.module('homeApp.home')
 			}
 		}
 	})
-	.controller('modifySchedule', function($scope, $location, $cookies, $routeParams, fetchOptions, fetchScheById, modifySche) {
+	.controller('modifySchedule', function($scope, $location, $cookies, $routeParams, fetchScheById, modifySche) {
 		//limit the right to modify the schedule
 		var emp_type = {
 			authority: $cookies.get('authority'),
@@ -161,12 +163,13 @@ angular.module('homeApp.home')
 			// }
 		}else {
 			//是CEO或者是财务
-			fetchOptions('', function(result) {
-				$scope.options = {
-					schools: result.schools
-				}
-				$scope.$apply();
-			})
+			//init select options
+			var options = localStorage.getItem('options');
+			options = JSON.parse(options);
+
+			$scope.options = {
+				schools: options.schools
+			}
 		}
 
 		fetchScheById($routeParams, function(result) {
