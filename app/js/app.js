@@ -40,10 +40,6 @@ var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'p
     }
 
     $scope.logOut = function() {
-      // $cookies.remove('authority');
-      // $cookies.remove('user_name');
-      // $cookies.remove('sch_name');
-      // $cookies.remove('user_id');
       logOut('', function(result) {
         callbackAlert(result.status, '已退出登录');
         window.location.href = ROOT + 'login';

@@ -77,30 +77,7 @@ angular.module('homeApp.student')
 			})
 		}
 	})
-	.controller('addStuToBus', function($scope, addStuToBus, getYearSessions, getStuName, getWeekDays, initAddToBusForm) {
-		// fetchOptions('', function(result) {
-		// 	$scope.options = {
-		// 		"type": [{
-		// 			"id": '0',
-		// 			"name": '送'
-		// 		}, {
-		// 			"id": '1',
-		// 			"name": '接'
-		// 		}],
-		// 		"years": getYearSessions.year,
-		// 		"sessions": getYearSessions.session,
-		// 		"bus_number": result.bus_number,
-		// 		"discount": [{
-		// 			"id": 0,
-		// 			"name": '打折'
-		// 		},{
-		// 			"id": 1,
-		// 			"name": '减价'
-		// 		}],
-		// 		"pay_method": result.pay_method,
-		// 		"weekdays": getWeekDays
-		// 	}
-		// })
+	.controller('addStuToBus', function($scope, $location, addStuToBus, getYearSessions, getStuName, getWeekDays, initAddToBusForm) {
 
 		var options = getDataFromStorage('options');
 		$scope.options = {
@@ -144,7 +121,7 @@ angular.module('homeApp.student')
 
 		$scope.submitData = function() {
 			var data = $scope.formData;
-			if(data.bus_number.id && data.type.id && data.discount_type.id && data.session.name && data.year.name) {
+			if(data.bus_number.name && data.type.name && data.discount_type.name && data.session.name && data.year.name) {
 				
 				//filter time format
 				var week = data.weekdays;
@@ -162,6 +139,7 @@ angular.module('homeApp.student')
 
 				addStuToBus($scope.formData, function(result) {
 					callbackAlert(result.status);
+					$location.path('/stuBusList');
 				})
 			}else{
 				alert('请完善信息');
