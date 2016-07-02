@@ -1,6 +1,6 @@
 'use strict';
 angular.module('homeApp.student')
-	.controller('courseList', function($scope, deleteCourse, fetchOptions, getYearSessions, fetchCourseList) {
+	.controller('courseList', function($scope, deleteCourse, getYearSessions, fetchCourseList) {
 		$scope.filter = {
 			"selectSchool": {
 				"id": 1,
@@ -19,16 +19,26 @@ angular.module('homeApp.student')
 			},
 			"search": '',
 		}
-		fetchOptions('', function(result) {
-			//console.log(result)
-			$scope.options = {
-				"schools": result.schools,
-				"years": getYearSessions.year,
-				"sessions": getYearSessions.sessions,
-				"courseType": result.courseType
-			}
-			$scope.$apply();
-		})
+		// fetchOptions('', function(result) {
+		// 	//console.log(result)
+		// 	$scope.options = {
+		// 		"schools": result.schools,
+		// 		"years": getYearSessions.year,
+		// 		"sessions": getYearSessions.sessions,
+		// 		"courseType": result.courseType
+		// 	}
+		// 	$scope.$apply();
+		// })
+
+		var options = localStorage.getItem('options');
+		options = JSON.parse(options);
+
+		$scope.options = {
+			schools: options.schools,
+			years: getYearSessions.year,
+			sessions: getYearSessions.sessions,
+			courseType: options.courseType
+		}
 	
 		//初始化课程列
 		fetchCourseList($scope.filter, function(result) {
@@ -38,7 +48,6 @@ angular.module('homeApp.student')
 		});
 
 		$scope.sendFilter = function() {
-			console.log($scope.filter)
 			fetchCourseList($scope.filter, function(result) {
 				console.log(result);
 				$scope.courses = result;
@@ -52,9 +61,8 @@ angular.module('homeApp.student')
 				course_id: course_id
 			}
 			deleteCourse(data, function(result) {
-				if(result.status == 1) {
-					alert('成功删除一门课程');
-				}
+				callbackAlert(result.status, '成功删除一门课程');
+				window.location.reload();
 			})
 		}
 	})
@@ -63,7 +71,6 @@ angular.module('homeApp.student')
 			console.log(result);
 			$scope.stuCourse = result;
 			$scope.$apply();
-			//console.log(result);
 		})
 
 		$scope.deleteStu = function(stu_id) {
@@ -72,24 +79,31 @@ angular.module('homeApp.student')
 				stu_id: stu_id
 			}
 			deleteStuInCourse(data, function(result) {
-				if(result.status == 1) {
-					alert('成功删除一位学生');
-				}else{
-					alert('该学生不可被删除');
-				}
+				callbackAlert(result.status, '成功删除一门课程');
+				// if(result.status == 1) {
+				// 	alert('成功删除一位学生');
+				// }else{
+				// 	alert('该学生不可被删除');
+				// }
 			})
 		}
 	})
 	.controller('addCourse', function($scope, fetchOptions, postCourse) {
-		fetchOptions('', function(result) {
-			console.log(result);
-			$scope.options = {
-				schools: result.schools,
-				courseType: result.courseType
-			}
-			$scope.$apply();
-		})
+		// fetchOptions('', function(result) {
+		// 	console.log(result);
+		// 	$scope.options = {
+		// 		schools: result.schools,
+		// 		courseType: result.courseType
+		// 	}
+		// 	$scope.$apply();
+		// })
+		var options = localStorage.getItem('options');
+		options = JSON.parse(options);
 
+		$scope.options = {
+			schools: options.schools,
+			courseType: options.courseType
+		}
 		//初始化表单
 		$scope.course = {
 			"school": {
@@ -106,8 +120,8 @@ angular.module('homeApp.student')
 		$scope.addCourse = function() {
 			if($scope.course.school.id && $scope.course.courseType.id &&$scope.course.courseName) {
 				postCourse($scope.course, function(result) {
-					if(result.status) {
-						alert('添加成功');
+					callbackAlert(result.status, '添加成功');
+					if(result.status == 1) {
 						window.location.href = ROOT + 'courseList';
 					}
 				})
@@ -117,19 +131,16 @@ angular.module('homeApp.student')
 		}
 	})
 	.controller('planCourse', function($scope, fetchPlanCouOp, initPlanForm, getYearSessions, getWeekDays, planCourse) {
-		fetchPlanCouOp('', function(result) {
-			console.log(result);
-			$scope.options = {
-				"teachers": result.teachers,
-				"courses": result.courses,
-				"years": getYearSessions.year,
-				"sessions": getYearSessions.session,
-				"weekdays": getWeekDays
-			}
-			$scope.$apply();
-			console.log($scope.options);
-		})
-		
+		var courses = localStorage.getItem('courses');
+		courses = JSON.parse(courses);
+		$scope.options = {
+			teachers: courses.teachers,
+			courses: courses.courses,
+			year: getYearSessions.year,
+			sessions: getYearSessions.session,
+			weekdays: getWeekDays
+		}
+
 		$scope.course = initPlanForm;
 
 		$scope.submitCourseInfo = function() {
@@ -149,21 +160,18 @@ angular.module('homeApp.student')
 						}
 					}
 				}
-
-				console.log($scope.course);
 				planCourse($scope.course, function(result) {
+					callbackAlert(result.status, '成功排课');
 					if(result.status == 1) {
-						alert('成功排课');
 						window.location.href = ROOT + 'courseList';
 					}
 				})
-				console.log($scope.course);
 			}else {
 				alert('请完成必要信息的额填写');
 			}
 		}
 	})
-	.controller('addStuToCourse', function($scope, $routeParams, initAddToCourseForm, fetchCourseInfo, addStuToCourse, fetchOptions, getStuName) {
+	.controller('addStuToCourse', function($scope, $routeParams, initAddToCourseForm, fetchCourseInfo, addStuToCourse, getStuName) {
 		fetchCourseInfo($routeParams, function(result) {
 			console.log(result);
 			$scope.courseInfo = result;
@@ -180,13 +188,17 @@ angular.module('homeApp.student')
 			},{
 				"id": 1,
 				"name": '减价'
-			}],
-			//"pay_method": fetchPayOptions().pay_method
+			}]
 		}
-		fetchOptions('', function(result) {
-			$scope.options.pay_method = result.pay_method;
-			$scope.$apply();
-		})
+		// fetchOptions('', function(result) {
+		// 	$scope.options.pay_method = result.pay_method;
+		// 	$scope.$apply();
+		// })
+
+		var options = localStorage.getItem('options');
+		options = JSON.parse(options);
+		$scope.options.pay_method = options.pay_method;
+
 
 		//get student's name by his id
 		$scope.getStuName = function() {
@@ -205,21 +217,17 @@ angular.module('homeApp.student')
 
 		$scope.submitData = function() {
 			addStuToCourse($scope.formData, function(result) {
+				callbackAlert(result.status, '添加成功');
 				if(result.status == 1) {
-					alert('添加成功');
 					window.location.href = ROOT + 'courseStuList/' + $routeParams.course_id;
-				}else {
-					alert('出现错误');
 				}
 			})
-			console.log($scope.formData);
 		}
 	})
 	.controller('callback', function($scope, $routeParams, fetchCallBack, modifyCallback) {
 		fetchCallBack($routeParams, function(result) {
 			$scope.callback = result;
 			$scope.$apply();
-			console.log(result);
 		})
 		
 		$scope.submitCallback = function(index) {
@@ -228,9 +236,7 @@ angular.module('homeApp.student')
 			postData.stu_id = $routeParams.stu_id;
 			console.log(postData);
 			modifyCallback(postData, function(result) {
-				if(result.status) {
-					alert('操作成功');
-				}
+				callbackAlert(result.status);
 			})
 		}
 	})

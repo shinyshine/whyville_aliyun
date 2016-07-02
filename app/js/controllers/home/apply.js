@@ -165,8 +165,6 @@ angular.module('homeApp.home')
     	}
 
 
-    	//$scope.total_price = 0;
-
     	$scope.countTotal = function() {
     		if(isNaN($scope.total_price)) {
     			$scope.total_price = 0;
@@ -183,7 +181,6 @@ angular.module('homeApp.home')
     		}
     		modifyApp(data, function(result) {
     			callbackAlert(result.status, '修改成功');
-    			//$location.path('/applications');
     			window.location.href = ROOT + 'applications'
     		})
     	}
@@ -206,7 +203,6 @@ angular.module('homeApp.home')
     	}
 
     	$scope.acceptApp = function() {
-    		console.log($scope.postData);
     		acceptApp($scope.postData, function(result) {
     			callbackAlert(result.status, '审批成功');
     			if(result.status == 1) {

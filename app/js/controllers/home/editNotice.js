@@ -43,12 +43,9 @@ angular.module('homeApp.home')
 		$scope.submitData = function(valid) {
 			if(valid) {
 				submitNotice($scope.formData, function(result) {
+					callbackAlert(result.status, '添加成功');
 					if (result.status) {
-						alert('添加成功');
-						// $scope.$apply(function() { 
-						// 	$location.path("/" + $cookies.get('user_id')); 
-						// });	
-					window.location.href = ROOT + $cookies.get('user_id');
+						window.location.href = ROOT + $cookies.get('user_id');
 					};
 				})
 			}else{
@@ -91,8 +88,8 @@ angular.module('homeApp.home')
 		$scope.submitData = function() {
 			$scope.formData.ntc_id = $routeParams.ntc_id;
 			modifyNotice($scope.formData, function(result) {
+				callbackAlert(result.status, '修改成功');
 				if(result.status) {
-					alert('修改成功');
 					window.location.href = ROOT + $cookies.get('user_id');
 				}
 			})
@@ -136,8 +133,8 @@ angular.module('homeApp.home')
 				console.log($scope.formData);
 				//在这里启动提交数据的服务
 				submitSche($scope.formData, function(result) {
+					callbackAlert(result.status, '添加成功');
 					if (result.status) {
-						alert('添加成功');
 						window.location.href = ROOT + $cookies.get('user_id');
 					};
 				})
@@ -180,8 +177,8 @@ angular.module('homeApp.home')
 		$scope.submitData = function() {
 			$scope.formData.ntc_id = $routeParams.ntc_id;
 			modifySche($scope.formData, function(result) {
+				callbackAlert(result.status, '修改成功');
 				if(result.status) {
-					alert('修改成功');
 					window.location.href = ROOT + $cookies.get('user_id');
 				}
 			})
