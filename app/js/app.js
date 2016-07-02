@@ -33,7 +33,7 @@ var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'p
     }
    
   })
-  .controller('homeApp.header', function($scope, $cookies) {
+  .controller('homeApp.header', function($scope, $cookies, logOut) {
     $scope.underline = function(index) {
       $('#nav').children().removeClass('active-li');
       $('#nav').children().eq(index).addClass('active-li');
@@ -44,6 +44,9 @@ var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'p
       // $cookies.remove('user_name');
       // $cookies.remove('sch_name');
       // $cookies.remove('user_id');
+      logOut('', function(result) {
+        callbackAlert(result.status, '已退出登录');
+      })
       window.location.href = ROOT + 'login';
     }
 

@@ -25,13 +25,20 @@ angular.module('publicService', [])
 	})
 	.factory('API', function(server) {
 		return {
-			"fetchSchools": 'fetchSchools',
 			"fetchAllJobs": server + 'jobs',
 			"uploadPhoto": server + 'upload_img',
 			"fetchSchCourseType": server + 'get_schools_coursetype',
 			"fetchOptions": server + 'common_data',
 			"fetchCourseByStu": server + 'get_sch_by_stu',
 			"getStuName": server + 'get_student_name',
+			"logOut": server + 'logout'
+		}
+	})
+
+	//logout
+	.factory('logOut', function(API) {
+		return function(data, callBack) {
+			getData(API.logOut, callBack, data);
 		}
 	})
 
