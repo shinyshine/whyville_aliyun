@@ -17,12 +17,6 @@ angular.module('homeApp.home')
 			}
 		}
 		
-		// fetchOptions('', function(result) {
-		// 	$scope.options = {
-		// 		"schools": result.schools,
-		// 		cur_date: moment().format('YYYY-MM-DD')
-		// 	}
-		// })
 		//init select options
 		var options = localStorage.getItem('options');
 		options = JSON.parse(options);

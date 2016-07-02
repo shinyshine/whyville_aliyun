@@ -8,7 +8,7 @@ angular.module('homeApp.home')
 			$scope.$apply();
 		})
 	})
-	.controller('addNotice', function($scope, $location, $cookies, addNoticeFormInit, fetchOptions, submitNotice) {
+	.controller('addNotice', function($scope, $location, $cookies, addNoticeFormInit, submitNotice) {
 		//init the form of add notice
 		$scope.formData = addNoticeFormInit;
 
@@ -29,12 +29,13 @@ angular.module('homeApp.home')
 			}
 		}else {
 			//是CEO或者是财务
-			fetchOptions('', function(result) {
-				$scope.options = {
-					schools: result.schools
-				}
-				$scope.$apply();
-			})
+			//init select options
+			var options = localStorage.getItem('options');
+			options = JSON.parse(options);
+
+			$scope.options = {
+				schools: options.schools
+			}
 		}
 		
 		
