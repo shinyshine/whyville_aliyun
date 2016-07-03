@@ -86,15 +86,15 @@ var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'p
         // $cookies.put('authority', result.authority);
         $cookies.put('user_name', result.user_name);
         $cookies.put('sch_name', result.sch_name);
-        //$cookies.put('user_id', result.user_id);
+        $cookies.put('user_id', result.user_id);
         // $cookies.put('sch_id', result.sch_id);
         // $cookies.put('type', result.type);
         // 将options存入本地存储
 
         birthAlert('', function(result) {
-            console.log(result);
             $scope.$emit('changeBirth', result.status);
         })
+
         fetchOptions('', function(result) {
           localStorage.setItem('options', JSON.stringify(result));
           $scope.$apply(function() {
