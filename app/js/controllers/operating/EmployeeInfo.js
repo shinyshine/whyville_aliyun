@@ -3,6 +3,7 @@
  */
 'use strict';
 angular.module('homeApp.operating')
+  // cannot remove the service fetchOptions, to update localStorage
   .controller('addEmp', function($scope, $location, $routeParams, fetchOptions, initEmpForm, submitEmpInfo, previewImage) {
 
     var options = getDataFromStorage('options');
@@ -15,7 +16,6 @@ angular.module('homeApp.operating')
     
    //图片预览效果
     previewImage(function(ext_name) {
-      console.log(ext_name);
       $scope.employeeInfo.emp_pic.ext_name = ext_name;
       $scope.$apply();
     })

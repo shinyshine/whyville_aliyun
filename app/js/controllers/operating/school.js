@@ -46,7 +46,6 @@ angular.module('homeApp.operating')
 	.controller('modifySchool', function($scope, $routeParams, fetchSchById, modifySchInfo) {
 		//$routeParams = {"sch_id": "1"};
 		fetchSchById($routeParams, function(result) {
-			console.log(result);
 			$scope.schInfo = result.schInfo;
 			$scope.$apply();
 		});

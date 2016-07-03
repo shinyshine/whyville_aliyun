@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('homeApp.operating')
-	.controller('employees', function($scope, $cookies, $location, employees, deleteEmp, resetPwd, createId, fetchOptions, pagination) {
+	.controller('employees', function($scope, $cookies, $location, employees, deleteEmp, resetPwd, createId, pagination) {
 		$scope.filter = {
 			"selectSchool": {
 				"id": 1,
@@ -11,13 +11,11 @@ angular.module('homeApp.operating')
 			"num": num_per_page,
 			"authority": $cookies.get('authority')
 		}
-		fetchOptions('', function(result) {
-			$scope.$apply(function() {
-				$scope.options = {
-					"schools": result.schools
-				}
-			})
-		})
+
+		var options = getDataFromStorage('options');
+		$scope.options = {
+			schools: options.schools
+		}
 
 		//about pagination
 		$scope.paginationConf = {};
@@ -62,15 +60,11 @@ angular.module('homeApp.operating')
 					emp_id: emp_id
 				}
 				deleteEmp(emp, function(result) {
-					if(result.status) {
-						//alert('成功离职');
+					callbackAlert(result.status, '成功离职');
+					if(result.status == 1) {
 						window.location.reload();
 					}
 				})
-				// var deleteStatus = deleteEmp.deleteEmp(emp);
-				// if (deleteStatus.status) {
-				// 	window.location.reload();
-				// }
 			}
 		}
 
@@ -81,8 +75,8 @@ angular.module('homeApp.operating')
 					emp_id: emp_id
 				}
 				resetPwd(emp, function(result) {
-					if(result.status) {
-						alert('已重置密码');
+					callbackAlert(result.status, '已重置密码');
+					if(result.status == 1) {
 						window.location.reload();
 					}
 				})
