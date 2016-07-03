@@ -33,11 +33,16 @@ var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'p
     }
    
   })
-  .controller('homeApp.header', function($scope, $cookies, logOut) {
+  .controller('homeApp.header', function($scope, $cookies, birthAlert, logOut) {
     $scope.underline = function(index) {
       $('#nav').children().removeClass('active-li');
       $('#nav').children().eq(index).addClass('active-li');
     }
+
+    birthAlert('', function(result) {
+      console.log(result);
+    })
+    $scope.birthday = 1;
 
     $scope.logOut = function() {
       logOut('', function(result) {

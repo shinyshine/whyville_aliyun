@@ -20,8 +20,8 @@ angular.module('homeApp.home')
 			if(status == 1) {
 
 				// $cookies.put('authority', result.authority);
-				// $cookies.put('user_name', result.user_name);
-				// $cookies.put('sch_name', result.sch_name);
+				$cookies.put('user_name', result.user_name);
+				$cookies.put('sch_name', result.sch_name);
 				//$cookies.put('user_id', result.user_id);
 				// $cookies.put('sch_id', result.sch_id);
 				// $cookies.put('type', result.type);

@@ -5,6 +5,7 @@ angular.module('publicService', [])
 		return 'http://120.25.229.249:8001/'
 	})
 
+
 	.factory('injectOperating', function($q, $timeout) {
 		return {
 			inject: function() {
@@ -31,9 +32,17 @@ angular.module('publicService', [])
 			"fetchOptions": server + 'common_data',
 			"fetchCourseByStu": server + 'get_sch_by_stu',
 			"getStuName": server + 'get_student_name',
-			"logOut": server + 'logout'
+			"logOut": server + 'logout',
+			birthAlert: server + 'birthday_alert'
 		}
 	})
+
+		// birthday alert
+	.factory('birthAlert', function(API)) {
+		return function(data, callBack) {
+			getData(API.birthAlert, callBack, data);
+		}
+	}
 
 	//logout
 	.factory('logOut', function(API) {
