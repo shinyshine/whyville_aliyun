@@ -268,7 +268,8 @@ angular.module('homeApp.analysis')
 
 		}
 	})
-	.controller('stuBusIncome', function($scope, fetchStuBusFee, getYearMonth, getYears) {
+
+	.controller('stuBusIncome', function($scope, fetchStuBusFee, getYearSessions, getYearMonth, getYears) {
 		$scope.filter = {
 			"school": {
 				"id": 1,

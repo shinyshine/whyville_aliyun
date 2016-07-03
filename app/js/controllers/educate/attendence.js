@@ -2,7 +2,6 @@
 angular.module('homeApp.educate')
 	.controller('stuAttendList', function($scope, $routeParams, fetchStuAttTable) {
 		fetchStuAttTable($routeParams, function(result) {
-			console.log(result);
 			$scope.courseAttend = result;
 			$scope.$apply();
 		})
@@ -35,10 +34,7 @@ angular.module('homeApp.educate')
 					"stu_state": item.stu_state
 				}
 				modifyStuAttend(postData, function(result) {
-					if(result.status) {
-						alert('修改成功');
-
-					}
+					callbackAlert(result.status, '修改成功');
 				})
 				
 			}
@@ -47,7 +43,7 @@ angular.module('homeApp.educate')
 
 		$scope.allAttend = function() {
 			allAttend($routeParams, function(result) {
-				if(result.status) {
+				if(result.status == 1) {
 					alert('操作成功');
 					window.location.reload();
 				}
@@ -57,7 +53,6 @@ angular.module('homeApp.educate')
 	
 	.controller('homework', function($scope, $routeParams, fetchHomeworks,modHomework) {
 		fetchHomeworks($routeParams, function(result) {
-			console.log(result)
 			$scope.courseStuInfo = result;
 			$scope.$apply();
 		})
@@ -68,15 +63,12 @@ angular.module('homeApp.educate')
 			if(status) {
 				var postData = {
 					"stu_id": item.stu_id,
-					//"course_id": '1', //排课编号,
 					"att_id": item.course_id,
 					"comment": item.homework_state
 				}
 				console.log(postData);
 				modHomework(postData, function(result) {
-					if(result.status == 1) {
-						alert('修改成功');
-					}
+					callbackAlert(result.status, '修改成功');
 				}) 
 			}
 			$scope.courseStuInfo.stuInfo[index].isEditing = !status;	
