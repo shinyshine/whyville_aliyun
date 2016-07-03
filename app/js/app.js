@@ -81,10 +81,10 @@ var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'p
         // $cookies.put('sch_id', result.sch_id);
         // $cookies.put('type', result.type);
         // 将options存入本地存储
-        console.log($scope);
+
         birthAlert('', function(result) {
             console.log(result);
-            $scope.birthday = result.status;
+            $scope.$emit('birthday', result.status);
             $scope.$apply();
           })
         fetchOptions('', function(result) {
