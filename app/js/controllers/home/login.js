@@ -28,8 +28,9 @@ angular.module('homeApp.home')
 				// 将options存入本地存储
 				fetchOptions('', function(result) {
 					localStorage.setItem('options', JSON.stringify(result));
-
-					window.location.href = ROOT + $cookies.get('user_id');
+					window.location.reload();  //for birthday alert, to be solved
+					//window.location.href = ROOT + $cookies.get('user_id');
+					$location.path('' + $cookies.get('user_id'));
 				})
 
 				fetchPlanCouOp('', function(result) {

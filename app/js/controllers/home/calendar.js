@@ -1,7 +1,7 @@
 'use strict';
 angular.module('homeApp.home')
 	.controller('calendar', function($scope, $rootScope, $cookies, $location, $routeParams, clickDate, fetchHomeInfo, fetchHomeByYearM, deleteNotice, deleteSche) {
-		window.location.reload();  //for birthday alert, to be solved
+		
 		if($location.search().s_id) {
 			$scope.filter = {
 				"selectSchool": {
