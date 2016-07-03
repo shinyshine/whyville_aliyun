@@ -24,27 +24,21 @@ var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'p
       //$locationProvider.html5Mode(true);
   })
   .controller('homeApp', function($scope, $cookies) {
-    $scope.user = {
-      "id": $cookies.get('user_id'),
-      "user_name": $cookies.get('user_name'),
-      "authority": $cookies.get('authority'),
-      "sch_id": $cookies.get('sch_id'),
-      "sch_name": $cookies.get('sch_name')
-    }
-   
+    // $scope.user = {
+    //   "id": $cookies.get('user_id'),
+    //   "user_name": $cookies.get('user_name'),
+    //   "authority": $cookies.get('authority'),
+    //   "sch_id": $cookies.get('sch_id'),
+    //   "sch_name": $cookies.get('sch_name')
+    // }
+    
+    $scope.birthday = 0;
   })
-  .controller('homeApp.header', function($scope, $cookies, birthAlert, logOut) {
+  .controller('homeApp.header', function($scope, $cookies, logOut) {
     $scope.underline = function(index) {
       $('#nav').children().removeClass('active-li');
       $('#nav').children().eq(index).addClass('active-li');
     }
-
-    birthAlert('', function(result) {
-      console.log(result);
-      $scope.birthday = result.status;
-      $scope.$apply();
-    })
-    
 
     $scope.logOut = function() {
       logOut('', function(result) {

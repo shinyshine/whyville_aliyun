@@ -1,6 +1,6 @@
 'use strict';
 angular.module('homeApp.home')
-	.controller('login', function($scope, $location, $cookies, login, fetchOptions, fetchPlanCouOp, birthAlert) {
+	.controller('login', function($scope, $location, $cookies, birthAlert, login, fetchOptions, fetchPlanCouOp, birthAlert) {
 		$scope.user = {
 			"user_id": '',
 			"user_pwd": ''
@@ -26,10 +26,14 @@ angular.module('homeApp.home')
 				// $cookies.put('sch_id', result.sch_id);
 				// $cookies.put('type', result.type);
 				// 将options存入本地存储
+				console.log($scope);
+				birthAlert('', function(result) {
+			      console.log(result);
+			      $scope.birthday = result.status;
+			      $scope.$apply();
+			    })
 				fetchOptions('', function(result) {
 					localStorage.setItem('options', JSON.stringify(result));
-					window.location.reload();  //for birthday alert, to be solved
-					//window.location.href = ROOT + $cookies.get('user_id');
 					$location.path('' + $cookies.get('user_id'));
 				})
 
