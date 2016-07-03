@@ -38,7 +38,7 @@ angular.module('publicService', [])
 	})
 
 		// birthday alert
-	.factory('birthAlert', function(API)) {
+	.factory('birthAlert', function(API) {
 		return function(data, callBack) {
 			getData(API.birthAlert, callBack, data);
 		}
