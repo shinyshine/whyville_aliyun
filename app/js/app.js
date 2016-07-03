@@ -33,6 +33,9 @@ var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'p
     // }
     
     $scope.birthday = 0;
+    $scope.$on('changeBirth', function(data) {
+      $scope.birthday = data;
+    })
   })
   .controller('homeApp.header', function($scope, $cookies, logOut) {
     $scope.underline = function(index) {
@@ -84,12 +87,14 @@ var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'p
 
         birthAlert('', function(result) {
             console.log(result);
-            $scope.$emit('birthday', result.status);
-            $scope.$apply();
-          })
+            $scope.$emit('changeBirth', result.status);
+        })
         fetchOptions('', function(result) {
           localStorage.setItem('options', JSON.stringify(result));
-          $location.path('' + $cookies.get('user_id'));
+          $scope.$apply(function() {
+            $location.path('/' + $cookies.get('user_id'));
+          })
+          
         })
 
         fetchPlanCouOp('', function(result) {
