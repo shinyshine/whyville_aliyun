@@ -50,35 +50,7 @@ angular.module('homeApp.finance', ['ngRoute', 'homeApp.financeService'])
 
 	//财务日报
 	.controller('daily', function($scope, fetchDaily) {
-		// $scope.daily = {
-		// 	"schools": [{
-		// 		"school": '龙口西校区',
-		// 		"income": '12365412',
-		// 		"pay": '666666',
-		// 		"profit": '55555'
-		// 	},{
-		// 		"school": '珠江新城校区',
-		// 		"income": '12365412',
-		// 		"pay": '666666',
-		// 		"profit": '55555'
-		// 	}],
-		// 	"pay_method": [{
-		// 		"first": '现金',
-		// 		"second": '龙口西校区',
-		// 		"income": '20000',
-		// 		"pay": '552222',
-		// 		"remain": '700000'
-		// 	},{
-		// 		"first": '刷卡',
-		// 		"second": '4561351',
-		// 		"income": '20000',
-		// 		"pay": '552222',
-		// 		"remain": '700000'
-		// 	}]
-		// }
-
 		fetchDaily('', function(result) {
-			console.log(result);
 			$scope.daily = result;
 			$scope.$apply();
 		})
@@ -101,25 +73,7 @@ angular.module('homeApp.finance', ['ngRoute', 'homeApp.financeService'])
 				"name": '现金'
 			}
 		}
-		// $scope.account = {
-		// 	"total": '25555000',
-		// 	"list": [{
-		// 		"sec_type": {
-		// 			"id": 1,
-		// 			"name": '珠江新城校区'
-		// 		},
-		// 		"remain": '44444444',
-		// 		"isEditing": 0
-		// 	},{
-		// 		"sec_type": {
-		// 			"id": 2,
-		// 			"name":'龙口西校区'
-		// 		},
-		// 		"remain": '66666',
-		// 		"isEditing": 0
-		// 	}]
-		// }
-
+	
 		fetchAccounts($scope.filter, function(result) {
 			console.log(result);
 			$scope.account = result;

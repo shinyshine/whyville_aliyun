@@ -117,9 +117,9 @@ angular.module('homeApp.finance')
 		$scope.addPay = function() {
 			addPay($scope.formData, function(result) {
 				callbackAlert(result.status, '成功添加支出');
-				$scope.$apply(function() {
-					$location.path('/payList');
-				})
+				if(result.status == 1) {
+					window.location.href = ROOT + 'payList';
+				}
 			})
 		}
 	})
