@@ -1,6 +1,6 @@
 'use strict';
 angular.module('homeApp.home')
-	.controller('login', function($scope, $location, $cookies, birthAlert, login, fetchOptions, fetchPlanCouOp, birthAlert) {
+	.controller('login', function($scope, $location, $cookies, login, fetchOptions, fetchPlanCouOp, birthAlert) {
 		$scope.user = {
 			"user_id": '',
 			"user_pwd": ''
