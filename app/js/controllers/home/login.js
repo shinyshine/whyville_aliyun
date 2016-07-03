@@ -29,12 +29,13 @@ angular.module('homeApp.home')
 					// 将options存入本地存储
 					fetchOptions('', function(result) {
 						localStorage.setItem('options', JSON.stringify(result));
+						$location.path("/" + $cookies.get('user_id')); 
 					})
 
 					fetchPlanCouOp('', function(result) {
 						localStorage.setItem('courses', JSON.stringify(result));
 					})
-					$location.path("/" + $cookies.get('user_id')); 
+					
 				});	
 			}else{
 				alert('用户名或密码错误');
