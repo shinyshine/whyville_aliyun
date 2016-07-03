@@ -170,10 +170,6 @@ angular.module('homeApp.student')
 				"name": '减价'
 			}]
 		}
-		// fetchOptions('', function(result) {
-		// 	$scope.options.pay_method = result.pay_method;
-		// 	$scope.$apply();
-		// })
 
 		var options = localStorage.getItem('options');
 		options = JSON.parse(options);

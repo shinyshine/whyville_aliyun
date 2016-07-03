@@ -22,22 +22,6 @@ angular.module('homeApp.student')
 				"name": '2016'
 			},
 		}
-		// fetchOptions('', function(result) {
-		// 	console.log(result)
-		// 	$scope.options = {
-		// 		"schools": result.schools,
-		// 		"bus_number": result.bus_number,
-		// 		"type": [{
-		// 			"id": '0',
-		// 			"name": '送'
-		// 		}, {
-		// 			"id": '1',
-		// 			"name": '接'
-		// 		}],
-		// 		"years": getYearSessions.year,
-		// 		"sessions": getYearSessions.session
-		// 	}
-		// })
 
 		var options = getDataFromStorage('options');
 		$scope.options = {
@@ -159,12 +143,6 @@ angular.module('homeApp.student')
 				"day": moment().format('DD')
 			}
 		}
-		// fetchOptions('', function(result) {
-		// 	$scope.options = {
-		// 		"bus_number": result.bus_number,
-		// 		"years": getYears
-		// 	}
-		// })
 
 		var options = getDataFromStorage('options');
 		$scope.options = {
@@ -217,7 +195,6 @@ angular.module('homeApp.student')
 
 		//$scope.data = fetchBusRecordById($routeParams);
 		fetchBusRecordById($scope.filter, function(result) {
-			console.log(result)
 			$scope.busAttend = result;
 			$scope.$apply();
 		})

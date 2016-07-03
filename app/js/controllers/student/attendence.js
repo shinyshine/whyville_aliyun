@@ -82,7 +82,6 @@ angular.module('homeApp.student')
 					"stu_id": item.stu_id,
 					"stu_state": item.stu_state
 				}
-				console.log(postData);
 				modifyStuAttend(postData, function(result) {
 					if(result.status == 1) {
 						alert('修改成功');
@@ -105,7 +104,6 @@ angular.module('homeApp.student')
 	})
 	.controller('attendList', function($scope, $routeParams, fetchStuAttTable) {
 		fetchStuAttTable($routeParams, function(result) {
-			console.log(result)
 			$scope.courseAttend = result;
 			$scope.$apply();
 		})

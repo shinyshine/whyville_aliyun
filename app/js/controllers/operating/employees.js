@@ -22,7 +22,6 @@ angular.module('homeApp.operating')
 		
 		//employees是服务返回数据
 		employees($scope.filter, function(result) {
-			console.log(result);
 			$scope.result = result.employees;
 
 			//about pagination
