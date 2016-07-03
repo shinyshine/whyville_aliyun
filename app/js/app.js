@@ -66,6 +66,9 @@ var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'p
 
     $scope.login = function(valid) {
       if(valid) {
+        var pwd = $scope.user.user_pwd;
+        $scope.user.user_pwd = $.md5(pwd);
+        console.log($scope.user);
         login($scope.user, callBack);
       }else{
         alert('请完善登录信息');
