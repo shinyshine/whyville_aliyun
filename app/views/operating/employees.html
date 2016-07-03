@@ -8,12 +8,12 @@
 		<table class="table table-striped" id="table">
 			<thead>
 				<tr>
-					<th width="200">校区</th>
-					<th width="160">编号</th>
-					<th width="160">姓名</th>
+					<th width="220">校区</th>
+					<th width="200">编号</th>
+					<th width="200">姓名</th>
 					<th width="200">职位</th>
-					<th width="200">密码</th>
-					<th ng-hide="{{filter.authority != 0}}" width="280">操作</th>
+					<!-- <th width="200">密码</th> -->
+					<th ng-hide="{{filter.authority != 0}}" width="380">操作</th>
 				</tr>		
 			</thead>
 			<tbody>
@@ -22,7 +22,7 @@
 					<td><a href="#/empInfo/{{emp.emp_id}}">{{emp.emp_id}}</a></td>
 					<td><a href="#/empInfo/{{emp.emp_id}}">{{emp.emp_name}}</a></td>
 					<td>{{emp.emp_job}}</td>
-					<td>{{emp.emp_pwd}}</td>
+					<!-- <td>{{emp.emp_pwd}}</td> -->
 					<td ng-hide="{{filter.authority != 0}}" class="operate-btns">
 						<span ng-hide="{{emp.tag}}">
 							<a href="javascript:void(0);" ng-click="resetPwd(emp.emp_id)">重置密码</a>
