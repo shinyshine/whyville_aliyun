@@ -19,12 +19,12 @@ angular.module('homeApp.home')
 			var status = result.status;
 			if(status == 1) {
 
-				$cookies.put('authority', result.authority);
-				$cookies.put('user_name', result.user_name);
-				$cookies.put('sch_name', result.sch_name);
+				// $cookies.put('authority', result.authority);
+				// $cookies.put('user_name', result.user_name);
+				// $cookies.put('sch_name', result.sch_name);
 				$cookies.put('user_id', result.user_id);
-				$cookies.put('sch_id', result.sch_id);
-				$cookies.put('type', result.type);
+				// $cookies.put('sch_id', result.sch_id);
+				// $cookies.put('type', result.type);
 				$scope.$apply(function() {
 					// 将options存入本地存储
 					fetchOptions('', function(result) {

@@ -41,14 +41,13 @@ var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'p
 
     $scope.logOut = function() {
       logOut('', function(result) {
-        $cookies.remove('authority');
-        $cookies.remove('user_name');
-        $cookies.remove('sch_name');
-        $cookies.remove('user_id');
-        $cookies.remove('sch_id');
-        $cookies.remove('type');
+        
         callbackAlert(result.status, '已退出登录');
-        window.location.href = ROOT + 'login';
+        if(result.status == 1) {
+          $cookies.remove('user_id');
+          window.location.href = ROOT + 'login';
+        }
+        
       })
       
     }
