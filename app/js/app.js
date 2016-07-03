@@ -45,7 +45,12 @@ var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'p
 
     $scope.logOut = function() {
       logOut('', function(result) {
-        
+        $cookies.remove('authority');
+        $cookies.remove('user_name');
+        $cookies.remove('sch_name');
+        $cookies.remove('user_id');
+        $cookies.remove('sch_id');
+        $cookies.remove('type');
         callbackAlert(result.status, '已退出登录');
         if(result.status == 1) {
           //$cookies.remove('user_id');
@@ -83,12 +88,12 @@ var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'p
       var status = result.status;
       if(status == 1) {
 
-        // $cookies.put('authority', result.authority);
+        $cookies.put('authority', result.authority);
         $cookies.put('user_name', result.user_name);
         $cookies.put('sch_name', result.sch_name);
         $cookies.put('user_id', result.user_id);
-        // $cookies.put('sch_id', result.sch_id);
-        // $cookies.put('type', result.type);
+        $cookies.put('sch_id', result.sch_id);
+        $cookies.put('type', result.type);
         // 将options存入本地存储
 
         birthAlert('', function(result) {
