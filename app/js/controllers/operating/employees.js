@@ -95,3 +95,15 @@ angular.module('homeApp.operating')
 			})
 		}
 	})
+
+	.controller('empBirth', function($scope, birthAlert) {
+		birthAlert('', function(result) {
+			if(result.status == 0) {
+				alert('最近没有人生日');
+			}else {
+				$scope.birthList = result;
+				$scope.$apply();
+			}
+			
+		})
+	})

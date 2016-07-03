@@ -30,4 +30,8 @@ angular.module('homeApp.operating', ['ngRoute', 'homeApp.operatingService'])
 					templateUrl: 'views/operating/modifySchool.html',
 					controller: 'modifySchool'
 				})
+				.when('/emp_birth', {
+					templateUrl: 'views/operating/emp_birthday.html',
+					controller: 'empBirth'
+				})
 		})

@@ -1,0 +1,21 @@
+<div class="operating-container">
+	<div class="table-container">
+		<table class="table table-striped" id="table">
+			<thead>
+				<tr>
+					<th width="160">编号</th>
+					<th width="160">姓名</th>
+					<th width="200">生日</th>
+				</tr>		
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in birthList">
+					<td>{{item.user_id}}</td>
+					<td>{{item.user_name}}</td>
+					<td>{{item.user_birthday}}</td>
+					
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
