@@ -42,7 +42,7 @@ angular.module('publicService', [])
 		return function(data, callBack) {
 			getData(API.birthAlert, callBack, data);
 		}
-	}
+	})
 
 	//logout
 	.factory('logOut', function(API) {
