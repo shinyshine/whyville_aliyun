@@ -39,11 +39,11 @@ var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'p
       $('#nav').children().eq(index).addClass('active-li');
     }
 
-    // birthAlert('', function(result) {
-    //   console.log(result);
-    //   $scope.birthday = result.status;
-    //   $scope.$apply();
-    // })
+    birthAlert('', function(result) {
+      console.log(result);
+      $scope.birthday = result.status;
+      $scope.$apply();
+    })
     
 
     $scope.logOut = function() {

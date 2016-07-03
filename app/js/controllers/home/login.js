@@ -35,11 +35,11 @@ angular.module('homeApp.home')
 					localStorage.setItem('courses', JSON.stringify(result));
 				})
 
-				birthAlert('', function(result) {
-				  console.log(result);
-				  $scope.birthday = result.status;
-				  $scope.$apply();
-				})
+				// birthAlert('', function(result) {
+				//   console.log(result);
+				//   $scope.birthday = result.status;
+				//   $scope.$apply();
+				// })
 			}else{
 				alert('用户名或密码错误');
 			}
