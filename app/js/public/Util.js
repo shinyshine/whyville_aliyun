@@ -1,4 +1,5 @@
-var ROOT = 'http://120.25.229.249:80/app/#/';
+//var ROOT = 'http://120.25.229.249:80/app/#/';
+var ROOT =  'http://whyville.cn/';
 var API = 'http://120.25.229.249:8001/get_img';
 
 var num_per_page = 12;
