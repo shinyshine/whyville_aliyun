@@ -1,6 +1,6 @@
 'use strict';
 angular.module('homeApp.finance')
-	.controller('appList', function($scope, getYearMonth, fetchOptions, fetchAppList, pagination) {
+	.controller('appList', function($scope, getYearMonth, fetchAppList, pagination) {
 		$scope.filter = {
 			"selectSchool": {
 				"id": '1',
@@ -48,6 +48,20 @@ angular.module('homeApp.finance')
 				"yearMonth": getYearMonth
 			}
 		})
+
+		var options = getDataFromStorage('options');
+		$scope.options = {
+			schools: options.schools,
+			type: [{
+				"id": 0,
+				"name": '未付款'
+			},{
+				"id": 1,
+				"name": '已付款'
+			}],
+			yearMonth: getYearMonth
+		}
+
 		$scope.sendFilter = function() {
 			console.log($scope.filter);
 			fetchAppList($scope.filter, function(result) {
@@ -60,7 +74,7 @@ angular.module('homeApp.finance')
 	})
 
 	//对申请表进行付款
-	.controller('payForApp', function($scope, $routeParams, fetchAppById, fetchOptions, payForApp) {
+	.controller('payForApp', function($scope, $routeParams, fetchAppById, payForApp) {
 		// $scope.data = fetchAppById($routeParams);
 		$scope.autoData = {
 			pay_date: moment().format('YYYY-MM-DD')
@@ -96,28 +110,22 @@ angular.module('homeApp.finance')
 			} 
 		}
 
-		fetchOptions('', function(result) {
-			$scope.$apply(function() {
-				$scope.options = {
-					"pay_method": result.pay_method,
-					"pay_type": result.pay_type
-				}
-			})
-		})
+		var options = getDataFromStorage('options');
+		$scope.options = {
+			pay_method: options.pay_method,
+			pay_type: options.pay_type
+		}
 
 		$scope.payForApp = function() {
 			//http server  post postData
 			console.log($scope.postData);
 			payForApp($scope.postData, function(result) {
-				if(result.status) {
-					alert('成功付款');
-				}
+				callbackAlert(result.status, '成功付款')
 			})
 		}
 	})
 
 	.controller('checkApp', function($scope, $routeParams, fetchAppById) {
-		console.log($routeParams)
 		fetchAppById($routeParams, function(result) {
 			console.log(result);
 			$scope.$apply(function() {
