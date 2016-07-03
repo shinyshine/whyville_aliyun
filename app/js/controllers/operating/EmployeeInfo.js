@@ -62,7 +62,7 @@ angular.module('homeApp.operating')
     }
 
     fetchEmpById($routeParams, function(result) {
-      console.log(result)
+      console.log(result);
       $scope.employeeInfo = result;
 
       var picPath = API + result.info.emp_pic;

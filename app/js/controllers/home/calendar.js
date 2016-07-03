@@ -13,7 +13,7 @@ angular.module('homeApp.home')
 				"selectSchool": {
 					"id": $cookies.get('sch_id'),
 					"name": $cookies.get('sch_name'),
-				},
+				}
 			}
 		}
 		
