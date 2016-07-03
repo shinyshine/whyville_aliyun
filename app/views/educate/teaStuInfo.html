@@ -1,10 +1,8 @@
 <div class="edu-container">
 	<div class="stu-info">
 		<div class="sidebar-container">
-	        <ul>
-	            <li class="active-tab"><a href="#">基本信息</a></li>
-	            <li><a href="#">家长信息</a></li>
-	            <!-- <li><a href="#">课程评价</a></li> -->
+	       <ul>
+	        	<li ng-repeat="item in sidebar" ng-class="{'active-tab': item.default}" sidebar item-name="item.name" item-link="item.link"></li>
 	        </ul>
 	    </div>
 	    <div class="form-container">
