@@ -1,6 +1,6 @@
 'use strict';
 angular.module('homeApp.home')
-	.controller('login', function($scope, $location, $cookies, login, fetchOptions, fetchPlanCouOp) {
+	.controller('login', function($scope, $location, $cookies, login, fetchOptions, fetchPlanCouOp, birthAlert) {
 		$scope.user = {
 			"user_id": '',
 			"user_pwd": ''
@@ -25,18 +25,21 @@ angular.module('homeApp.home')
 				//$cookies.put('user_id', result.user_id);
 				// $cookies.put('sch_id', result.sch_id);
 				// $cookies.put('type', result.type);
-				$scope.$apply(function() {
-					// 将options存入本地存储
-					fetchOptions('', function(result) {
-						localStorage.setItem('options', JSON.stringify(result));
-						$location.path("/" + $cookies.get('user_id')); 
-					})
+				// 将options存入本地存储
+				fetchOptions('', function(result) {
+					localStorage.setItem('options', JSON.stringify(result));
+					$location.path("/" + $cookies.get('user_id')); 
+				})
 
-					fetchPlanCouOp('', function(result) {
-						localStorage.setItem('courses', JSON.stringify(result));
-					})
-					
-				});	
+				fetchPlanCouOp('', function(result) {
+					localStorage.setItem('courses', JSON.stringify(result));
+				})
+
+				birthAlert('', function(result) {
+				  console.log(result);
+				  $scope.birthday = result.status;
+				  $scope.$apply();
+				})
 			}else{
 				alert('用户名或密码错误');
 			}
