@@ -30,10 +30,18 @@ angular.module('homeApp.finance')
 				$scope.paginationConf = pagination(total);
 				$scope.paginationConf.onChange = function() {
 					$scope.filter.page = $scope.paginationConf.currentPage;
-					$scope.sendFilter();
+					$scope.pageChange();
 				}
 			})
 		})
+
+		$scope.pageChange = function() {
+			fetchAppList($scope.filter, function(result) {
+				$scope.$apply(function() {
+					$scope.app = result.result;
+				})
+			})
+		}
 
 		var options = getDataFromStorage('options');
 		$scope.options = {
