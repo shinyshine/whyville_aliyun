@@ -101,7 +101,7 @@ angular.module('homeApp.operating')
 			if(result.status == 0) {
 				alert('最近没有人生日');
 			}else {
-				$scope.birthList = result;
+				$scope.birthList = result.list;
 				$scope.$apply();
 			}
 			

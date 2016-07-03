@@ -41,11 +41,7 @@ var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'p
 
     birthAlert('', function(result) {
       console.log(result);
-      if(result.status == 0) {
-        $scope.birthday = 0;
-      }else{
-        $scope.birthday = 1;
-      }
+      $scope.birthday = result.status;
       $scope.$apply();
     })
     
