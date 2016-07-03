@@ -35,20 +35,6 @@ angular.module('homeApp.finance')
 			})
 		})
 
-		fetchOptions('', function(result) {
-			$scope.options = {
-				"schools": result.schools,
-				"type": [{
-					"id": 0,
-					"name": '未付款'
-				},{
-					"id": 1,
-					"name": '已付款'
-				}],
-				"yearMonth": getYearMonth
-			}
-		})
-
 		var options = getDataFromStorage('options');
 		$scope.options = {
 			schools: options.schools,

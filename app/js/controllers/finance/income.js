@@ -1,6 +1,6 @@
 'use strict';
 angular.module('homeApp.finance')
-	.controller('incomeList', function($scope, $cookies, getYearMonth, fetchOptions, fetchIncomeList, pagination, deleteIncome) {
+	.controller('incomeList', function($scope, $cookies, getYearMonth, fetchIncomeList, pagination, deleteIncome) {
 		//判断是否是财务，不是的话视图上的添加收入和支出记录按钮不显示
 		$scope.emp_type = {
 			type: $cookies.get('type')
@@ -50,30 +50,30 @@ angular.module('homeApp.finance')
 			})
 		})
 
-		fetchOptions('', function(result) {
-			$scope.options ={
-				"yearMonth": getYearMonth,
-				"schools": result.schools,
-				"pay_method": result.pay_method,
-				"type": [{
-					"id": 0,
-					"name": '全部类型'
-				},{
-					"id": 1,
-					"name": '学费'
-				},{
-					"id": 2,
-					"name": '书费'
-				},{
-					"id": 3,
-					"name": '校车费'
-				},{
-					"id": 4,
-					"name": '其他'
-				}]
-			}
-			$scope.$apply();
-		})
+		
+		var options = getDataFromStorage('options');
+		$scope.options = {
+			yearMonth: getYearMonth,
+			schools: options.schools,
+			pay_method: options.pay_method,
+			type: [{
+				"id": 0,
+				"name": '全部类型'
+			},{
+				"id": 1,
+				"name": '学费'
+			},{
+				"id": 2,
+				"name": '书费'
+			},{
+				"id": 3,
+				"name": '校车费'
+			},{
+				"id": 4,
+				"name": '其他'
+			}]
+		}
+
 		$scope.pageChange = function() {
 			fetchIncomeList($scope.filter, function(result) {
 				$scope.$apply(function() {
@@ -98,38 +98,33 @@ angular.module('homeApp.finance')
 			}
 
 			deleteIncome(data, function(result) {
-				if(result.status == 1) {
-					alert('删除成功');
-				}else {
-					alert('请稍后重试');
-				}
+				callbackAlert(result.status, '删除成功');
 			})
 		}
 	})
-	.controller('modIncome', function($scope, $routeParams, fetchOptions, fetchIncomeById, getDate) {
-		fetchOptions('', function(result) {
-			$scope.options = {
-				"schools": result.schools,
-				"pay_method": result.pay_method,
-				"type": [{
-					"id": 0,
-					"name": '全部类型'
-				},{
-					"id": 1,
-					"name": '学费'
-				},{
-					"id": 2,
-					"name": '书费'
-				},{
-					"id": 3,
-					"name": '校车费'
-				},{
-					"id": 4,
-					"name": '其他'
-				}],
-				"date": getDate
-			}
-		})
+	.controller('modIncome', function($scope, $routeParams, fetchIncomeById, getDate) {
+		var options = getDataFromStorage('options');
+		$scope.options = {
+			schools: options.schools,
+			pay_method: options.pay_method,
+			type: [{
+				"id": 0,
+				"name": '全部类型'
+			},{
+				"id": 1,
+				"name": '学费'
+			},{
+				"id": 2,
+				"name": '书费'
+			},{
+				"id": 3,
+				"name": '校车费'
+			},{
+				"id": 4,
+				"name": '其他'
+			}],
+			date: getDate
+		}
 		
 
 		fetchIncomeById($routeParams, function(result) {
@@ -140,37 +135,34 @@ angular.module('homeApp.finance')
 			console.log($scope.formData);
 		}
 	})
-	.controller('addIncome', function($scope, $location, fetchOptions, initAddIncomeForm, addIncome, getDate, fetchCourseByStu) {
+	.controller('addIncome', function($scope, $location, initAddIncomeForm, addIncome, getDate, fetchCourseByStu) {
 		var search = $location.search(),
 			price = search.co,
 			s_id = search.s_id,
 			stu_id = search.stu;
 		$scope.formData = initAddIncomeForm(price, s_id, stu_id);
-		fetchOptions('', function(result) {
-			$scope.$apply(function() {
-				console.log(result)
-				$scope.options = {
-					"schools": result.schools,
-					"bus_number": result.bus_number,
-					"course": result.course,
-					"pay_method": result.pay_method,
-					"type": [{
-						"id": 1,
-						"name": '学费'
-					},{
-						"id": 2,
-						"name": '书费'
-					},{
-						"id": 3,
-						"name": '校车费'
-					},{
-						"id": 4,
-						"name": '其他'
-					}],
-					"date": getDate
-				}
-			})
-		})
+
+		var options = getDataFromStorage('options');
+		$scope.options = {
+			schools: result.schools,
+			bus_number: result.bus_number,
+			course: result.course,
+			pay_method: result.pay_method,
+			type: [{
+				"id": 1,
+				"name": '学费'
+			},{
+				"id": 2,
+				"name": '书费'
+			},{
+				"id": 3,
+				"name": '校车费'
+			},{
+				"id": 4,
+				"name": '其他'
+			}],
+			date: getDate
+		}
 
 		//控制学生信息的显示与隐藏
 		$scope.showStu = {
@@ -212,10 +204,7 @@ angular.module('homeApp.finance')
 		$scope.addIncome = function() {
 			console.log($scope.formData)
 			addIncome($scope.formData, function(result) {
-				if(result.status) {
-					alert('成功添加收入');
-					window.location.href = ROOT + 'incomeList';
-				}
+				callbackAlert(result.status, '成功添加收入');
  			})
 			
 		}
