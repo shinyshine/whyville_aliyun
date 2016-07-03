@@ -40,10 +40,42 @@ module.exports = function(grunt) {
                 }
             }
         },
+        // concat: {
+        //     operate: {
+        //         src: ['<%= config.controller %>home/home.js', '<%= config.controller %>home/service.js','<%= config.controller %>home/login.js','<%= config.controller %>home/apply.js','<%= config.controller %>home/calendar.js', '<%= config.controller %>home/editNotice.js'],
+        //         dest: '<%= config.minCon %>home.js'
+        //     }
+        // },
+        // concat: {
+        //     operate: {
+        //         src: ['<%= config.controller %>analysis/analysis.js', '<%= config.controller %>analysis/service.js','<%= config.controller %>analysis/controller.js'],
+        //         dest: '<%= config.minCon %>analysis.js'
+        //     }
+        // },
+
+        // concat: {
+        //     operate: {
+        //         src: ['<%= config.controller %>educate/educate.js', '<%= config.controller %>educate/service.js','<%= config.controller %>educate/attendance.js','<%= config.controller %>educate/course.js','<%= config.controller %>educate/stuInfo.js'],
+        //         dest: '<%= config.minCon %>educate.js'
+        //     }
+        // },
+        // concat: {
+        //     operate: {
+        //         src: ['<%= config.controller %>finance/finance.js', '<%= config.controller %>finance/service.js','<%= config.controller %>finance/applicate.js','<%= config.controller %>finance/income.js','<%= config.controller %>finance/pay.js'],
+        //         dest: '<%= config.minCon %>finance.js'
+        //     }
+        // },
+        // concat: {
+        //     operate: {
+        //         src: ['<%= config.controller %>student/student.js', '<%= config.controller %>student/service.js','<%= config.controller %>student/attendance.js','<%= config.controller %>student/course.js','<%= config.controller %>student/schoolbus.js', '<%= config.controller %>student/stuInfo.js'],
+        //         dest: '<%= config.minCon %>student.js'
+        //     }
+        // },
+
         concat: {
             operate: {
-                src: ['<%= config.controller %>operating/operating.js', '<%= config.controller %>operating/service.js','<%= config.controller %>operating/EmployeeInfo.js','<%= config.controller %>operating/employees.js','<%= config.controller %>operating/school.js'],
-                dest: '<%= config.minCon %>operating.js'
+                src: ['<%= config.controller %>public/directive.js', '<%= config.controller %>public/filter.js','<%= config.controller %>public/service.js'],
+                dest: '<%= config.minCon %>public.js'
             }
         }
 

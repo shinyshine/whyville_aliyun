@@ -30,11 +30,16 @@ angular.module('homeApp.operating', ['ngRoute', 'homeApp.operatingService'])
 					templateUrl: 'views/operating/modifySchool.html',
 					controller: 'modifySchool'
 				})
+				.when('/emp_birth', {
+					templateUrl: 'views/operating/emp_birthday.html',
+					controller: 'empBirth'
+				})
 		})
 'use strict';
 angular.module('homeApp.operatingService', [])
 	.factory('operateAPI', function(server) {
 		return {
+			"employeeInfo": 'EmployeeInfo',
 			"employees": server + 'employee_information',
 			"deleteEmp": server + 'dismiss_employee',
 			"resetPwd": server + 'reset_imployee_password',
@@ -49,7 +54,7 @@ angular.module('homeApp.operatingService', [])
 			"fetchEmpById": server + 'change_employee_information'
 		}
 	})
-	.factory('fetchEmployees', function(operateAPI) {
+	.factory('employees', function(operateAPI) {
 		return function(filter, callBack) {
 			getData(operateAPI.employees, callBack, filter);
 		}
@@ -214,21 +219,19 @@ angular.module('homeApp.operatingService', [])
  */
 'use strict';
 angular.module('homeApp.operating')
+  // cannot remove the service fetchOptions, to update localStorage
   .controller('addEmp', function($scope, $location, $routeParams, fetchOptions, initEmpForm, submitEmpInfo, previewImage) {
-    fetchOptions('', function(result) {
-      $scope.$apply(function() {
-        $scope.options = {
-          "schools": result.schools,
-          "jobs": result.jobs
-        }
-      })
-    })
+
+    var options = getDataFromStorage('options');
+    $scope.options = {
+      schools: options.schools,
+      jobs: options.jobs
+    }
 
     $scope.employeeInfo = initEmpForm($routeParams.emp_id);
     
    //图片预览效果
     previewImage(function(ext_name) {
-      console.log(ext_name);
       $scope.employeeInfo.emp_pic.ext_name = ext_name;
       $scope.$apply();
     })
@@ -237,8 +240,17 @@ angular.module('homeApp.operating')
         var postData = $scope.employeeInfo;
         if(postData.emp_sch.id && postData.emp_job.id) {
            submitEmpInfo(postData, function(result) {
-              if(result.status) {
+              if(result.status == 1) {
                 alert('添加成功');
+
+                //update data in localstorage
+                fetchOptions('', function(result1) {
+                  localStorage.setItem('options', JSON.stringify(result1));
+                })
+                $scope.$apply(function() {
+                  $location.path('/employees');
+                })
+                
               }else{
                 alert('出现错误，稍后重试');
               }
@@ -250,10 +262,8 @@ angular.module('homeApp.operating')
       
       
     }
-
-    
   })
-  .controller('modifyEmp', function($scope, $location, $routeParams, fetchOptions, fetchEmpById, modifyEmp, modifyComment) {
+  .controller('modifyEmp', function($scope, $location, $routeParams, fetchEmpById, modifyEmp, modifyComment) {
     $scope.sidebar = [{
       "name": '基本信息',
       "link": '#basic',
@@ -263,25 +273,26 @@ angular.module('homeApp.operating')
       "link": '#comment'
     }]
 
-    fetchOptions('', function(result) {
-      $scope.$apply(function() {
-        $scope.options = {
-          "schools": result.schools,
-          "jobs": result.jobs
-        }
-      })
-    })
+    var options = getDataFromStorage('options');
+    $scope.options = {
+      schools: options.schools,
+      jobs: options.jobs
+    }
+
     fetchEmpById($routeParams, function(result) {
-      console.log(result)
+      console.log(result);
       $scope.employeeInfo = result;
+
+      var picPath = API + result.info.emp_pic;
+      $scope.employeeInfo.info.emp_pic = picPath;
       $scope.$apply();
     })
 
     $scope.modifyEmp = function() {
       console.log($scope.employeeInfo.info);
       modifyEmp($scope.employeeInfo.info, function(result) {
-        if(result.status) {
-          alert('修改成功');
+        callbackAlert(result.status, '修改成功');
+        if(result.status == 1) {
           $scope.$apply(function() {
             $location.path('/employees');
           })
@@ -292,8 +303,11 @@ angular.module('homeApp.operating')
     $scope.submitCom = function() {
       $scope.employeeInfo.comment.emp_id = $routeParams.emp_id
       modifyComment($scope.employeeInfo.comment, function(result) {
-        if(result.status) {
-          alert('修改成功');
+        callbackAlert(result.status, '修改成功');
+        if(result.status == 1) {
+          $scope.$apply(function() {
+            $location.path('/employees');
+          })
         }
       })
     }
@@ -310,6 +324,9 @@ angular.module('homeApp.operating')
     fetchEmpById($routeParams, function(result) {
       console.log(result)
       $scope.employeeInfo = result;
+
+      var picPath = API + result.info.emp_pic;
+      $scope.employeeInfo.info.emp_pic = picPath;
       $scope.$apply();
     })
   })
@@ -318,29 +335,27 @@ angular.module('homeApp.operating')
 'use strict';
 
 angular.module('homeApp.operating')
-	.controller('employees', function($scope, $location, employees, deleteEmp, resetPwd, createId, fetchOptions, pagination) {
+	.controller('employees', function($scope, $cookies, $location, employees, deleteEmp, resetPwd, createId, pagination) {
 		$scope.filter = {
 			"selectSchool": {
 				"id": 1,
 				"name": '全部校区'
 			},
 			"page": 1,
-			"num": 3
+			"num": num_per_page,
+			"authority": $cookies.get('authority')
 		}
-		fetchOptions('', function(result) {
-			$scope.$apply(function() {
-				$scope.options = {
-					"schools": result.schools
-				}
-			})
-		})
+
+		var options = getDataFromStorage('options');
+		$scope.options = {
+			schools: options.schools
+		}
 
 		//about pagination
 		$scope.paginationConf = {};
 		
 		//employees是服务返回数据
 		employees($scope.filter, function(result) {
-			console.log(result);
 			$scope.result = result.employees;
 
 			//about pagination
@@ -348,16 +363,24 @@ angular.module('homeApp.operating')
 			$scope.paginationConf = pagination(total);
 			$scope.paginationConf.onChange = function() {
 				$scope.filter.page = $scope.paginationConf.currentPage;
-				$scope.sendFilter();
+				$scope.pageChange();
 			}
 			$scope.$apply();
 		});
+		$scope.pageChange = function() {
+			employees($scope.filter, function(result) {
+				$scope.result = result.employees;
+				$scope.$apply();
+			});
+		}
 
 		//选择左上角校区筛选员工
 		$scope.sendFilter = function() {
+			$scope.filter.page = 1;
 			employees($scope.filter, function(result) {
-				console.log(result)
+				console.log(result);
 				$scope.result = result.employees;
+				$scope.paginationConf.totalItems = result.sum;
 				$scope.$apply();
 			});
 
@@ -370,15 +393,11 @@ angular.module('homeApp.operating')
 					emp_id: emp_id
 				}
 				deleteEmp(emp, function(result) {
-					if(result.status) {
-						//alert('成功离职');
+					callbackAlert(result.status, '成功离职');
+					if(result.status == 1) {
 						window.location.reload();
 					}
 				})
-				// var deleteStatus = deleteEmp.deleteEmp(emp);
-				// if (deleteStatus.status) {
-				// 	window.location.reload();
-				// }
 			}
 		}
 
@@ -389,8 +408,8 @@ angular.module('homeApp.operating')
 					emp_id: emp_id
 				}
 				resetPwd(emp, function(result) {
-					if(result.status) {
-						alert('已重置密码');
+					callbackAlert(result.status, '已重置密码');
+					if(result.status == 1) {
 						window.location.reload();
 					}
 				})
@@ -410,9 +429,24 @@ angular.module('homeApp.operating')
 			})
 		}
 	})
+
+	.controller('empBirth', function($scope, birthAlert) {
+		birthAlert('', function(result) {
+			if(result.status == 0) {
+				alert('最近没有人生日');
+			}else {
+				$scope.birthList = result.list;
+				$scope.$apply();
+			}
+			
+		})
+	})
 'use strict'
 angular.module('homeApp.operating')
-	.controller('SchoolManage', function($scope, $location, fetchAllSchools) {
+	.controller('SchoolManage', function($scope, $cookies, fetchOptions, $location, fetchAllSchools) {
+		$scope.emp_type = {
+			authority: $cookies.get('authority')
+		}
 		fetchAllSchools('', function(result) {
 			$scope.$apply(function() {
 				$scope.result = result;
@@ -424,6 +458,10 @@ angular.module('homeApp.operating')
 				alert('没有权限');
 				return false;
 			}else {
+				//update data in localstorage
+                fetchOptions('', function(result1) {
+                  localStorage.setItem('options', JSON.stringify(result1));
+                })
 				$location.path('/addSchool');
 			}
 		}
@@ -451,7 +489,6 @@ angular.module('homeApp.operating')
 	.controller('modifySchool', function($scope, $routeParams, fetchSchById, modifySchInfo) {
 		//$routeParams = {"sch_id": "1"};
 		fetchSchById($routeParams, function(result) {
-			console.log(result);
 			$scope.schInfo = result.schInfo;
 			$scope.$apply();
 		});
@@ -460,7 +497,7 @@ angular.module('homeApp.operating')
 			console.log($scope.schInfo);
 			$scope.schInfo.sch_id = $routeParams.sch_id;
 			modifySchInfo($scope.schInfo, function(result) {
-				if (result.status) {
+				if (result.status == 1) {
 					window.location.href = ROOT + 'schoolManage';
 				}
 			})
