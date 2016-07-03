@@ -340,7 +340,7 @@ angular.module('homeApp.analysis')
 		var options = getDataFromStorage('options');
 		$scope.options = {
 			schools: options.schools,
-			year: getYearSessions.year,
+			year: getYears,
 			yearMonth: getYearMonth,
 			busNumber: options.bus_number
 		}
