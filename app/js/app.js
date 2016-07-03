@@ -72,7 +72,7 @@ var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'p
           user_pwd: $.md5(pwd)
         }
         console.log(data);
-        login($scope.user, callBack);
+        login(data, callBack);
       }else{
         alert('请完善登录信息');
       }
