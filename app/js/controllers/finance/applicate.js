@@ -49,10 +49,11 @@ angular.module('homeApp.finance')
 		}
 
 		$scope.sendFilter = function() {
+			$scope.filter.page = 1;
 			console.log($scope.filter);
 			fetchAppList($scope.filter, function(result) {
-				console.log(result);
 				$scope.$apply(function() {
+					$scope.paginationConf.totalItems = result.total.num;
 					$scope.app = result.result;
 				})
 			})
