@@ -1,6 +1,6 @@
 'use strict';
 angular.module('homeApp.finance')
-	.controller('payList', function($scope, $cookies, getYearMonth, fetchOptions, fetchPayList, pagination) {
+	.controller('payList', function($scope, $cookies, getYearMonth, fetchPayList, pagination) {
 		//判断是否是财务，不是的话视图上的添加收入和支出记录按钮不显示
 		$scope.emp_type = {
 			type: $cookies.get('type')
@@ -53,15 +53,13 @@ angular.module('homeApp.finance')
 			})
 		})
 
-		fetchOptions('', function(result) {
-			$scope.options = {
-				"yearMonth": getYearMonth,
-				"schools": result.schools,
-				"pay_method": result.pay_method,
-				"pay_type": result.pay_type
-			}
-			$scope.$apply();
-		})
+		var options = getDataFromStorage('options');
+		$scope.options = {
+			yearMonth: getYearMonth,
+			schools: options.schools,
+			pay_method: options.pay_method,
+			pay_type: options.pay_type
+		}
 
 		$scope.pageChange = function() {
 			fetchPayList($scope.filter, function(result) {
@@ -79,19 +77,16 @@ angular.module('homeApp.finance')
 					$scope.paginationConf.totalItems = result.sum;
 				})
 			})
-			console.log($scope.paginationConf)
 		}
 	})
-	.controller('modPay', function($scope, $routeParams, fetchOptions, fetchPayById, modPay) {
-		fetchOptions('', function(result) {
-			$scope.$apply(function() {
-				$scope.options = {
-					"schools": result.schools,
-					"pay_type": result.pay_type,
-					"pay_method": result.pay_method
-				}
-			})
-		})
+	.controller('modPay', function($scope, $routeParams, fetchPayById, modPay) {
+
+		var options = getDataFromStorage('options');
+		$scope.options = {
+			schools: options.schools,
+			pay_type: options.pay_type,
+			pay_method: options.pay_method
+		}
 
 		fetchPayById($routeParams, function(result) {
 			$scope.$apply(function() {
@@ -101,31 +96,30 @@ angular.module('homeApp.finance')
 
 		$scope.addPay = function() {
 			modPay($scope.formData, function(result) {
-				if(result.status) {
-					alert('修改成功');
+				callbackAlert(result.status, '修改成功');
+				if(result.status == 1) {
 					window.location.href = ROOT + 'payList';
 				}
 			})
 		}
 	})
-	.controller('addPay', function($scope, fetchOptions, initAddPayForm, addPay, getDate) {
+	.controller('addPay', function($scope, $location, initAddPayForm, addPay, getDate) {
 		$scope.formData = initAddPayForm;
-		fetchOptions('', function(result) {
-			$scope.options = {
-				"schools": result.schools,
-				"pay_method": result.pay_method,
-				"pay_type": result.pay_type,
-				"date": getDate
-			}
-			$scope.$apply();
-		})
+
+		var options = getDataFromStorage('options');
+		$scope.options = {
+			schools: options.schools,
+			pay_method: options.pay_method,
+			pay_type: options.pay_type,
+			date: getDate
+		}
 
 		$scope.addPay = function() {
-			console.log($scope.formData);
 			addPay($scope.formData, function(result) {
-				if(result.status) {
-					alert('成功添加支出');
-				}
+				callbackAlert(result.status, '成功添加支出');
+				$scope.$apply(function() {
+					$location.path('/payList');
+				})
 			})
 		}
 	})

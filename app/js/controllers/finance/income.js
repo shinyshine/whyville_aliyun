@@ -102,39 +102,43 @@ angular.module('homeApp.finance')
 			})
 		}
 	})
-	.controller('modIncome', function($scope, $routeParams, fetchIncomeById, getDate) {
-		var options = getDataFromStorage('options');
-		$scope.options = {
-			schools: options.schools,
-			pay_method: options.pay_method,
-			type: [{
-				"id": 0,
-				"name": '全部类型'
-			},{
-				"id": 1,
-				"name": '学费'
-			},{
-				"id": 2,
-				"name": '书费'
-			},{
-				"id": 3,
-				"name": '校车费'
-			},{
-				"id": 4,
-				"name": '其他'
-			}],
-			date: getDate
-		}
+
+	//考虑不做修改  只做删除  所以下面作废
+	// .controller('modIncome', function($scope, $routeParams, fetchIncomeById, getDate) {
+	// 	var options = getDataFromStorage('options');
+	// 	$scope.options = {
+	// 		schools: options.schools,
+	// 		pay_method: options.pay_method,
+	// 		type: [{
+	// 			"id": 0,
+	// 			"name": '全部类型'
+	// 		},{
+	// 			"id": 1,
+	// 			"name": '学费'
+	// 		},{
+	// 			"id": 2,
+	// 			"name": '书费'
+	// 		},{
+	// 			"id": 3,
+	// 			"name": '校车费'
+	// 		},{
+	// 			"id": 4,
+	// 			"name": '其他'
+	// 		}],
+	// 		date: getDate
+	// 	}
 		
 
-		fetchIncomeById($routeParams, function(result) {
-			console.log(result);
-		})
+	// 	fetchIncomeById($routeParams, function(result) {
+	// 		console.log(result);
+	// 	})
 
-		$scope.submitData = function() {
-			console.log($scope.formData);
-		}
-	})
+	// 	$scope.submitData = function() {
+	// 		console.log($scope.formData);
+	// 	}
+	// })
+
+
 	.controller('addIncome', function($scope, $location, initAddIncomeForm, addIncome, getDate, fetchCourseByStu) {
 		var search = $location.search(),
 			price = search.co,

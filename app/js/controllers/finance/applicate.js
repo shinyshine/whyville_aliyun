@@ -60,7 +60,7 @@ angular.module('homeApp.finance')
 	})
 
 	//对申请表进行付款
-	.controller('payForApp', function($scope, $routeParams, fetchAppById, payForApp) {
+	.controller('payForApp', function($scope, $location, $routeParams, fetchAppById, payForApp) {
 		// $scope.data = fetchAppById($routeParams);
 		$scope.autoData = {
 			pay_date: moment().format('YYYY-MM-DD')
@@ -106,7 +106,8 @@ angular.module('homeApp.finance')
 			//http server  post postData
 			console.log($scope.postData);
 			payForApp($scope.postData, function(result) {
-				callbackAlert(result.status, '成功付款')
+				callbackAlert(result.status, '成功付款');
+				$location.path('/appList');
 			})
 		}
 	})
