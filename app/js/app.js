@@ -24,13 +24,13 @@ var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'p
       //$locationProvider.html5Mode(true);
   })
   .controller('homeApp', function($scope, $cookies) {
-    // $scope.user = {
-    //   "id": $cookies.get('user_id'),
-    //   "user_name": $cookies.get('user_name'),
-    //   "authority": $cookies.get('authority'),
-    //   "sch_id": $cookies.get('sch_id'),
-    //   "sch_name": $cookies.get('sch_name')
-    // }
+    $scope.user = {
+      "id": $cookies.get('user_id'),
+      "user_name": $cookies.get('user_name'),
+      "authority": $cookies.get('authority'),
+      "sch_id": $cookies.get('sch_id'),
+      "sch_name": $cookies.get('sch_name')
+    }
     
     $scope.birthday = 0;
     $scope.$on('changeBirth', function(data) {
