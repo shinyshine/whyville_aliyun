@@ -31,8 +31,10 @@ angular.module('homeApp.operating')
                 fetchOptions('', function(result1) {
                   localStorage.setItem('options', JSON.stringify(result1));
                 })
-
-                $location.path('/employees');
+                $scope.$apply(function() {
+                  $location.path('/employees');
+                })
+                
               }else{
                 alert('出现错误，稍后重试');
               }
