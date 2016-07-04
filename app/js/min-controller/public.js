@@ -724,30 +724,6 @@ angular.module('publicService', [])
 
 	})
 
-	//获得校区和校车选项
-	.factory('fetchSchoolAndBus', function($http) {
-		return function() {
-			return {
-				"schools": [{
-					"id": 0,
-					"name": '全部校区'
-				}, {
-					"id": 1,
-					"name": '华南校区'
-				}, {
-					"id": 2,
-					"name": '大学城校区'
-				}],
-				"bus": [{
-					"id": 1,
-					"name": '泰坦尼克号505'
-				},{
-					"id": 2,
-					"name": '泰坦尼克号205'
-				}]
-			}
-		}
-	})
 	.factory('pagination', function() {
 		return function(totalPage) {
 			return {

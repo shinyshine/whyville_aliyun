@@ -49,16 +49,31 @@ angular.module('homeApp.finance', ['ngRoute', 'homeApp.financeService'])
 	})
 
 	//财务日报
-	.controller('daily', function($scope, fetchDaily) {
+	.controller('daily', function($scope, fetchDaily, getDate) {
+		$scope.options = {
+			date: getDate
+		}
+
+		$scope.filter = {
+			date: moment().format('YYYY-MM-DD')
+		}
+
 		//show current day
 		$scope.cur_time = {
 			date: moment().format('YYYY-MM-DD')
 		}
 		fetchDaily('', function(result) {
-			console.log(result);
 			$scope.daily = result;
 			$scope.$apply();
 		})
+
+		$scope.sendFilter = function() {
+			console.log($scope.filter);
+			fetchDailyByDate($scope.filter, function(result) {
+				$scope.daily = result;
+				$scope.$apply();
+			})
+		}
 	})
 	//账户余额
 	.controller('account', function($scope, fetchAccounts, modifyAccount) {
@@ -124,6 +139,14 @@ angular.module('homeApp.financeService', [])
 			"daily": server + 'get_cost_income',
 			"modIncome": server + 'change_income',
 			"deleteIncome": server + 'delete_income',
+			fetchDailyByDate: server + '',
+		}
+	})
+
+	//筛选财务日报
+	.factory('fetchDailyByDate', function(financeAPI) {
+		return function(data, callBack) {
+			getData(financeAPI.fetchDailyByDate, callBack, data);
 		}
 	})
 

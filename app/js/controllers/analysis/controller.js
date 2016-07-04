@@ -37,7 +37,6 @@ angular.module('homeApp.analysis')
 		}
 		
 		$scope.sendFilter = function() {
-			console.log($scope.filter);
 			fetchTeaSalary($scope.filter, function(result) {
 			$scope.$apply(function() {
 					$scope.data = result;
