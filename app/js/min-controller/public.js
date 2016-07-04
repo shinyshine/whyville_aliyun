@@ -718,9 +718,6 @@ angular.module('publicService', [])
 
 		for(var i = 0; i >=-10 ; i --) {
 			var item = moment().add(i, 'day').format('YYYY-MM-DD');
-      var date = {
-        name: item
-      }
 			dateArr.push(item)
 		}
 		return dateArr;
