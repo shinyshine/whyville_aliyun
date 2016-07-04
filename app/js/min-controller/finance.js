@@ -70,8 +70,7 @@ angular.module('homeApp.finance', ['ngRoute', 'homeApp.financeService'])
 		})
 
 		$scope.sendFilter = function() {
-			console.log($scope.filter);
-			fetchDailyByDate($scope.filter, function(result) {
+			fetchDaily($scope.filter, function(result) {
 				$scope.daily = result;
 				$scope.$apply();
 			})
@@ -141,16 +140,16 @@ angular.module('homeApp.financeService', [])
 			"daily": server + 'get_cost_income',
 			"modIncome": server + 'change_income',
 			"deleteIncome": server + 'delete_income',
-			fetchDailyByDate: server + '',
+			//fetchDailyByDate: server + '',
 		}
 	})
 
 	//筛选财务日报
-	.factory('fetchDailyByDate', function(financeAPI) {
-		return function(data, callBack) {
-			getData(financeAPI.fetchDailyByDate, callBack, data);
-		}
-	})
+	// .factory('fetchDailyByDate', function(financeAPI) {
+	// 	return function(data, callBack) {
+	// 		getData(financeAPI.fetchDailyByDate, callBack, data);
+	// 	}
+	// })
 
 	//删除收入记录
 	.factory('deleteIncome', function(financeAPI) {
