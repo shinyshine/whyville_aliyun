@@ -50,8 +50,15 @@ angular.module('homeApp.finance', ['ngRoute', 'homeApp.financeService'])
 
 	//财务日报
 	.controller('daily', function($scope, fetchDaily) {
+
+		//show current day
+		$scope.cur_time = {
+			date: moment().format('YYYY-MM-DD')
+		}
+
 		fetchDaily('', function(result) {
 			$scope.daily = result;
+			console.log(result);
 			$scope.$apply();
 		})
 	})
