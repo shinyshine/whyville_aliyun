@@ -55,7 +55,9 @@ angular.module('homeApp.finance', ['ngRoute', 'homeApp.financeService'])
 		}
 
 		$scope.filter = {
-			date: moment().format('YYYY-MM-DD')
+			date: {
+				name: moment().format('YYYY-MM-DD')
+			}
 		}
 
 		//show current day
