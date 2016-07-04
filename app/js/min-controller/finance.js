@@ -579,10 +579,10 @@ angular.module('homeApp.finance')
 
 		var options = getDataFromStorage('options');
 		$scope.options = {
-			schools: result.schools,
-			bus_number: result.bus_number,
-			course: result.course,
-			pay_method: result.pay_method,
+			schools: options.schools,
+			bus_number: options.bus_number,
+			course: options.course,
+			pay_method: options.pay_method,
 			type: [{
 				"id": 1,
 				"name": '学费'
