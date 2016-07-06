@@ -1,7 +1,9 @@
 'use strict';
 angular.module('homeApp.home')
 	.controller('calendar', function($scope, $rootScope, $cookies, $location, $routeParams, clickDate, fetchHomeInfo, fetchHomeByYearM, deleteNotice, deleteSche) {
-		
+		$scope.user = {
+			user_id: $cookies.get('user_id')
+		}
 		if($location.search().s_id) {
 			$scope.filter = {
 				"selectSchool": {

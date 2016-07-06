@@ -26,15 +26,19 @@ var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'p
   .controller('homeApp', function($scope, $cookies) {
     $scope.user = {
       "id": $cookies.get('user_id'),
-      "user_name": $cookies.get('user_name'),
+      /*"user_name": $cookies.get('user_name'),
       "authority": $cookies.get('authority'),
       "sch_id": $cookies.get('sch_id'),
-      "sch_name": $cookies.get('sch_name')
+      "sch_name": $cookies.get('sch_name')*/
     }
     
     $scope.birthday = 0;
     $scope.$on('changeBirth', function(data) {
       $scope.birthday = data;
+    })
+
+    $scope.$on('putCookie', function(data) {
+      $scope.user.id = data;
     })
   })
   .controller('homeApp.header', function($scope, $cookies, logOut) {
@@ -94,6 +98,8 @@ var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'p
         $cookies.put('user_id', result.user_id);
         $cookies.put('sch_id', result.sch_id);
         $cookies.put('type', result.type);
+
+        $scope.$emit('putCookie', result.user_id);
         // 将options存入本地存储
 
         birthAlert('', function(result) {
