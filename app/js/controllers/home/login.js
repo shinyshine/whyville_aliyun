@@ -71,7 +71,7 @@ angular.module('homeApp.home')
 					if(result.status == 1) {
 						alert('成功修改密码');
 						$scope.$apply(function() {
-							$location.path('/');
+							$location.path('/' + $cookies.get('user_id'));
 						})
 					}
 				})
