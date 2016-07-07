@@ -370,11 +370,15 @@ angular.module('homeApp.home')
 					alert('两次密码不一致');
 					return false;
 				}
-				modifyPwd($scope.postData, function(result) {
+				var data = {
+					new_pwd: $.md5($scope.postData.new_pwd),
+					re_pwd: $.md5($scope.postData.re_pwd)
+				}
+				modifyPwd(data, function(result) {
 					if(result.status == 1) {
 						alert('成功修改密码');
 						$scope.$apply(function() {
-							$location.path('/');
+							$location.path('/' + $cookies.get('user_id'));
 						})
 					}
 				})
