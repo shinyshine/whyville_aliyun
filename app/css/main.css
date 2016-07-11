@@ -1207,6 +1207,12 @@
 .hide {
   display: none;
 }
+#footer p,
+#footer p a{
+  color: #aaaaaa;
+  font-size: 14px;
+  text-align: center;
+}
 @media screen and (max-width: 500px) {
   .header {
     display: none;
