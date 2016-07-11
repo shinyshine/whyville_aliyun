@@ -2,6 +2,7 @@ module.exports = function(grunt) {
     var config = {
         controller: './app/js/controllers/',
         minCon: './app/js/min-controller/',
+        css: './app/css/'
     }
 
     grunt.initConfig({
@@ -72,10 +73,28 @@ module.exports = function(grunt) {
         //     }
         // },
 
+        // concat: {
+        //     operate: {
+        //         src: ['<%= config.controller %>public/directive.js', '<%= config.controller %>public/filter.js','<%= config.controller %>public/service.js'],
+        //         dest: '<%= config.minCon %>public.js'
+        //     }
+        // },
+
         concat: {
             operate: {
-                src: ['<%= config.controller %>public/directive.js', '<%= config.controller %>public/filter.js','<%= config.controller %>public/service.js'],
-                dest: '<%= config.minCon %>public.js'
+                src: ['<%= config.css %>index.css', '<%= config.css %>clndr.css'],
+                dest: '<%= config.css %>main.css'
+            }
+        },
+        cssmin: {
+            target: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= config.css %>',
+                    src: ['main.css'],
+                    dest: '<%= config.css %>',
+                    ext: '.min.css'
+                }]
             }
         }
 
@@ -85,6 +104,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
 
     grunt.registerTask('default', ['connect', 'watch']);
 }
