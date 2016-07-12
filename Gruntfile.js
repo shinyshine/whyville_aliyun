@@ -82,8 +82,8 @@ module.exports = function(grunt) {
 
         concat: {
             operate: {
-                src: ['<%= config.css %>index.css', '<%= config.css %>clndr.css'],
-                dest: '<%= config.css %>main.css'
+                src: ['./app/js/app.js', './app/js/public/Util.js', '<%= config.minCon %>public.js', '<%= config.minCon %>home.js', '<%= config.minCon %>operating.js', '<%= config.minCon %>student.js', '<%= config.minCon %>educate.js', '<%= config.minCon %>analysis.js', '<%= config.minCon %>finance.js'],
+                dest: '<%= config.minCon %>main.js'
             }
         },
         cssmin: {
@@ -96,6 +96,13 @@ module.exports = function(grunt) {
                     ext: '.min.css'
                 }]
             }
+        },
+        uglify: {
+            my_target: {
+                files: {
+                    '<%= config.minCon %>main.min.js': ['<%= config.minCon %>main.js']
+                }
+            }
         }
 
     });
@@ -105,6 +112,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
 
     grunt.registerTask('default', ['connect', 'watch']);
 }
