@@ -24,12 +24,14 @@ var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'p
     }
     
     $scope.birthday = 0;
-    $scope.$on('changeBirth', function(data) {
+    $scope.$on('changeBirth', function(event, data) {
+      console.log(data);
       $scope.birthday = data;
     })
 
-    $scope.$on('putCookie', function(data) {
-      $scope.user.id = data;
+    $scope.$on('putCookie', function(event, data) {
+      console.log(data);
+      $scope.user.id = data;  
     })
   })
   .controller('homeApp.header', function($scope, $cookies, logOut) {
@@ -71,7 +73,6 @@ var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'p
           user_id: $scope.user.user_id,
           user_pwd: $.md5(pwd)
         }
-        console.log(data);
         login(data, callBack);
       }else{
         alert('请完善登录信息');
@@ -94,6 +95,7 @@ var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'p
         // 将options存入本地存储
 
         birthAlert('', function(result) {
+            console.log(result);
             $scope.$emit('changeBirth', result.status);
             $scope.$apply(function() {
               $location.path('/' + $cookies.get('user_id'));

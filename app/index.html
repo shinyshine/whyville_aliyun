@@ -47,7 +47,7 @@
 					</li>
 					<li role="presentation" ng-click="underline(2)"><a href="#/eduCourseList">教师管理</a></li>
 					<li role="presentation" ng-click="underline(3)" >
-						<a href="#/employees">经营管理<span ng-hide="!birthday">生日</span></a>
+						<a href="#/employees">经营管理<span class="birth-alert" ng-hide="!birthday">生日</span></a>
 						<ul>
 							<li ng-click="underline(3)"><a href="#/employees">员工管理</a></li>
 							<li ng-click="underline(3)"><a href="#/emp_birth">员工生日</a></li>
@@ -105,9 +105,6 @@
     <script src="../bower_components/underscore/underscore-min.js"></script>
 
     <script src="./js/public/public.min.js"></script>
-    <script src="./js/app.js"></script>
-
-    
     <script src="./js/min-controller/main.js"></script>
 
 	 <script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>

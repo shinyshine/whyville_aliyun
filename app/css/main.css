@@ -83,6 +83,10 @@
   cursor: pointer;
   border-bottom: none;
 }
+#nav li a span{
+  color: #e60012;
+  font-size: 12px;
+}
 .header .nav-container #nav li:hover ul {
   display: block;
 }
