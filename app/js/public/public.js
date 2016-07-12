@@ -3514,11 +3514,6 @@ angular.module('tm.pagination', []).directive('tmPagination',[function(){
     };
 }]);
 
-//var ROOT = 'http://120.25.229.249:80/app/#/';
-var ROOT =  'http://whyville.cn/app/#';
-var API = 'http://120.25.229.249:8001/get_img';
-
-var num_per_page = 12;
 function transformSchArr(arr) {
 	var options = [];
 	for (var i = 0, len = arr.length; i < len; i++) {
