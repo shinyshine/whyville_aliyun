@@ -9,22 +9,10 @@ var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'p
   .config(function($routeProvider) {
         
   	$routeProvider
-      // .when('/employees', {
-      //     templateUrl: 'views/operating/employees.html',
-      //     controller: 'employees',
-      //     resolve: {
-      //       operate: function(injectOperating) {
-      //         return injectOperating.inject();
-      //       }
-      //     }
-      // })
   	  .when('/:user_id', {
         templateUrl: 'views/home/calendar.html',
         controller: 'calendar'
       })
-
-      // use the HTML5 History API  
-      //$locationProvider.html5Mode(true);
   })
   .controller('homeApp', function($scope, $cookies) {
     $scope.user = {
@@ -107,13 +95,14 @@ var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'p
 
         birthAlert('', function(result) {
             $scope.$emit('changeBirth', result.status);
+            $scope.$apply(function() {
+              $location.path('/' + $cookies.get('user_id'));
+            })
         })
 
         fetchOptions('', function(result) {
           localStorage.setItem('options', JSON.stringify(result));
-          $scope.$apply(function() {
-            $location.path('/' + $cookies.get('user_id'));
-          })
+          
           
         })
 
