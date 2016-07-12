@@ -82,8 +82,8 @@ module.exports = function(grunt) {
 
         concat: {
             operate: {
-                src: ['./app/js/app.js', './app/js/public/Util.js', '<%= config.minCon %>public.js', '<%= config.minCon %>home.js', '<%= config.minCon %>operating.js', '<%= config.minCon %>student.js', '<%= config.minCon %>educate.js', '<%= config.minCon %>analysis.js', '<%= config.minCon %>finance.js'],
-                dest: '<%= config.minCon %>main.js'
+                src: ['./app/js/public/*.js'],
+                dest: './app/js/public/public.js'
             }
         },
         cssmin: {
