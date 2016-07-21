@@ -3048,7 +3048,7 @@ angular.module('homeApp.student')
 				postCourse($scope.course, function(result) {
 					callbackAlert(result.status, '添加成功');
 					if(result.status == 1) {
-						window.location.href = ROOT + 'courseList';
+						window.location.href = ROOT + 'planCourse';
 					}
 
 					//update data in localstorage
