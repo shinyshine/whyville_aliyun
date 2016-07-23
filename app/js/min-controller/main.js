@@ -51,6 +51,7 @@ var app = angular.module('homeApp', ['ngRoute', 'ngCookies', 'tm.pagination', 'p
         if(result.status == 1) {
           //$cookies.remove('user_id');
           window.location.href = ROOT + 'login';
+          window.location.reload();
         }
         
       })
