@@ -387,7 +387,7 @@ angular.module('homeApp')
         days = [];
 
       //初始化多选框里面的年月日，有点不严谨，之后再说
-      for (var i = 5; i < 30; i++) {
+      for (var i = 5; i < 60; i++) {
         years.push(curYear - i);
       }
       for (var i = 1; i <= 31; i++) {
@@ -2963,7 +2963,7 @@ angular.module('homeApp.student')
 				"name": '2016'
 			},
 			"courseType": {
-				"id": 1,
+				"id": 0,
 				"name": '所有课程类型'
 			},
 			"search": '',
@@ -3316,7 +3316,9 @@ angular.module('homeApp.student')
 
 				addStuToBus($scope.formData, function(result) {
 					callbackAlert(result.status);
-					$location.path('/stuBusList');
+          if(result.status == 1) {
+            window.location.href = ROOT + 'stuBusList';
+          }
 				})
 			}else{
 				alert('请完善信息');
