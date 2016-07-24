@@ -153,7 +153,7 @@
 		            			<td>{{bus.weekday | numberToWeek}} {{bus.pick_time}}</td>
 		            			<td>{{bus.per_price}}/次; 打{{bus.discount}}折; 减价:{{bus.cut}}元; 共{{bus.sum_count}}次</td>
 		            			<td>￥ {{bus.total_price}}</td>
-		            			<td><a href="javascript:void(0);" ng-class="{'warning': !bus.bus_fee_state}" ng-click="pay(bus.ser_id, bus.total_price, bus.bus_fee_state)">{{bus.bus_fee_state | feeOrNot}}</a></td>
+		            			<td><a href="javascript:void(0);" ng-class="{'warning': !bus.bus_fee_state}" ng-click="pay(bus.bus_id, bus.total_price, bus.bus_fee_state)">{{bus.bus_fee_state | feeOrNot}}</a></td>
 		            		</tr>
 	            		</tbody>
 	    			</table>
