@@ -4821,7 +4821,6 @@ angular.module('homeApp.finance')
 		$scope.paginationConf = {};
 
 		fetchAppList($scope.filter, function(result) {
-			console.log(result);
 			$scope.$apply(function() {
 				$scope.app = result.result;
 				//about pagination
@@ -5139,6 +5138,14 @@ angular.module('homeApp.finance')
 			console.log($scope.formData)
 			addIncome($scope.formData, function(result) {
 				callbackAlert(result.status, '成功添加收入');
+        if(result.status == 1) {
+          if(!s_id && !stu_id) {
+            window.location.href = ROOT + 'incomeList';
+          }else {
+            window.location.href = ROOT + 'stuInfo/' + stu_id;
+          }
+        }
+        
  			})
 			
 		}
