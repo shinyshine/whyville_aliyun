@@ -4252,8 +4252,8 @@ angular.module('homeApp.analysis')
 				"name": moment().format('YYYY')
 			},
 			"session": {
-				"id": 1,
-				"name": '春季班'
+				"id": 0,
+				"name": '全部季度'
 			},
 			"startTime": {
 				"name": moment().add('-1', 'months').format('YYYY-MM')
@@ -4304,9 +4304,9 @@ angular.module('homeApp.analysis')
 				"name": moment().format('YYYY')
 			},
 			"session": {
-				"id": 1,
-				"name": '春季班'
-			},
+        "id": 0,
+        "name": '全部季度'
+      },
 			"startTime": {
 				"name": moment().add('-1', 'months').format('YYYY-MM')
 			},
@@ -4360,9 +4360,9 @@ angular.module('homeApp.analysis')
 				"name": moment().format('YYYY')
 			},
 			"session": {
-				"id": 1,
-				"name": '春季班'
-			},
+        "id": 0,
+        "name": '全部季度'
+      },
 			"startTime": {
 				"name":moment().add('-1', 'months').format('YYYY-MM')
 			},
@@ -4417,9 +4417,9 @@ angular.module('homeApp.analysis')
 				"name": moment().format('YYYY')
 			},
 			"session": {
-				"id": 1,
-				"name": '春季班'
-			},
+        "id": 0,
+        "name": '全部季度'
+      },
 			"startTime": {
 				"name": moment().add('-1', 'months').format('YYYY-MM')
 			},
@@ -4558,10 +4558,10 @@ angular.module('homeApp.analysis')
 			"year": {
 				"name": moment().format('YYYY')
 			},
-			"session":  {
-				"id": '1',
-				"name": '春季班'
-			}
+			"session": {
+        "id": 0,
+        "name": '全部季度'
+      }
 		}
 		fetchSchInfo($scope.filter, function(result) {
 			$scope.data = result;
