@@ -3925,7 +3925,7 @@ angular.module('homeApp.educateService', [])
 		}
 	})
 
-	.factory('modifyCallback', function(eduAPI) {
+	.factory('teaModifyCallback', function(eduAPI) {
 		return function(data, callBack) {
 			postData(eduAPI.modifyCallback, data, callBack);
 		}
@@ -4021,7 +4021,7 @@ angular.module('homeApp.educate')
 		}
 	})
 
-	.controller('teaCallback', function($scope, $routeParams, fetchTeaCallBack, postCallback, modifyCallback) {
+	.controller('teaCallback', function($scope, $routeParams, fetchTeaCallBack, postCallback, teaModifyCallback) {
 		fetchTeaCallBack($routeParams, function(result) {
 			$scope.callback = result;
 			$scope.$apply();
