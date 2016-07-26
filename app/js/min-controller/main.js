@@ -743,7 +743,7 @@ angular.module('publicService', [])
 	//返回一年之内的年份和月份作为下拉框的options
 	.factory('getYearMonth', function() {
 		var i, YM = [];
-		for(i = 0; i >=-10 ; i --) {
+		for(i = 1; i >=-10 ; i --) {
 			var item = moment().add(i, 'months').format('YYYY-MM');
 			YM.push(item)
 		}
@@ -4207,7 +4207,7 @@ angular.module('homeApp.analysis')
 				"name": moment().add('-1', 'months').format('YYYY-MM')
 			},
 			"endTime": {
-				"name": moment().format('YYYY-MM')
+				"name": moment().add('+1', 'months').format('YYYY-MM')
 			},
 		}
 		fetchTeaSalary($scope.filter, function(result) {
@@ -4256,7 +4256,7 @@ angular.module('homeApp.analysis')
 				"name": moment().add('-1', 'months').format('YYYY-MM')
 			},
 			"endTime": {
-				"name": moment().format('YYYY-MM')
+				"name": moment().add('+1', 'months').format('YYYY-MM')
 			},
 			"courseType": {
 				"id": $routeParams.type_id,
@@ -4308,7 +4308,7 @@ angular.module('homeApp.analysis')
 				"name": moment().add('-1', 'months').format('YYYY-MM')
 			},
 			"endTime": {
-				"name": moment().format('YYYY-MM')
+				"name": moment().add('+1', 'months').format('YYYY-MM')
 			},
 			"courseType": {
 				"id": '',
@@ -4364,7 +4364,7 @@ angular.module('homeApp.analysis')
 				"name":moment().add('-1', 'months').format('YYYY-MM')
 			},
 			"endTime": {
-				"name":moment().format('YYYY-MM')
+				"name":moment().add('+1', 'months').format('YYYY-MM')
 			},
 			"courseType": {
 				"id": '',
@@ -4421,7 +4421,7 @@ angular.module('homeApp.analysis')
 				"name": moment().add('-1', 'months').format('YYYY-MM')
 			},
 			"endTime": {
-				"name": moment().format('YYYY-MM')
+				"name": moment().add('+1', 'months').format('YYYY-MM')
 			},
 			"courseType": {
 				"id": '',
@@ -4472,7 +4472,7 @@ angular.module('homeApp.analysis')
 				"name": moment().add('-1', 'months').format('YYYY-MM')
 			},
 			"endTime": {
-				"name": moment().format('YYYY-MM')
+				"name": moment().add('+1', 'months').format('YYYY-MM')
 			}, 
 			"year": {
 				"name": moment().format('YYYY')
@@ -4514,7 +4514,7 @@ angular.module('homeApp.analysis')
 				"name": moment().add('-1', 'months').format('YYYY-MM')
 			},
 			"endTime": {
-				"name": moment().format('YYYY-MM')
+				"name": moment().add('+1', 'months').format('YYYY-MM')
 			}, 
 			"year": {
 				"name": moment().format('YYYY')
@@ -4889,7 +4889,7 @@ angular.module('homeApp.finance')
 				"name": moment().add('-1', 'months').format('YYYY-MM')
 			},
 			"endTime": {
-				"name": moment().format('YYYY-MM')
+				"name": moment().add('+1', 'months').format('YYYY-MM')
 			},
 			"type": {
 				"id": 0,
@@ -5023,7 +5023,7 @@ angular.module('homeApp.finance')
 				"name": moment().add('-1', 'months').format('YYYY-MM')
 			},
 			"endTime": {
-				"name": moment().format('YYYY-MM')
+				"name": moment().add('+1', 'months').format('YYYY-MM')
 			},
 			"payMethod": {
 				"id": '',
@@ -5246,7 +5246,7 @@ angular.module('homeApp.finance')
 				"name": moment().add('-1', 'months').format('YYYY-MM')
 			},
 			"endTime": {
-				"name": moment().format('YYYY-MM')
+				"name": moment().add('+1', 'months').format('YYYY-MM')
 			},
 			"payFisrt": {
 				"id": '', 
