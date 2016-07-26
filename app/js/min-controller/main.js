@@ -4042,7 +4042,7 @@ angular.module('homeApp.educate')
 			var data = $scope.callback.callbacks[index];
 			data.course_id = $routeParams.course_id;
 			data.stu_id = $routeParams.stu_id
-			modifyCallback(data, function(result) {
+			teaModifyCallback(data, function(result) {
 				callbackAlert(result.status, 'modify successfully');
 			})
 		}
