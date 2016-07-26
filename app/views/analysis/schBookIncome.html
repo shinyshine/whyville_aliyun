@@ -25,7 +25,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="item in data.list" ng-click="skipToStuBook(item.course_name.id, item.course_type.id, item.course_name.name, item.course_type.name)">
+				<tr ng-repeat="item in data.list" ng-click="skipToStuBook(item.course_type.id, item.course_name.id, item.course_name.name, item.course_type.name)">
 					<td>{{item.school}}</td>
 					<td>{{item.year}}</td>
 					<td>{{item.session}}</td>
