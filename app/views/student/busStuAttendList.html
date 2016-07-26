@@ -17,7 +17,7 @@
 		    	<tr ng-repeat="item in data">
 		    		<td>{{item.bus_number.name}}</td>
 		    		<td>{{item.date}}</td>
-		    		<td><a ng-class="{'warning': !item.attend_state}" href="#/busStuAttend/{{item.bus_number.id}}/{{item.date}}">{{item.attend_state | checkAttend}}</a></td>
+		    		<td><a ng-class="{'warning': !item.attend_state}" href="#/busStuAttend/{{item.bus_number.id}}/{{item.date}}">填写考勤表</a></td>
 		    	</tr>
 		    </tbody>
 		</table>
