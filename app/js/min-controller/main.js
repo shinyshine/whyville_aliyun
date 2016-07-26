@@ -622,15 +622,15 @@ angular.module('homeApp')
 			}
 		}
 	})
-	.filter('teacher_type', function() {
-		return function(input) {
-			if(!input) {
-				return '全职老师'
-			}else{
-				return '兼职老师'
-			}
-		}
-	})
+	// .filter('teacher_type', function() {
+	// 	return function(input) {
+	// 		if(!input) {
+	// 			return '全职老师'
+	// 		}else{
+	// 			return '兼职老师'
+	// 		}
+	// 	}
+	// })
 
 	.filter('NaNtoO', function() {
 		return function(input) {
@@ -3136,6 +3136,9 @@ angular.module('homeApp.student')
 			}
 			deleteStuInCourse(data, function(result) {
 				callbackAlert(result.status, '成功删除一门课程');
+        if(result.status == 1) {
+          window.location.reload();
+        }
 			})
 		}
 	})
