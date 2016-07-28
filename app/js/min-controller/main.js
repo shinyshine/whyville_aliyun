@@ -4806,7 +4806,7 @@ angular.module('homeApp.financeService', [])
 		}
 	})
 	.factory('initAddIncomeForm', function(financeAPI, $cookies) {
-		return function(price, s_id, stu, bus_id, type) {
+		return function(price, s_id, stu, type) {
 			return {
 				// "in_id": '',
 				"school": {
