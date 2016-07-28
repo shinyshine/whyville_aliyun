@@ -5171,13 +5171,18 @@ angular.module('homeApp.finance')
       date: getDate
     }
 
+    console.log($scope.options[0]);
+
     var search = $location.search(),
 			price = search.co,
 			s_id = search.s_id,
 			stu_id = search.stu,
       type = $scope.options[search.type - 1];
+
+    console.log(search.type - 1);
+    console.log(type);
 		$scope.formData = initAddIncomeForm(price, s_id, stu_id, type);
-    
+
 		//控制学生信息的显示与隐藏
 		$scope.showStu = {
 			bus: 1,
