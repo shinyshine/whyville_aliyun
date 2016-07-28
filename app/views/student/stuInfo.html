@@ -126,7 +126,7 @@
 		            			<td>{{course.course_teacher}}</td>
 		            			<td>{{course.course_week_time}}</td>
 		            			<td>{{course.course_time}}</td>
-		            			<td>{{course.course_remark}}</td>
+		            			<td>{{course.remark}}</td>
 		            		</tr>
 	            		</tbody>
 	            		
@@ -153,7 +153,7 @@
 		            			<td>{{bus.weekday | numberToWeek}} {{bus.pick_time}}</td>
 		            			<td>{{bus.per_price}}/次; 打{{bus.discount}}折; 减价:{{bus.cut}}元; 共{{bus.sum_count}}次</td>
 		            			<td>￥ {{bus.total_price}}</td>
-		            			<td><a href="javascript:void(0);" ng-class="{'warning': !bus.bus_fee_state}" ng-click="pay(bus.bus_id, bus.total_price, bus.bus_fee_state)">{{bus.bus_fee_state | feeOrNot}}</a></td>
+		            			<td><a href="javascript:void(0);" ng-class="{'warning': !bus.bus_fee_state}" ng-click="pay(bus.bus_id, bus.total_price, bus.bus_fee_state, 3)">{{bus.bus_fee_state | feeOrNot}}</a></td>
 		            		</tr>
 	            		</tbody>
 	    			</table>
@@ -180,7 +180,7 @@
 		            			<td>{{fee.per_price}} 元/节; 打{{fee.discount}}折; 减价:{{fee.cut}}元; 共{{fee.sum_count}}节课</td>
 		            			<td>{{fee.total_price}}</td>
 		            			<td>{{fee.book_fee}}</td>
-		            			<td>学费:<a href="javascript:void(0);" ng-class="{'warning': !fee.fee_or_not}" ng-click="pay(fee.sch_id, fee.total_price, fee.fee_or_not)">{{fee.fee_or_not | feeOrNot}}</a> 书费:<a href="javascript:void(0);" ng-class="{'warning': !fee.book_fee_or_not}" ng-click="pay(fee.sch_id, fee.book_fee, fee.book_fee_or_not)">{{fee.book_fee_or_not | feeOrNot}}</a></td>
+		            			<td>学费:<a href="javascript:void(0);" ng-class="{'warning': !fee.fee_or_not}" ng-click="pay(fee.sch_id, fee.total_price, fee.fee_or_not, 1)">{{fee.fee_or_not | feeOrNot}}</a> 书费:<a href="javascript:void(0);" ng-class="{'warning': !fee.book_fee_or_not}" ng-click="pay(fee.sch_id, fee.book_fee, fee.book_fee_or_not, 2)">{{fee.book_fee_or_not | feeOrNot}}</a></td>
 		            		</tr>
 	            		</tbody>
 	    			</table>

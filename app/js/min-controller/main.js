@@ -3637,11 +3637,11 @@ angular.module('homeApp.student')
 			$scope.$apply();
 		});
 
-		$scope.pay = function(select_id, price, status) {
+		$scope.pay = function(select_id, price, status, type) {
 			if(status) {
 				return false;
 			}
-			$location.path('/addIncome').search({s_id: select_id, co: price, stu: $routeParams.stu_id})
+			$location.path('/addIncome').search({s_id: select_id, co: price, stu: $routeParams.stu_id, type: type})
 		}
 	})
 	.controller('addStu', function($scope, $routeParams, $location, initStuForm, getYearSessions, previewImage, submitStuInfo, uploadPhoto) {
@@ -4806,7 +4806,7 @@ angular.module('homeApp.financeService', [])
 		}
 	})
 	.factory('initAddIncomeForm', function(financeAPI, $cookies) {
-		return function(price, s_id, stu, bus_id) {
+		return function(price, s_id, stu, bus_id, type) {
 			return {
 				// "in_id": '',
 				"school": {
@@ -4825,10 +4825,7 @@ angular.module('homeApp.financeService', [])
 					"stu_id": stu
 				},
 				"in_date": moment().format('YYYY-MM-DD'),
-				"type": {
-					"id": '',
-					"name": ''
-				},
+				"type": type,
 				"pay_method": {
 					"id": '',
 					"name": ''
@@ -5152,34 +5149,35 @@ angular.module('homeApp.finance')
 
 
 	.controller('addIncome', function($scope, $location, initAddIncomeForm, addIncome, getDate, fetchCourseByStu) {
-		var search = $location.search(),
+		var options = getDataFromStorage('options');
+    $scope.options = {
+      schools: options.schools,
+      bus_number: options.bus_number,
+      course: options.course,
+      pay_method: options.pay_method,
+      type: [{
+        "id": 1,
+        "name": '学费'
+      },{
+        "id": 2,
+        "name": '书费'
+      },{
+        "id": 3,
+        "name": '校车费'
+      },{
+        "id": 4,
+        "name": '其他'
+      }],
+      date: getDate
+    }
+
+    var search = $location.search(),
 			price = search.co,
 			s_id = search.s_id,
-			stu_id = search.stu;
-		$scope.formData = initAddIncomeForm(price, s_id, stu_id);
-
-		var options = getDataFromStorage('options');
-		$scope.options = {
-			schools: options.schools,
-			bus_number: options.bus_number,
-			course: options.course,
-			pay_method: options.pay_method,
-			type: [{
-				"id": 1,
-				"name": '学费'
-			},{
-				"id": 2,
-				"name": '书费'
-			},{
-				"id": 3,
-				"name": '校车费'
-			},{
-				"id": 4,
-				"name": '其他'
-			}],
-			date: getDate
-		}
-
+			stu_id = search.stu,
+      type = $scope.options[search.type - 1];
+		$scope.formData = initAddIncomeForm(price, s_id, stu_id, type);
+    
 		//控制学生信息的显示与隐藏
 		$scope.showStu = {
 			bus: 1,
