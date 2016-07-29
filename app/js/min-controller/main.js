@@ -5108,6 +5108,9 @@ angular.module('homeApp.finance')
 
 			deleteIncome(data, function(result) {
 				callbackAlert(result.status, '删除成功');
+        if(result.status == 1) {
+          window.location.reload();
+        }
 			})
 		}
 	})
