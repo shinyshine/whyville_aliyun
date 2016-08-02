@@ -24,8 +24,8 @@
 		    </thead>
 		    <tbody>
 		    	<tr ng-repeat="stu in stuCourse.students">
-		    		<td>{{stu.stu_id}}</td>
-		    		<td>{{stu.stu_name}}</td>
+		    		<td><a href="#/teaStuInfo/{{stu.stu_id}}">{{stu.stu_id}}</a></td>
+		    		<td><a href="#/teaStuInfo/{{stu.stu_id}}">{{stu.stu_name}}</a></td>
 		    		<td>{{stu.finish_num}}/{{stu.sum_count}}</td>
 		    		<td><a ng-class="{'warning': stu.callback_status == 0}" href="#/callback/{{stuCourse.courseInfo.course_id}}/{{stu.stu_id}}">回访</a></td>
 		    		<td><a href="#/report/{{stuCourse.courseInfo.course_id}}/{{stu.stu_id}}/" target="_blank">report</a></td>

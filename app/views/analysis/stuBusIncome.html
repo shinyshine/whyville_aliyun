@@ -33,7 +33,7 @@
 					<td>{{item.discount}}{{item.cut}}</td>
 					<td>{{item.pay_method}}-{{item.pay_to}}</td>
 					<td>{{item.pay_date}}</td> 
-					<td>{{item.total_price}}</td> 
+					<td>{{item.total_price | pay_or_not2}}</td> 
 				</tr>
 			</tbody>
 		</table>

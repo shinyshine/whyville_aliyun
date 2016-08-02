@@ -606,6 +606,15 @@ angular.module('homeApp')
 			return week[input-1];
 		}
 	})
+  .filter('pay_or_not2', function() {
+    return function(input) {
+      if(input <= 0) {
+        return '未付款'
+      }else{
+        return input;
+      }
+    }
+  })
 	.filter('pay_or_not', function() {
 		return function(input) {
 			if(input <= 0) {
