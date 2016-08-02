@@ -3652,3 +3652,31 @@ function getDataFromStorage(name) {
 
 	return data;
 }
+
+// get the currrent session
+function getCurSession() {
+    var curMonth = new Date().getMonth()+1;
+    var data = {};
+    if(2 =< curMonth <= 4) {
+        data = {
+            id: 1,
+            name: '春季班'
+        }
+    }else if(5 =< curMonth <= 7) {
+        data = {
+            id: 2,
+            name: '夏季班'
+        }
+    }else if(8 =< curMonth <= 10) {
+        data = {
+            id: 2,
+            name: '秋季班'
+        }
+    }else {
+        data = {
+            id: 4,
+            name: '冬季班'
+        }
+    }
+    return data;
+}

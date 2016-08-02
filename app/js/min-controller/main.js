@@ -608,7 +608,7 @@ angular.module('homeApp')
 	})
 	.filter('pay_or_not', function() {
 		return function(input) {
-			if(input == 0) {
+			if(input <= 0) {
 				return '未付款'
 			}
 		}
@@ -4251,10 +4251,7 @@ angular.module('homeApp.analysis')
 			"year": {
 				"name": moment().format('YYYY')
 			},
-			"session": {
-				"id": 0,
-				"name": '全部季度'
-			},
+			"session": getCurSession(),
 			"startTime": {
 				"name": moment().add('-1', 'months').format('YYYY-MM')
 			},
@@ -4303,10 +4300,7 @@ angular.module('homeApp.analysis')
 			"year": {
 				"name": moment().format('YYYY')
 			},
-			"session": {
-        "id": 0,
-        "name": '全部季度'
-      },
+			"session": getCurSession(),
 			"startTime": {
 				"name": moment().add('-1', 'months').format('YYYY-MM')
 			},
@@ -4359,10 +4353,7 @@ angular.module('homeApp.analysis')
 			"year": {
 				"name": moment().format('YYYY')
 			},
-			"session": {
-        "id": 0,
-        "name": '全部季度'
-      },
+			"session": getCurSession(),
 			"startTime": {
 				"name":moment().add('-1', 'months').format('YYYY-MM')
 			},
@@ -4416,10 +4407,7 @@ angular.module('homeApp.analysis')
 			"year": {
 				"name": moment().format('YYYY')
 			},
-			"session": {
-        "id": 0,
-        "name": '全部季度'
-      },
+			"session": getCurSession(),
 			"startTime": {
 				"name": moment().add('-1', 'months').format('YYYY-MM')
 			},
@@ -4558,10 +4546,7 @@ angular.module('homeApp.analysis')
 			"year": {
 				"name": moment().format('YYYY')
 			},
-			"session": {
-        "id": 0,
-        "name": '全部季度'
-      }
+			"session": getCurSession()
 		}
 		fetchSchInfo($scope.filter, function(result) {
 			$scope.data = result;
