@@ -3657,17 +3657,17 @@ function getDataFromStorage(name) {
 function getCurSession() {
     var curMonth = new Date().getMonth()+1;
     var data = {};
-    if(2 =< curMonth <= 4) {
+    if(2 =< curMonth && curMonth <= 4) {
         data = {
             id: 1,
             name: '春季班'
         }
-    }else if(5 =< curMonth <= 7) {
+    }else if(5 =< curMonth && curMonth <= 7) {
         data = {
             id: 2,
             name: '夏季班'
         }
-    }else if(8 =< curMonth <= 10) {
+    }else if(8 =< curMonth && curMonth <= 10) {
         data = {
             id: 2,
             name: '秋季班'
