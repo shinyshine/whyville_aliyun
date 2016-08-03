@@ -3580,7 +3580,7 @@ angular.module('homeApp.student')
 
 		var options = getDataFromStorage('options');
 		$scope.options = {
-			options: options.schools
+			schools: options.schools
 		}
 
 		$scope.pageChange = function() {
