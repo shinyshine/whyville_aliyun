@@ -3561,6 +3561,7 @@ angular.module('homeApp.student')
 				"id": 1,
 				"name": '全部校区'
 			},
+      "e_name": '',
 			"page": 1,
 			"num": num_per_page
 		}

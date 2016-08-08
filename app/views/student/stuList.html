@@ -1,6 +1,8 @@
 <div class="stu-container">
 	<div class="btns">
 		<div my-select select-options="options.schools" which-school="filter.selectSchool" send-filter="sendFilter()"></div>
+		<div class="search-btn" ng-click="sendFilter()"><a href="javascript:void(0);">搜索</a></div>
+		<div class="search-input"><input type="text" placeholder="搜索学生英文名" ng-model="filter.e_name" /></div>
 		<div class="add-btn"><a href="javascript:void(0);" ng-click="addStu()">添加学生</a></div>
 	</div>
 	<div class="table-container">
