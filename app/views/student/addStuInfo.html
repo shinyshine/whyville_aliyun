@@ -34,7 +34,7 @@
 		                <div class="input-text">{{stuInfo.stu_basic.stu_id}}</div>
 		            </div>
 		            <div class="input-row">
-		                <label>国籍</label>
+		                <label><span class="text-danger">*</span>国籍</label>
 		                <div class="input-text"><input type="text" placeholder="请输入国籍" ng-model="stuInfo.stu_basic.stu_country" required/></div>
 		            </div>
 		            <div class="input-row">
@@ -58,7 +58,7 @@
 		               <div class="input-text"><input type="text" name="" placeholder="请输入年级" ng-model="stuInfo.stu_basic.stu_grade"/></div>
 		            </div> 
 		            <div class="input-row">
-		                <label>宣传方式</label>
+		                <label><span class="text-danger">*</span>宣传方式</label>
 		                <div my-select select-options="options.publics" which-school="stuInfo.stu_basic.publics"></div>
 		            </div>
 		            <div class="input-row">

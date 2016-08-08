@@ -3702,8 +3702,9 @@ angular.module('homeApp.student')
 			$scope.$apply();
 		})
 		$scope.submitStuInfo = function(valid) {
-			if(valid) {
-				console.log($scope.stuInfo);
+      console.log($scope.stuInfo);
+      var data = $scope.stuInfo;
+			if(data.stu_basic.publics.id != '' && data.learn_info.stu_sch.id != '' && data.learn_info.stu_learn_year != '' && data.learn_info.stu_learn_season != '') {
 				submitStuInfo($scope.stuInfo, function(result) {
 					callbackAlert(result.status, '添加成功');
 					if(result.status == 1) {
