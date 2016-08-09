@@ -3598,7 +3598,11 @@ angular.module('homeApp.student')
 
 		
 
+    $scope.keyUpSearch = function(ev) {
+      if (ev.keyCode !== 13) return; 
 
+      $scope.sendFilter();
+    } 
 		$scope.sendFilter = function() {
 			$scope.filter.page = 1;
 			fecthStudents(function(result) {
