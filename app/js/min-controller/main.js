@@ -3771,6 +3771,12 @@ angular.module('homeApp.student')
 			$scope.stuInfo.stu_basic.stu_pic = API + picPath;
 			$scope.$apply();
 		})
+
+    //图片预览效果
+    previewImage(function(ext_name) {
+      $scope.stuInfo.stu_basic.stu_pic.ext_name = ext_name;
+      $scope.$apply();
+    })
 		
 		$scope.submitStuInfo = function() {
 			modifyStuInfo($scope.stuInfo, function(result) {
