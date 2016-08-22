@@ -884,8 +884,6 @@ angular.module('publicService', [])
 			getData(API.fetchAllJobs, callBack, data);
 		}
 	})
-
-
 'use strict';
 angular.module('homeApp.home', ['ngRoute', 'homeApp.homeService'])
 	.config(function($routeProvider) {
@@ -1195,52 +1193,6 @@ angular.module('homeApp.homeService', [])
 	})
 'use strict';
 angular.module('homeApp.home')
-	// .controller('login', function($scope, $location, $cookies, login, fetchOptions, fetchPlanCouOp, birthAlert) {
-	// 	$scope.user = {
-	// 		"user_id": '',
-	// 		"user_pwd": ''
-	// 	}
-
-	// 	$scope.login = function(valid) {
-	// 		if(valid) {
-	// 			login($scope.user, callBack);
-	// 		}else{
-	// 			alert('请完善登录信息');
-	// 		}
-			
-	// 	}
-
-	// 	var callBack = function(result) {
-	// 		var status = result.status;
-	// 		if(status == 1) {
-
-	// 			// $cookies.put('authority', result.authority);
-	// 			$cookies.put('user_name', result.user_name);
-	// 			$cookies.put('sch_name', result.sch_name);
-	// 			//$cookies.put('user_id', result.user_id);
-	// 			// $cookies.put('sch_id', result.sch_id);
-	// 			// $cookies.put('type', result.type);
-	// 			// 将options存入本地存储
-	// 			console.log($scope);
-	// 			birthAlert('', function(result) {
-	// 		      console.log(result);
-	// 		      $scope.birthday = result.status;
-	// 		      $scope.$apply();
-	// 		    })
-	// 			fetchOptions('', function(result) {
-	// 				localStorage.setItem('options', JSON.stringify(result));
-	// 				$location.path('' + $cookies.get('user_id'));
-	// 			})
-
-	// 			fetchPlanCouOp('', function(result) {
-	// 				localStorage.setItem('courses', JSON.stringify(result));
-	// 			})
-
-	// 		}else{
-	// 			alert('用户名或密码错误');
-	// 		}
-	// 	}
-	// })
 	.controller('modifyPwd', function($scope, $location, $cookies, modifyPwd) {
 		$scope.postData = {
 			"new_pwd":'',
@@ -2361,7 +2313,7 @@ angular.module('homeApp.operating')
 		}
 	})
 'use strict';
-angular.module('homeApp.student', ['ngRoute', 'homeApp.studentService'])
+angular.module('homeApp.student', ['ngRoute', 'homeApp.studentService', 'publicService'])
 	.config(function($routeProvider) {
 		$routeProvider
 			.when('/stuList', {
@@ -3727,7 +3679,7 @@ angular.module('homeApp.student')
 		}
 	})
 
-	.controller('modifyStuInfo', function($scope, $timeout, $location, $routeParams, fetchStuInfoById, getYearSessions, modifyStuInfo) {
+	.controller('modifyStuInfo', function($scope, $timeout, $location, $routeParams, fetchStuInfoById, getYearSessions, modifyStuInfo, previewImage) {
 		$scope.sidebar = [{
 			"name": '基本信息',
 			"link": '#basic',
@@ -3767,21 +3719,20 @@ angular.module('homeApp.student')
 		fetchStuInfoById($routeParams, function(result) {
 			$scope.stuInfo = result;
 			var picPath = $scope.stuInfo.stu_basic.stu_pic;
-      // if(picPath != 'get_imgnull') {
-      //   $scope.stuInfo.stu_basic.stu_pic = API + picPath;
-      // }else {
-      //   $scope.stuInfo.stu_basic.stu_pic = '';
-      // }
-      $scope.stuInfo.stu_basic.stu_pic = API + picPath;
+      if(picPath != 'get_imgnull') {
+        $scope.stuInfo.stu_basic.stu_pic = API + picPath;
+      }else {
+        $scope.stuInfo.stu_basic.stu_pic = '';
+      }
 			
 			$scope.$apply();
 		})
 
     //图片预览效果
-    // previewImage(function(ext_name) {
-    //   $scope.stuInfo.stu_basic.stu_pic.ext_name = ext_name;
-    //   $scope.$apply();
-    // })
+    previewImage(function(ext_name) {
+      $scope.stuInfo.stu_basic.stu_pic.ext_name = ext_name;
+      $scope.$apply();
+    })
 		
 		$scope.submitStuInfo = function() {
 			modifyStuInfo($scope.stuInfo, function(result) {
@@ -4121,43 +4072,43 @@ angular.module('homeApp.educate')
 		})
 	})
 'use strict';
- angular.module('homeApp.analysis', ['ngRoute', 'homeApp.analysisService'])
- 	.config(function($routeProvider) {
- 		$routeProvider
- 			.when('/teaSalary', {
- 				templateUrl: 'views/analysis/teaSalary.html',
- 				controller: 'teaSalary'
- 			})
- 			//生源校区
- 			.when('/schInfo', {
- 				templateUrl: 'views/analysis/schInfo.html',
- 				controller: 'schInfo'
- 			})
- 			.when('/stuFeeIncome/:course_id/:type_id', {
- 				templateUrl: 'views/analysis/stuFeeIncome.html',
- 				controller: 'stuFeeIncome'
- 			})
- 			.when('/schFeeIncome', {
- 				templateUrl: 'views/analysis/schFeeIncome.html',
- 				controller: 'schFeeIncome'
- 			})
- 			.when('/stuBookIncome/:course_id/:type_id', {
- 				templateUrl: 'views/analysis/stuBookIncome.html',
- 				controller: 'stuBookIncome'
- 			})
- 			.when('/schBookIncome', {
- 				templateUrl: 'views/analysis/schBookIncome.html',
- 				controller: 'schBookIncome'
- 			})
- 			.when('/stuBusIncome', {
- 				templateUrl: 'views/analysis/stuBusIncome.html',
- 				controller: 'stuBusIncome'
- 			})
- 			.when('/schBusIncome', {
- 				templateUrl: 'views/analysis/schBusIncome.html',
- 				controller: 'schBusIncome'
- 			})
- 	})
+angular.module('homeApp.analysis', ['ngRoute', 'homeApp.analysisService'])
+  .config(function($routeProvider) {
+	$routeProvider
+		.when('/teaSalary', {
+			templateUrl: 'views/analysis/teaSalary.html',
+			controller: 'teaSalary'
+		})
+		//生源校区
+		.when('/schInfo', {
+			templateUrl: 'views/analysis/schInfo.html',
+			controller: 'schInfo'
+		})
+		.when('/stuFeeIncome/:course_id/:type_id', {
+			templateUrl: 'views/analysis/stuFeeIncome.html',
+			controller: 'stuFeeIncome'
+		})
+		.when('/schFeeIncome', {
+			templateUrl: 'views/analysis/schFeeIncome.html',
+			controller: 'schFeeIncome'
+		})
+		.when('/stuBookIncome/:course_id/:type_id', {
+			templateUrl: 'views/analysis/stuBookIncome.html',
+			controller: 'stuBookIncome'
+		})
+		.when('/schBookIncome', {
+			templateUrl: 'views/analysis/schBookIncome.html',
+			controller: 'schBookIncome'
+		})
+		.when('/stuBusIncome', {
+			templateUrl: 'views/analysis/stuBusIncome.html',
+			controller: 'stuBusIncome'
+		})
+		.when('/schBusIncome', {
+			templateUrl: 'views/analysis/schBusIncome.html',
+			controller: 'schBusIncome'
+		})
+})
 
 'use strict';
 angular.module('homeApp.analysisService', [])
