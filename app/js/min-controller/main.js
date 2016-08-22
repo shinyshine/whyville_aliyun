@@ -3765,10 +3765,14 @@ angular.module('homeApp.student')
 		}
 		
 		fetchStuInfoById($routeParams, function(result) {
-			console.log(result);
 			$scope.stuInfo = result;
 			var picPath = $scope.stuInfo.stu_basic.stu_pic;
-			$scope.stuInfo.stu_basic.stu_pic = API + picPath;
+      if(picPath != 'get_imgnull') {
+        $scope.stuInfo.stu_basic.stu_pic = API + picPath;
+      }else {
+        $scope.stuInfo.stu_basic.stu_pic = '';
+      }
+			
 			$scope.$apply();
 		})
 
