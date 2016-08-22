@@ -3727,7 +3727,7 @@ angular.module('homeApp.student')
 		}
 	})
 
-	.controller('modifyStuInfo', function($scope, $timeout, $location, $routeParams, fetchStuInfoById, getYearSessions, modifyStuInfo) {
+	.controller('modifyStuInfo', function($scope, $timeout, $location, $routeParams, fetchStuInfoById, getYearSessions, modifyStuInfo, previewimage) {
 		$scope.sidebar = [{
 			"name": '基本信息',
 			"link": '#basic',
