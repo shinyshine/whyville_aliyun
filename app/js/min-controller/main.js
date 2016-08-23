@@ -3605,7 +3605,6 @@ angular.module('homeApp.student')
 			$scope.stuInfo.stu_basic.stu_pic = API + picPath;
 			console.log(result);
 			$scope.$apply();
-      console.log($scope.stuInfo.stu_basic.stu_pic);
 		});
 
 		$scope.pay = function(select_id, price, status, type) {
@@ -3720,14 +3719,9 @@ angular.module('homeApp.student')
 		fetchStuInfoById($routeParams, function(result) {
 			$scope.stuInfo = result;
 			var picPath = $scope.stuInfo.stu_basic.stu_pic;
-      console.log(picPath);
-      // if(picPath.indexOf('get_imagenull') != -1) {
-      //   $scope.stuInfo.stu_basic.stu_pic = API + picPath;
-      // }else {
-      //   $scope.stuInfo.stu_basic.stu_pic = '';
-      // }
-
-      $scope.stuInfo.stu_basic.stu_pic = API + picPath;
+      if(picPath != null) {
+        $scope.stuInfo.stu_basic.stu_pic = API + picPath;
+      }
 			
 			$scope.$apply();
 		})
