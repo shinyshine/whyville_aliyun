@@ -3603,8 +3603,9 @@ angular.module('homeApp.student')
 			$scope.stuInfo = result;
 			var picPath = $scope.stuInfo.stu_basic.stu_pic;
 			$scope.stuInfo.stu_basic.stu_pic = API + picPath;
-			console.log(result)
+			console.log(result);
 			$scope.$apply();
+      console.log($scope.stuInfo.stu_basic.stu_pic);
 		});
 
 		$scope.pay = function(select_id, price, status, type) {
