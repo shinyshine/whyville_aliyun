@@ -3720,11 +3720,13 @@ angular.module('homeApp.student')
 			$scope.stuInfo = result;
 			var picPath = $scope.stuInfo.stu_basic.stu_pic;
       console.log(picPath);
-      if(picPath.indexOf('get_imagenull') != -1) {
-        $scope.stuInfo.stu_basic.stu_pic = API + picPath;
-      }else {
-        $scope.stuInfo.stu_basic.stu_pic = '';
-      }
+      // if(picPath.indexOf('get_imagenull') != -1) {
+      //   $scope.stuInfo.stu_basic.stu_pic = API + picPath;
+      // }else {
+      //   $scope.stuInfo.stu_basic.stu_pic = '';
+      // }
+
+      $scope.stuInfo.stu_basic.stu_pic = API + picPath;
 			
 			$scope.$apply();
 		})
