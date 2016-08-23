@@ -3679,7 +3679,7 @@ angular.module('homeApp.student')
 		}
 	})
 
-	.controller('modifyStuInfo', function($scope, $timeout, $location, $routeParams, fetchStuInfoById, getYearSessions, modifyStuInfo, previewImage) {
+	.controller('modifyStuInfo', function($scope, $timeout, $location, $routeParams, previewImage, fetchStuInfoById, getYearSessions, modifyStuInfo) {
 		$scope.sidebar = [{
 			"name": '基本信息',
 			"link": '#basic',
@@ -3719,7 +3719,7 @@ angular.module('homeApp.student')
 		fetchStuInfoById($routeParams, function(result) {
 			$scope.stuInfo = result;
 			var picPath = $scope.stuInfo.stu_basic.stu_pic;
-      if(picPath != 'get_imgnull') {
+      if(picPath.indexOf('get_imagenull') != -1) {
         $scope.stuInfo.stu_basic.stu_pic = API + picPath;
       }else {
         $scope.stuInfo.stu_basic.stu_pic = '';
