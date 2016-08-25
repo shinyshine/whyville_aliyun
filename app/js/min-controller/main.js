@@ -3270,6 +3270,7 @@ angular.module('homeApp.student')
 			submitReport($scope.data, function(result) {
 				if(result.status == 1) {
 					alert('操作成功');
+          window.location.reload();
 				}else{
 					alert('请完善信息');
 				}
@@ -4048,6 +4049,9 @@ angular.module('homeApp.educate')
 			$scope.data.course_id = $routeParams.course_id;
 			submitReport($scope.data, function(result) {
 				callbackAlert(result.status);
+        if(result.status == 1) {
+          window.location.reload();
+        }
 			})
 		}
 	})
