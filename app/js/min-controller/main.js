@@ -1362,7 +1362,10 @@ angular.module('homeApp.home')
 	    		console.log($scope.appForm);
 				addApp($scope.appForm, function(result) {
 	    			if(result.status == 1) {
-	    				window.location.href = ROOT + 'applications';
+	    				// window.location.href = ROOT + 'applications';
+              $scope.apply(function() {
+                $location.path('/applications');
+              })
 	    			}
 	    		})
 	    	}
@@ -1409,7 +1412,10 @@ angular.module('homeApp.home')
     		}
     		modifyApp(data, function(result) {
     			callbackAlert(result.status, '修改成功');
-    			window.location.href = ROOT + 'applications'
+    			// window.location.href = ROOT + 'applications'
+          $scope.apply(function() {
+            $location.path('/applications');
+          })
     		})
     	}
     })
@@ -1434,7 +1440,10 @@ angular.module('homeApp.home')
     		acceptApp($scope.postData, function(result) {
     			callbackAlert(result.status, '审批成功');
     			if(result.status == 1) {
-    				window.location.href = ROOT + 'applications';
+    				// window.location.href = ROOT + 'applications';
+            $scope.apply(function() {
+              $location.path('/applications');
+            })
     			}
     		})
     	}
@@ -1666,7 +1675,10 @@ angular.module('homeApp.home')
 				submitNotice($scope.formData, function(result) {
 					callbackAlert(result.status, '添加成功');
 					if (result.status) {
-						window.location.href = ROOT + $cookies.get('user_id');
+						// window.location.href = ROOT + $cookies.get('user_id');
+            $scope.apply(function() {
+              $location.path('/' + $cookies.get('user_id'));
+            })
 					};
 				})
 			}else{
@@ -1711,7 +1723,10 @@ angular.module('homeApp.home')
 			modifyNotice($scope.formData, function(result) {
 				callbackAlert(result.status, '修改成功');
 				if(result.status) {
-					window.location.href = ROOT + $cookies.get('user_id');
+					// window.location.href = ROOT + $cookies.get('user_id');
+          $scope.$apply(function() {
+            $location.path('/' + $cookies.get('user_id'));
+          })
 				}
 			})
 		}
@@ -1756,7 +1771,10 @@ angular.module('homeApp.home')
 				submitSche($scope.formData, function(result) {
 					callbackAlert(result.status, '添加成功');
 					if (result.status) {
-						window.location.href = ROOT + $cookies.get('user_id');
+						// window.location.href = ROOT + $cookies.get('user_id');
+            $scope.$apply(function() {
+              $location.path('/' + $cookies.get('user_id'));
+            })
 					};
 				})
 			}
@@ -1800,7 +1818,10 @@ angular.module('homeApp.home')
 			modifySche($scope.formData, function(result) {
 				callbackAlert(result.status, '修改成功');
 				if(result.status) {
-					window.location.href = ROOT + $cookies.get('user_id');
+					// window.location.href = ROOT + $cookies.get('user_id');
+          $scope.$apply(function() {
+            $location.path('/' + $cookies.get('user_id'));
+          })
 				}
 			})
 		}
@@ -2291,11 +2312,14 @@ angular.module('homeApp.operating')
 		}
 		$scope.submitData = function() {
 			addSchool($scope.formData, function(result) {
-				window.location.href = ROOT + 'schoolManage';
+				// window.location.href = ROOT + 'schoolManage';
+        $scope.$apply(function() {
+          $location.path('/schoolManage');
+        })
 			})
 		}
 	})
-	.controller('modifySchool', function($scope, $routeParams, fetchSchById, modifySchInfo) {
+	.controller('modifySchool', function($scope, $location, $routeParams, fetchSchById, modifySchInfo) {
 		//$routeParams = {"sch_id": "1"};
 		fetchSchById($routeParams, function(result) {
 			$scope.schInfo = result.schInfo;
@@ -2307,7 +2331,10 @@ angular.module('homeApp.operating')
 			$scope.schInfo.sch_id = $routeParams.sch_id;
 			modifySchInfo($scope.schInfo, function(result) {
 				if (result.status == 1) {
-					window.location.href = ROOT + 'schoolManage';
+					// window.location.href = ROOT + 'schoolManage';
+          $scope.$apply(function() {
+            $location.path('/schoolManage');
+          })
 				}
 			})
 		}
@@ -3107,7 +3134,7 @@ angular.module('homeApp.student')
 			})
 		}
 	})
-	.controller('addCourse', function($scope, fetchPlanCouOp, postCourse) {
+	.controller('addCourse', function($scope, $location,  fetchPlanCouOp, postCourse) {
 		var options = localStorage.getItem('options');
 		options = JSON.parse(options);
 
@@ -3133,7 +3160,10 @@ angular.module('homeApp.student')
 				postCourse($scope.course, function(result) {
 					callbackAlert(result.status, '添加成功');
 					if(result.status == 1) {
-						window.location.href = ROOT + 'planCourse';
+						// window.location.href = ROOT + 'planCourse';
+            $scope.$apply(function() {
+              $location.path('/planCourse');
+            })
 					}
 
 					//update data in localstorage
@@ -3144,7 +3174,7 @@ angular.module('homeApp.student')
 			}
 		}
 	})
-	.controller('planCourse', function($scope, fetchPlanCouOp, initPlanForm, getYearSessions, getWeekDays, planCourse) {
+	.controller('planCourse', function($scope, $location, fetchPlanCouOp, initPlanForm, getYearSessions, getWeekDays, planCourse) {
 		var courses = localStorage.getItem('courses');
 		courses = JSON.parse(courses);
 		$scope.options = {
@@ -3177,7 +3207,10 @@ angular.module('homeApp.student')
 				planCourse($scope.course, function(result) {
 					callbackAlert(result.status, '成功排课');
 					if(result.status == 1) {
-						window.location.href = ROOT + 'courseList';
+						// window.location.href = ROOT + 'courseList';
+            $scope.$apply(function() {
+              $location.path('/courseList');
+            })
 					}
 				})
 			}else {
@@ -3185,7 +3218,7 @@ angular.module('homeApp.student')
 			}
 		}
 	})
-	.controller('addStuToCourse', function($scope, $routeParams, initAddToCourseForm, fetchCourseInfo, addStuToCourse, getStuName) {
+	.controller('addStuToCourse', function($scope, $location, $routeParams, initAddToCourseForm, fetchCourseInfo, addStuToCourse, getStuName) {
 		fetchCourseInfo($routeParams, function(result) {
 			console.log(result);
 			$scope.courseInfo = result;
@@ -3229,7 +3262,10 @@ angular.module('homeApp.student')
 			addStuToCourse($scope.formData, function(result) {
 				callbackAlert(result.status, '添加成功');
 				if(result.status == 1) {
-					window.location.href = ROOT + 'courseStuList/' + $routeParams.course_id;
+					// window.location.href = ROOT + 'courseStuList/' + $routeParams.course_id;
+          $scope.$apply(function() {
+            $location.path('/courseStuList/' + $routeParams.course_id);
+          })
 				}
 			})
 		}
@@ -3403,7 +3439,10 @@ angular.module('homeApp.student')
 				addStuToBus($scope.formData, function(result) {
 					callbackAlert(result.status);
           if(result.status == 1) {
-            window.location.href = ROOT + 'stuBusList';
+            // window.location.href = ROOT + 'stuBusList';
+            $scope.$apply(function() {
+              $location.path('/stuBusList');
+            })
           }
 				})
 			}else{
@@ -5198,9 +5237,15 @@ angular.module('homeApp.finance')
 				callbackAlert(result.status, '成功添加收入');
         if(result.status == 1) {
           if(!s_id && !stu_id) {
-            window.location.href = ROOT + 'incomeList';
+            //window.location.href = ROOT + 'incomeList';
+            $scope.apply(function() {
+              $location.path('/incomeList');
+            })
           }else {
-            window.location.href = ROOT + 'stuInfo/' + stu_id;
+            $scope.apply(function() {
+              $location.path('/stuInfo' + stu_id);
+            })
+            //window.location.href = ROOT + 'stuInfo/' + stu_id;
           }
         }
         
@@ -5289,7 +5334,7 @@ angular.module('homeApp.finance')
 			})
 		}
 	})
-	.controller('modPay', function($scope, $routeParams, fetchPayById, modPay) {
+	.controller('modPay', function($scope, $location, $routeParams, fetchPayById, modPay) {
 
 		var options = getDataFromStorage('options');
 		$scope.options = {
@@ -5308,7 +5353,11 @@ angular.module('homeApp.finance')
 			modPay($scope.formData, function(result) {
 				callbackAlert(result.status, '修改成功');
 				if(result.status == 1) {
-					window.location.href = ROOT + 'payList';
+					//window.location.href = ROOT + 'payList';
+          $scope.apply(function() {
+            $location.path('/payList');
+          })
+
 				}
 			})
 		}
@@ -5328,7 +5377,10 @@ angular.module('homeApp.finance')
 			addPay($scope.formData, function(result) {
 				callbackAlert(result.status, '成功添加支出');
 				if(result.status == 1) {
-					window.location.href = ROOT + 'payList';
+					// window.location.href = ROOT + 'payList';
+          $scope.apply(function() {
+            $location.path('/payList');
+          })
 				}
 			})
 		}
