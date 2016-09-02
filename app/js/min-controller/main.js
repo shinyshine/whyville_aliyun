@@ -3737,7 +3737,8 @@ angular.module('homeApp.student')
 			modifyStuInfo($scope.stuInfo, function(result) {
 				callbackAlert(result.status, '修改成功');
 				if(result.status == 1) {
-					window.location.href = ROOT + 'stuList';
+					//window.location.href = ROOT + 'stuList';
+          $location.path('/stuList');
 				}
 			})
 		}
