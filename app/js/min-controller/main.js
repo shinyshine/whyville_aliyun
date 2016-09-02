@@ -1363,7 +1363,7 @@ angular.module('homeApp.home')
 				addApp($scope.appForm, function(result) {
 	    			if(result.status == 1) {
 	    				// window.location.href = ROOT + 'applications';
-              $scope.apply(function() {
+              $scope.$apply(function() {
                 $location.path('/applications');
               })
 	    			}
@@ -1413,7 +1413,7 @@ angular.module('homeApp.home')
     		modifyApp(data, function(result) {
     			callbackAlert(result.status, '修改成功');
     			// window.location.href = ROOT + 'applications'
-          $scope.apply(function() {
+          $scope.$apply(function() {
             $location.path('/applications');
           })
     		})
@@ -1441,7 +1441,7 @@ angular.module('homeApp.home')
     			callbackAlert(result.status, '审批成功');
     			if(result.status == 1) {
     				// window.location.href = ROOT + 'applications';
-            $scope.apply(function() {
+            $scope.$apply(function() {
               $location.path('/applications');
             })
     			}
@@ -1676,7 +1676,7 @@ angular.module('homeApp.home')
 					callbackAlert(result.status, '添加成功');
 					if (result.status) {
 						// window.location.href = ROOT + $cookies.get('user_id');
-            $scope.apply(function() {
+            $scope.$apply(function() {
               $location.path('/' + $cookies.get('user_id'));
             })
 					};
@@ -5238,7 +5238,7 @@ angular.module('homeApp.finance')
         if(result.status == 1) {
           if(!s_id && !stu_id) {
             //window.location.href = ROOT + 'incomeList';
-            $scope.apply(function() {
+            $scope.$apply(function() {
               $location.path('/incomeList');
             })
           }else {
@@ -5354,7 +5354,7 @@ angular.module('homeApp.finance')
 				callbackAlert(result.status, '修改成功');
 				if(result.status == 1) {
 					//window.location.href = ROOT + 'payList';
-          $scope.apply(function() {
+          $scope.$apply(function() {
             $location.path('/payList');
           })
 
@@ -5378,7 +5378,7 @@ angular.module('homeApp.finance')
 				callbackAlert(result.status, '成功添加支出');
 				if(result.status == 1) {
 					// window.location.href = ROOT + 'payList';
-          $scope.apply(function() {
+          $scope.$apply(function() {
             $location.path('/payList');
           })
 				}
