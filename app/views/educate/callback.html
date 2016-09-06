@@ -18,11 +18,11 @@
                 <label>Please enter the latest callback:</label>
                 <textarea ng-model="postData.new_callback"></textarea>
             </div>
-            <div class="submit-btn"><button type="button" ng-click="submitCallback()">保存</button></div>
+            <div class="submit-btn"><button type="button" ng-click="submitCallback()">Save</button></div>
 			<div class="callback-item" ng-repeat="callback in callback.callbacks">
                 <label>第{{($index+1)*10}}节课记录</label>
                 <textarea ng-model="callback.teacher_comment"></textarea>
-                <div class="submit-btn"><button type="button" ng-click="modify($index)">保存</button></div>
+                <div class="submit-btn"><button type="button" ng-click="modify($index)">Save</button></div>
             </div>
             
 		</div>		

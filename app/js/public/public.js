@@ -3660,22 +3660,22 @@ function getCurSession() {
     if(curMonth >= 2 && curMonth <= 4) {
         data = {
             id: 1,
-            name: '春季班'
+            name: 'Spring Term'
         }
     }else if(curMonth >= 5 && curMonth <= 7) {
         data = {
             id: 2,
-            name: '夏季班'
+            name: 'Summer School'
         }
     }else if(curMonth >= 8 && curMonth <= 10) {
         data = {
             id: 3,
-            name: '秋季班'
+            name: 'Fall Term'
         }
     }else {
         data = {
             id: 4,
-            name: '冬季班'
+            name: 'Winter Camp'
         }
     }
     return data;

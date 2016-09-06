@@ -31,23 +31,23 @@
 			<nav class="nav-container">
 				<ul id="nav">
 					<li role="presentation" class="active-li" ng-click="underline(0)">
-						<a href="#/{{user.id}}">首页</a>
+						<a href="#/{{user.id}}">Home Page</a>
 						<ul>
 							<li ng-click="underline(0)"><a href="#/{{user.id}}">月历</a></li>
 							<li ng-click="underline(0)"><a href="#/applications">申请表</a></li>
 						</ul>
 					</li>
 					<li role="presentation" ng-click="underline(1)">
-						<a href="#/stuList">学生管理</a>
+						<a href="#/stuList">Student Management</a>
 						<ul>
 							<li ng-click="underline(1)"><a href="#/stuList">学生基本信息</a></li>
 							<li ng-click="underline(1)"><a href="#/courseList">课程信息</a></li>
 							<li ng-click="underline(1)"><a href="#/stuBusList">司机表</a></li>
 						</ul>
 					</li>
-					<li role="presentation" ng-click="underline(2)"><a href="#/eduCourseList">教师管理</a></li>
+					<li role="presentation" ng-click="underline(2)"><a href="#/eduCourseList">Teacher Management</a></li>
 					<li role="presentation" ng-click="underline(3)" >
-						<a href="#/employees">经营管理<span class="birth-alert" ng-hide="!birthday">生日</span></a>
+						<a href="#/employees">Head Office Only<span class="birth-alert" ng-hide="!birthday">生日</span></a>
 						<ul>
 							<li ng-click="underline(3)"><a href="#/employees">员工管理</a></li>
 							<li ng-click="underline(3)"><a href="#/emp_birth">员工生日</a></li>
@@ -55,7 +55,7 @@
 						</ul>
 					</li>
 					<li role="presentation" ng-click="underline(4)">
-						<a href="#/payList">财务管理</a>
+						<a href="#/payList">Financial</a>
 						<ul>
 							<li ng-click="underline(4)"><a href="#/payList">支出记录信息</a></li>
 							<li ng-click="underline(4)"><a href="#/incomeList">收入记录信息</a></li>
@@ -65,7 +65,7 @@
 						</ul>
 					</li>
 					<li role="presentation" ng-click="underline(5)">
-						<a href="#">统计分析</a>
+						<a href="#">Statistics</a>
 						<ul>
 							<li ng-click="underline(5)"><a href="#/teaSalary">教师工资统计</a></li>
 							<li ng-click="underline(5)"><a href="#/schInfo">校区情况</a></li>
@@ -75,11 +75,11 @@
 						</ul>
 					</li>
 					<li role="presentation" ng-click="underline(6)">
-						<a href="#">个人中心</a>
+						<a href="#">Application</a>
 						<ul>
-							<li ng-click="underline(6)"><a href="#/login">登录</a></li>
-							<li ng-click="underline(6)"><a href="#/modifyPwd">修改密码</a></li>
-							<li><a href="javascript:void(0);" ng-click="logOut()">退出登录</a></li>
+							<li ng-click="underline(6)"><a href="#/login">Log In</a></li>
+							<li ng-click="underline(6)"><a href="#/modifyPwd">Password Change</a></li>
+							<li><a href="javascript:void(0);" ng-click="logOut()">Log Out</a></li>
 						</ul>
 					</li>
 				</ul>

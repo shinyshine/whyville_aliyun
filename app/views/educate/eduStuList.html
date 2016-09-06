@@ -1,30 +1,30 @@
 <div class="edu-container">
 	<div class="info-header">
-		<span>课程名称: {{data.courseInfo.course_name}}</span>
-		<span>学期: {{data.courseInfo.course_year}} {{data.courseInfo.course_session}}</span>
-		<span>时间: {{data.courseInfo.course_weekday | numberToWeek}} {{data.courseInfo.start_time}}~{{data.courseInfo.end_time}}</span>
+		<span>Course: {{data.courseInfo.course_name}}</span>
+		<span>Term: {{data.courseInfo.course_year}} {{data.courseInfo.course_session}}</span>
+		<span>Schedule: {{data.courseInfo.course_weekday | numberToWeek}} {{data.courseInfo.start_time}}~{{data.courseInfo.end_time}}</span>
 	</div>
 	<div class="btns">
-	    <div class="add-btn"><a href="#/todayClass/{{data.courseInfo.course_id}}">今日课堂</a></div>
+	    <div class="add-btn"><a href="#/todayClass/{{data.courseInfo.course_id}}">Daily Record</a></div>
 	</div>
 	<div class="table-container">
 		<table class="table table-striped" id="table">
 			<thead>
 				<tr>
-					<th width="200">学号</th>
-					<th width="200">姓名</th>
-					<th width="200">上课次数</th>
-					<!-- <th width="200">初次成绩录入</th> -->
-					<th width="200">callback</th>
-					<th width="200">report</th>
+					<th width="200">Student No.</th>
+					<th width="200">Chinese Name</th>
+					<th width="200">English Name</th>
+					<th width="200">Class Times</th>
+					<th width="200">Callback</th>
+					<th width="200">Report</th>
 				</tr>		
 		    </thead>
 		    <tbody>
 		    	<tr ng-repeat="stu in data.stuList">
 		    		<td>{{stu.stu_id}}</td>
 		    		<td><a href="#/teaStuInfo/{{stu.stu_id}}">{{stu.stu_name}}</td>
+		    		<td><a href="#/teaStuInfo/{{stu.stu_id}}">{{stu.stu_eng_name}}</td>
 		    		<td>{{stu.finish_num}}/{{stu.sum_count}}</td>
-		    		<!-- <td ><span ng-class="{'warning': !stu.first_state}">{{stu.first_state | checkEnter}}</span></td> -->
 		    		<td><a ng-class="{'warning': stu.callback_status == 0}" href="#/teaCallback/{{data.courseInfo.course_id}}/{{stu.stu_id}}">callback</a></td>
 		    		<td><a href="#/teaReport/{{data.courseInfo.course_id}}/{{stu.stu_id}}" target="_blank">report</a></td>
 		    	</tr>

@@ -526,7 +526,7 @@ angular.module('homeApp')
 	.filter("hasNotFinished", function() {
 		return function(input) {
 			if(!input) {
-				return '未填写'
+				return 'Unfilled'
 			}else{
 				return input;
 			}
@@ -535,7 +535,7 @@ angular.module('homeApp')
 	.filter('editing', function() {
 		return function(input, status) {
 			if(status) {
-				return '完成';
+				return 'Finish';
 			}else {
 				return input;
 			}
@@ -606,7 +606,7 @@ angular.module('homeApp')
 
 	.filter('numberToWeek', function() {
 		return function(input) {
-			var week = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期天'];
+			var week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 			return week[input-1];
 		}
 	})
@@ -731,25 +731,25 @@ angular.module('publicService', [])
 	.factory('getWeekDays', function() {
 		return [{
 			"id": '1',
-			"name": '星期一'
+			"name": 'Monday'
 		},{
 			"id": '2',
-			"name": '星期二'
+			"name": 'Tuesday'
 		},{
 			"id": '3',
-			"name": '星期三'
+			"name": 'Wednesday'
 		},{
 			"id": '4',
-			"name": '星期四'
+			"name": 'Thursday'
 		},{
 			"id": '5',
-			"name": '星期五'
+			"name": 'Friday'
 		},{
 			"id": '6',
-			"name": '星期六'
+			"name": 'Saturday'
 		},{
 			"id": '7',
-			"name": '星期日'
+			"name": 'Sunday'
 		}]
 	})
 
@@ -835,7 +835,7 @@ angular.module('publicService', [])
 		}
 		return {
 			"year": year,
-			"session": ['春季班', '夏季班', '秋季班', '冬季班'],
+			"session": ['Spring Term', 'Summer School', 'Fall Term', 'Winter Camp'],
 			"sessions": [{
 				"id": 0,
 				"name": '全部季度'
@@ -2581,33 +2581,7 @@ angular.module('homeApp.studentService', [])
 					"stu_learn_year": '',
 					"stu_learn_season": '',
 					"stu_learn_status": 1,
-					// "courses": [{
-					// 	"course_name": '',
-					// 	"course_teacher": '',
-					// 	"course_week_time": '', //星期
-					// 	"course_time": '', //上课时间点
-					// 	"course_remark": '' //备注
-					// }]
 				},
-			// 	"school_bus": [{
-			// 		"weekday": '',
-			// 		"pick_time": '', //接时间
-			// 		"pick_ads": '', //接送地点
-			// 		"back_time": '', // 送时间
-			// 		"times_per_week": '', //一周几次
-			// 		"per_price": '', //金额
-			// 		"sch_bus_remark": '' //备注
-			// 	}],
-			// 	"course_fee": [{
-			// 		"course_name": '', //课程名称
-			// 		"sum_count": '', //上课总次数
-			// 		"per_price": '', //每次价格
-			// 		"discount": '', //折扣
-			// 		"cut": '', //减价
-			// 		"fee_or_not": '', //是否付款学费
-			// 		"book_fee": '',
-			// 		"book_fee_or_not": '' //是否付款书费
-			// 	}]
 		    }
 
 		}
@@ -4105,9 +4079,6 @@ angular.module('homeApp.educate')
 			"name": '基本信息',
 			"link": '#basic',
 			"default": 1
-		},{
-			"name": '家长信息',
-			"link": '#parent'
 		}]
 		fetchStuInfoById($routeParams, function(result) {
 			console.log(result);

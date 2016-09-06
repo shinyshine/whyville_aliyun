@@ -1,22 +1,22 @@
 <div class="stu-container">
 	<div class="info-header">
-		<span>课程名称: {{courseStuInfo.courseInfo.course_name}}</span>
-		<span>老师: {{courseStuInfo.courseInfo.course_teacher}}</span>
-		<span>学期: {{courseStuInfo.courseInfo.course_session}} {{courseStuInfo.courseInfo.course_year}}</span>
-		<span>时间: {{courseStuInfo.courseInfo.course_weekday | numberToWeek}} {{courseStuInfo.courseInfo.start_time}}~{{courseStuInfo.courseInfo.end_time}}</span>
+		<span>Course: {{courseStuInfo.courseInfo.course_name}}</span>
+		<span>Teacher: {{courseStuInfo.courseInfo.course_teacher}}</span>
+		<span>Term: {{courseStuInfo.courseInfo.course_session}} {{courseStuInfo.courseInfo.course_year}}</span>
+		<span>Time: {{courseStuInfo.courseInfo.course_weekday | numberToWeek}} {{courseStuInfo.courseInfo.start_time}}~{{courseStuInfo.courseInfo.end_time}}</span>
 	</div>
 	<div class="btns">
 	    <span>{{courseStuInfo.course_date}}</span>
-		<div class="add-btn"><a href="javascript:void(0);" ng-click="allAttend()">全勤</a></div>
+		<div class="add-btn"><a href="javascript:void(0);" ng-click="allAttend()">All In</a></div>
 	</div>
 	<div class="table-container">
 		<table class="table table-striped" id="table">
 			<thead>
 				<tr>
-					<th width="300">姓名</th>
-					<th width="300">上课次数</th>
-					<th width="300">出勤状态</th>
-					<th width="300">操作</th>
+					<th width="300">Name</th>
+					<th width="300">Class Times</th>
+					<th width="300">Status</th>
+					<th width="300">Operation</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -25,8 +25,7 @@
 					<td>{{stu.finish_num}}/{{stu.sum_count}}</td>
 					<td class="input-td col-400"><div class="teacher-attend" teach-attend icon-show="stu.isEditing" select-options="attendType" which-item="stu.stu_state"></div></td>
 					<td class="operate-btns">
-		    			<a href="javascript:void(0);" ng-click="modify($index)">{{'修改' | editing: stu.isEditing}}</a>
-		    			<!-- <a class="btn-delete" href="#">删除</a> -->
+		    			<a href="javascript:void(0);" ng-click="modify($index)">{{'Edit' | editing: stu.isEditing}}</a>
 		    		</td>
 				</tr>
 			</tbody>
