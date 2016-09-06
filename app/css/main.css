@@ -91,11 +91,11 @@
   display: block;
 }
 .header .nav-container #nav li a {
-  font-size: 20px;
+  font-size: 14px;
   display: inline-block;
   height: 80px;
   line-height: 80px;
-  padding: 0 20px;
+  padding: 0 12px;
   color: #aaaaaa;
   font-weight: 200;
   text-decoration: none;

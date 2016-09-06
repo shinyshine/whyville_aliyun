@@ -87,16 +87,15 @@
   display: block;
 }
 .header .nav-container #nav li a {
-  font-size: 14px;
+  font-size: 20px;
   display: inline-block;
   height: 80px;
   line-height: 80px;
-  padding: 0 12px;
+  padding: 0 20px;
   color: #aaaaaa;
   font-weight: 200;
   text-decoration: none;
 }
-
 .header .nav-container #nav li a:hover {
   text-decoration: none;
 }
