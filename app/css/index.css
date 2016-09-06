@@ -96,6 +96,10 @@
   font-weight: 200;
   text-decoration: none;
 }
+.header .nav-container #nav>li a {
+  font-size: 14px;
+  padding: 0 12px;
+}
 .header .nav-container #nav li a:hover {
   text-decoration: none;
 }
