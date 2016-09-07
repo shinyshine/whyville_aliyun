@@ -1021,7 +1021,8 @@
   margin-right: 10px;
 }
 .add-course-form .cal-select-date input{
-  width: 100%;
+  width: 110px;
+  padding-left: 10px;
   height: 30px;
   border: 1px solid #dddddd;
 }
