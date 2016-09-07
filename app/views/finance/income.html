@@ -14,9 +14,10 @@
 		<table class="table table-striped" id="table">
 			<thead>
 				<tr>
-					<td width="150">校区</td>
-					<td width="150">收入时间</td>
-					<td width="150">类型</td>
+					<td width="100">校区</td>
+					<td width="110">学生姓名</td>
+					<td width="120">收入时间</td>
+					<td width="120">类型</td>
 					<td width="120">金额</td>
 					<td width="200">支付方式</td>
 					<td width="180">摘要</td>
@@ -27,6 +28,7 @@
 			<tbody>
 				<tr ng-repeat="income in incomeList.incomeList">
 					<td>{{income.school}}</td>
+					<td>{{income.stu_name}}</td>
 					<td>{{income.date}}</td>
 					<td>{{income.in_type}}</td>
 					<td>{{income.sum}}</td>
