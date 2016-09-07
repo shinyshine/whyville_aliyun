@@ -5134,6 +5134,9 @@ angular.module('homeApp.finance')
 
 
 	.controller('addIncome', function($scope, $location, initAddIncomeForm, addIncome, getDate, fetchCourseByStu) {
+    laydate({
+      elem: '#incomeDate',
+    });
 		var options = getDataFromStorage('options');
     $scope.options = {
       schools: options.schools,
@@ -5203,24 +5206,24 @@ angular.module('homeApp.finance')
 		}
 
 		$scope.addIncome = function() {
-			console.log($scope.formData)
-			addIncome($scope.formData, function(result) {
-				callbackAlert(result.status, '成功添加收入');
-        if(result.status == 1) {
-          if(!s_id && !stu_id) {
-            //window.location.href = ROOT + 'incomeList';
-            $scope.$apply(function() {
-              $location.path('/incomeList');
-            })
-          }else {
-            $scope.apply(function() {
-              $location.path('/stuInfo' + stu_id);
-            })
-            //window.location.href = ROOT + 'stuInfo/' + stu_id;
-          }
-        }
+			console.log($scope.formData);
+			// addIncome($scope.formData, function(result) {
+			// 	callbackAlert(result.status, '成功添加收入');
+   //      if(result.status == 1) {
+   //        if(!s_id && !stu_id) {
+   //          //window.location.href = ROOT + 'incomeList';
+   //          $scope.$apply(function() {
+   //            $location.path('/incomeList');
+   //          })
+   //        }else {
+   //          $scope.apply(function() {
+   //            $location.path('/stuInfo' + stu_id);
+   //          })
+   //          //window.location.href = ROOT + 'stuInfo/' + stu_id;
+   //        }
+   //      }
         
- 			})
+ 		// 	})
 			
 		}
 	})

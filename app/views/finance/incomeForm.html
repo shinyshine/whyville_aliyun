@@ -6,8 +6,10 @@
         </div>
         <div class="input-row">
             <label>日期</label>
-            <!-- <div class="input-text text-no-border">{{formData.date}}</div> -->
-            <div select-no-id select-options="options.date" which-item="formData.in_date"></div>
+            <div class="select-container cal-select-date">
+                <input id="incomeDate" type="text" ng-model="formData.in_date" />
+                <i class="click-show-btn"></i>
+            </div>
         </div>
         <div class="input-row">
             <label>类型</label>
