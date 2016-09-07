@@ -2602,7 +2602,28 @@ angular.module('homeApp.studentService', [])
 	//修改学生信息
 	.factory('modifyStuInfo', function(stuAPI) {
 		return function(data, callBack) {
-			postData(stuAPI.modifyStuInfo, data, callBack);
+      $('#stuForm').ajaxSubmit({
+        type: "post",
+        url: stuAPI.modifyStuInfo,
+        dataType: 'json',
+        data: data,
+        xhrFields: {
+          withCredentials: true
+        },
+        beforeSend: function() {
+          $('.mask').show();
+        },
+        success: function(result) {
+          callBack(result);
+        },
+        complete: function() {
+          $('.mask').hide();
+        },
+        error: function(msg) {
+          alert("文件上传失败");
+        }
+      });
+			// postData(stuAPI.modifyStuInfo, data, callBack);
 		}
 	})
 	//获得课程列表
@@ -2841,8 +2862,6 @@ angular.module('homeApp.studentService', [])
 					alert("文件上传失败");
 				}
 			});
-
-			//postData(stuAPI.submitStuInfo, data, callBack);
 		}
 	})
 

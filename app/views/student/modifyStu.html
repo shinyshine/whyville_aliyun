@@ -6,7 +6,7 @@
 	        </ul>
 	    </div>
 	    <div class="form-container">
-	    	<form name="stuForm" ng-submit="submitStuInfo(stuForm.$valid)">
+	    	<form name="stuForm" ng-submit="submitStuInfo(stuForm.$valid)" enctype="multipart/form-data" id="stuForm" method="post">
 		    	<div class="info-card" id="basic">
 		    		<div ng-show="stuInfo.stu_basic.stu_pic == null" class="upload-container">
 		    			<div class="upload-btn">点击上传照片<input type="file" name="img" id="image"></div>
