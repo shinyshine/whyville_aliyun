@@ -123,7 +123,7 @@
 	            			<tr ng-repeat="course in stuInfo.learn_info.courses">
 		            			<td>{{course.course_name}}</td>
 		            			<td>{{course.course_teacher}}</td>
-		            			<td><p ng-repeat="time in course_time">{{time}}</p></td>
+		            			<td><p ng-repeat="time in course.course_time">{{time}}</p></td>
 		            			<td>{{course.remark}}</td>
 		            		</tr>
 	            		</tbody>
