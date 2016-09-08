@@ -115,8 +115,7 @@
 		            		<tr>
 		            			<td width="160">课程名称</td>
 		            			<td width="160">任课老师</td>
-		            			<td width="160">星期</td>
-		            			<td width="160">上课时间</td>
+		            			<td width="320">上课时间</td>
 		            			<td width="280">备注</td>
 		            		</tr>
 		            	</thead>
@@ -124,8 +123,7 @@
 	            			<tr ng-repeat="course in stuInfo.learn_info.courses">
 		            			<td>{{course.course_name}}</td>
 		            			<td>{{course.course_teacher}}</td>
-		            			<td>{{course.course_week_time}}</td>
-		            			<td>{{course.course_time}}</td>
+		            			<td><p ng-repeat="time in course_time">{{time}}</p></td>
 		            			<td>{{course.remark}}</td>
 		            		</tr>
 	            		</tbody>
@@ -150,7 +148,8 @@
 	            			<tr ng-repeat="bus in stuInfo.school_bus">
 		            			<td>{{bus.type | busType}}</td>
 		            			<td>{{bus.pick_ads}}</td>
-		            			<td>{{bus.weekday | numberToWeek}} {{bus.pick_time}}</td>
+		            			<td><span ng-repeat="time in bus.pick_time">{{time}};</span></td>
+		            			<!-- <td>{{bus.weekday | numberToWeek}} {{bus.pick_time}}</td> -->
 		            			<td>{{bus.per_price}}/次; 打{{bus.discount}}折; 减价:{{bus.cut}}元; 共{{bus.sum_count}}次</td>
 		            			<td>￥ {{bus.total_price}}</td>
 		            			<td><a href="javascript:void(0);" ng-class="{'warning': !bus.bus_fee_state}" ng-click="pay(bus.bus_id, bus.total_price, bus.bus_fee_state, 3)">{{bus.bus_fee_state | feeOrNot}}</a></td>

@@ -3770,9 +3770,9 @@ angular.module('homeApp.student')
 				callbackAlert(result.status, '修改成功');
 				if(result.status == 1) {
 					//window.location.href = ROOT + 'stuList';
-          $scope.$apply(function() {
-            $location.path('/stuList');
-          })
+          // $scope.$apply(function() {
+          //   $location.path('/stuList');
+          // })
           
 				}
 			})
