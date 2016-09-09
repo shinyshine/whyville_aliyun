@@ -5226,23 +5226,23 @@ angular.module('homeApp.finance')
 
 		$scope.addIncome = function() {
 			console.log($scope.formData);
-			// addIncome($scope.formData, function(result) {
-			// 	callbackAlert(result.status, '成功添加收入');
-   //      if(result.status == 1) {
-   //        if(!s_id && !stu_id) {
-   //          //window.location.href = ROOT + 'incomeList';
-   //          $scope.$apply(function() {
-   //            $location.path('/incomeList');
-   //          })
-   //        }else {
-   //          $scope.apply(function() {
-   //            $location.path('/stuInfo' + stu_id);
-   //          })
-   //          //window.location.href = ROOT + 'stuInfo/' + stu_id;
-   //        }
-   //      }
+			addIncome($scope.formData, function(result) {
+				callbackAlert(result.status, '成功添加收入');
+        if(result.status == 1) {
+          if(!s_id && !stu_id) {
+            //window.location.href = ROOT + 'incomeList';
+            $scope.$apply(function() {
+              $location.path('/incomeList');
+            })
+          }else {
+            $scope.apply(function() {
+              $location.path('/stuInfo' + stu_id);
+            })
+            //window.location.href = ROOT + 'stuInfo/' + stu_id;
+          }
+        }
         
- 		// 	})
+ 			})
 			
 		}
 	})
