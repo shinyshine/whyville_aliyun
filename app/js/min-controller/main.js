@@ -195,6 +195,27 @@ angular.module('homeApp')
         }
    }
 })
+  
+
+  .directive('teachAttend', function() {
+      return {
+        restrict: 'EA',
+        scope: {
+          selectOptions: '=selectOptions',
+          selected: '=whichItem',
+          sendFilter: '&',
+          iconShow: '=iconShow'
+        },
+        template: '<div class="select-container"><div class="options">' +
+        '<div class="content-wrap" ng-bind="selected.name | hasNotFinished"></div>' +
+        '<ul class="options-ul" ng-show="options.show">' +
+        '<li ng-repeat="item in selectOptions" ng-click="clickOptions()">{{item.name}}</li>' +
+        '</ul>' +
+        '</div>' +
+        '<i class="click-show-btn down-btn-{{options.show}}" ng-show="iconShow" ng-init="options.show = false" ng-click="toggleOptions()"></i></div>',
+          controller: 'mySelect',
+        }
+  })
   .controller('mySelect', function($scope) {
     $scope.options = {
       'show': false,
@@ -216,26 +237,6 @@ angular.module('homeApp')
 
       $scope.sendFilter();
     }
-  })
-
-  .directive('teachAttend', function() {
-      return {
-        restrict: 'EA',
-        scope: {
-          selectOptions: '=selectOptions',
-          selected: '=whichItem',
-          sendFilter: '&',
-          iconShow: '=iconShow'
-        },
-        template: '<div class="select-container"><div class="options">' +
-        '<div class="content-wrap" ng-bind="selected.name | hasNotFinished"></div>' +
-        '<ul class="options-ul" ng-show="options.show">' +
-        '<li ng-repeat="item in selectOptions" ng-click="clickOptions()">{{item.name}}</li>' +
-        '</ul>' +
-        '</div>' +
-        '<i class="click-show-btn down-btn-{{options.show}}" ng-show="iconShow" ng-init="options.show = false" ng-click="toggleOptions()"></i></div>',
-          controller: 'mySelect',
-        }
   })
   .directive('mySelect', function() {
     return {
@@ -5183,7 +5184,7 @@ angular.module('homeApp.finance')
 			price = search.co,
 			s_id = search.s_id,
 			stu_id = search.stu,
-      type = $scope.options.type[search.type - 1];
+      type = $scope.options.type[search.type - 1] ? $scope.options.type[search.type - 1] : {};
 
 		$scope.formData = initAddIncomeForm(price, s_id, stu_id, type);
 
@@ -5230,7 +5231,6 @@ angular.module('homeApp.finance')
 				callbackAlert(result.status, '成功添加收入');
         if(result.status == 1) {
           if(!s_id && !stu_id) {
-            //window.location.href = ROOT + 'incomeList';
             $scope.$apply(function() {
               $location.path('/incomeList');
             })
@@ -5238,7 +5238,6 @@ angular.module('homeApp.finance')
             $scope.apply(function() {
               $location.path('/stuInfo' + stu_id);
             })
-            //window.location.href = ROOT + 'stuInfo/' + stu_id;
           }
         }
         
