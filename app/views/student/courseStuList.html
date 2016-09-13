@@ -14,18 +14,20 @@
 			<thead>
 				<tr>
 					<th width="160">学号</th>
-					<th width="160">姓名</th>
+					<th width="130">中文名</th>
+					<th width="130">英文名</th>
 					<th width="160">上课次数</th>
 					<th width="160">回访</th>
 					<th width="160">Report</th>
 					<th width="200">备注</th>
-					<th width="200">操作</th>
+					<th width="100">操作</th>
 				</tr>		
 		    </thead>
 		    <tbody>
 		    	<tr ng-repeat="stu in stuCourse.students">
 		    		<td><a href="#/teaStuInfo/{{stu.stu_id}}">{{stu.stu_id}}</a></td>
 		    		<td><a href="#/teaStuInfo/{{stu.stu_id}}">{{stu.stu_name}}</a></td>
+		    		<td><a href="#/teaStuInfo/{{stu.stu_id}}">{{stu.stu_eng_name}}</a></td>
 		    		<td>{{stu.finish_num}}/{{stu.sum_count}}</td>
 		    		<td><a ng-class="{'warning': stu.callback_status == 0}" href="#/callback/{{stuCourse.courseInfo.course_id}}/{{stu.stu_id}}">回访</a></td>
 		    		<td><a href="#/report/{{stuCourse.courseInfo.course_id}}/{{stu.stu_id}}/" target="_blank">report</a></td>
