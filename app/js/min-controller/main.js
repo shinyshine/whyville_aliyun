@@ -2482,6 +2482,12 @@ angular.module('homeApp.studentService', [])
 	})
 	.factory('createChart', function() {
 		return function(items, score) {
+        // 处理图表数据
+        for(var i = 0, len = score.entrance.length; i < len; i ++) {
+          score.entrance[i] = parseFloat(score.entrance[i]);
+          score.midterm[i] = parseFloat(score.midterm[i]);
+          score.endTerm[i] = parseFloat(score.endTerm[i]);
+        } 
 		    $('#chart').highcharts({
 		        title: {
 		            text: 'Chart',
@@ -3103,7 +3109,7 @@ angular.module('homeApp.student')
 				course_id: course_id
 			}
 			deleteCourse(data, function(result) {
-				callbackAlert(result.status, '成功删除一门课程');
+				callbackAlert(result.status, '已删除一门课程');
 				window.location.reload();
 			})
 		}
