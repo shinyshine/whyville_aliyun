@@ -14,8 +14,7 @@
 					<th width="200">课程名称</th>
 					<th width="200">任课老师</th>
 					<th width="200">学生人数</th>
-					<th width="200">星期</th>
-					<th width="200">上课时间</th>
+					<th width="400">上课时间</th>
 					<th width="200">操作</th>
 				</tr>		
 		    </thead>
@@ -24,8 +23,7 @@
 		    		<td><a href="#/courseStuList/{{course.course_id}}">{{course.course_name}}</a></td>
 		    		<td>{{course.teach_name}}</td>
 		    		<td>{{course.stu_num}}</td>
-		    		<td>{{course.course_weekday}}</td>
-		    		<td>{{course.start_time}}~{{course.end_time}}</td>
+		    		<td><p ng-repeat="time in course.course_time">{{time}}</p></td>
 		    		<td class="operate-btns">
 		    			<a class="btn-delete" href="javascript:void(0);" ng-click="deleteCourse(course.course_id)">删除</a>
 		    		</td>
