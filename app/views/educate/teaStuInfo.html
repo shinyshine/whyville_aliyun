@@ -8,90 +8,53 @@
 	    <div class="form-container">
 	    	<div class="info-card" id="basic">
 	    		<div class="upload-container">
-	                <div class="pic-container"><span>点击此处<br/>上传照片</span></div>
-	            </div>
+                	<img src="{{stuInfo.stu_basic.stu_pic}}"/>
+            	</div>
 	            <div class="input-row">
-	                <label>中文名</label>
+	                <label>Chinese Name</label>
 	                <div class="input-text">{{stuInfo.stu_basic.stu_zh_name}}</div>
 	            </div>
 	            <div class="input-row">
-	                <label>英文名</label>
+	                <label>English Name</label>
 	                <div class="input-text">{{stuInfo.stu_basic.stu_en_name}}</div>
 	            </div>
 	            <div class="input-row">
-	                <label>性别</label>
+	                <label>Sex</label>
 	                <div class="input-text">{{stuInfo.stu_basic.stu_sex | sex}}</div>
 	            </div>
 	            <div class="input-row">
-	                <label>学号</label>
+	                <label>No.</label>
 	                <div class="input-text">{{stuInfo.stu_basic.stu_id}}</div>
 	            </div>
 	            <div class="input-row">
-	                <label>国籍</label>
+	                <label>Nationality</label>
 	                <div class="input-text">{{stuInfo.stu_basic.stu_country}}</div>
 	            </div>
 	            <div class="input-row">
-	                <label>生日</label>
+	                <label>Birth</label>
 	                <div class="input-text">{{stuInfo.stu_basic.stu_birth.year}}-{{stuInfo.stu_basic.stu_birth.month}}-{{stuInfo.stu_basic.stu_birth.day}}</div>
 	            </div>
+	            
 	            <div class="input-row">
-	                <label>家庭住址</label>
-	                <div class="input-text">{{stuInfo.stu_basic.stu_ads}}</div>
-	            </div>
-	            <div class="input-row">
-	                <label>就读学校</label>
-	                <div class="input-text">{{stuInfo.stu_basic.stu_study_sch}}</div>
-	            </div>
-	            <div class="input-row">
-	                <label>年级</label>
+	                <label>Grade</label>
 	               <div class="input-text">{{stuInfo.stu_basic.stu_grade}}</div>
 	            </div>
 	            <div class="input-row">
-	                <label>校区</label>
-	                <div class="input-text">{{stuInfo.learn_info.stu_sch.name}}</div>
-	            </div>
-	            <div class="input-row">
-	                <label>宣传方式</label>
-	                <div class="input-text">{{stuInfo.stu_basic.publics.name}}</div>
-	            </div>
-	            <div class="input-row">
-	                <label>学习经历</label>
-	                <div class="input-text">{{stuInfo.stu_basic.study_exp}}</div>
-	            </div>
-	            <div class="input-row">
-	                <label>Application内容</label>
+	                <label>Application Form</label>
 	            </div>
 	            <div class="input-row input-row-son">
-	                <label>兴趣爱好</label>
+	                <label>Hobby</label>
 	                <div class="input-text">{{stuInfo.stu_basic.intersts}}</div>
 	            </div>
 	            <div class="input-row input-row-son">
-	                <label>性格</label>
+	                <label>Characteristic</label>
 	                <div class="input-text">{{stuInfo.stu_basic.character}}</div>
 	            </div>
 	            <div class="input-row input-row-son">
-	                <label>学习期望(英语)</label>
+	                <label>Expertation</label>
 	                <div class="input-text">{{stuInfo.stu_basic.expectations}}</div>
 	            </div>
 	    	</div>
-	    	<!-- <div class="info-card" id="parent">
-	    		<div class="input-row">
-	                <label>联系人</label>
-	                <div class="input-text">{{stuInfo.stu_parent.par_name}}</div>
-	            </div>
-	            <div class="input-row">
-	                <label>联系方式</label>
-	                <div class="input-text">{{stuInfo.stu_parent.par_tel}}</div>
-	            </div>
-	            <div class="input-row">
-	                <label>电子邮箱</label>
-	                <div class="input-text">{{stuInfo.stu_parent.par_email}}</div>
-	            </div>
-	            <div class="input-row">
-	                <label>家长性格</label>
-	                <div class="input-text">{{stuInfo.stu_parent.par_character}}</div>
-	            </div>
-	    	</div> -->
 	    </div>
 	</div>
 </div>
