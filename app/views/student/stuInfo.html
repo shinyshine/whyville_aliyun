@@ -169,17 +169,17 @@
 	    				<thead>
 		            		<tr>
 		            			<td width="100">课程名称</td>
-		            			<td width="100">年分季度</td>
-		            			<td width="380">学费明细</td>
-		            			<td width="100">学费合计</td>
-		            			<td width="100">书费</td>
+		            			<td width="140">年分季度</td>
+		            			<td width="360">学费明细</td>
+		            			<td width="90">学费合计</td>
+		            			<td width="90">书费</td>
 		            			<td width="210">备注</td>
 		            		</tr>
 		            	</thead>
 	            		<tbody>
 	            			<tr ng-repeat="fee in stuInfo.course_fee">
 		            			<td>{{fee.course_name}}</td>
-		            			<td><p>{{fee.year}}</p><p>{{fee.session}}</p></td>
+		            			<td>{{fee.year}} {{fee.session}}</td>
 		            			<td>{{fee.per_price}} 元/节; 打{{fee.discount}}折; 减价:{{fee.cut}}元; 共{{fee.sum_count}}节课</td>
 		            			<td>{{fee.total_price}}</td>
 		            			<td>{{fee.book_fee}}</td>
