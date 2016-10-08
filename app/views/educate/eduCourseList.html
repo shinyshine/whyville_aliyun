@@ -12,7 +12,7 @@
 		    	<tr ng-repeat="course in courseList">
 		    		<td><a href="#/eduStuList/{{course.course_id}}">{{course.course_name}}</a></td>
 		    		<td>{{course.stu_num}}</td>
-		    		<td><p ng-repeat="time in course_time">{{time}}</p></td>
+		    		<td><p ng-repeat="time in course.course_time">{{time}}</p></td>
 		    	</tr>
 		    </tbody>
 		</table>
