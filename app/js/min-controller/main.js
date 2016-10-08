@@ -564,9 +564,9 @@ angular.module('homeApp')
 	.filter('checkAttend', function() {
 		return function(input) {
 			if(input == 1) {
-				return '已填写'
+				return 'Filled'
 			}else {
-				return '未填写'
+				return 'Unfilled'
 			}
 		}
 	})
@@ -2488,6 +2488,29 @@ angular.module('homeApp.studentService', [])
           score.midterm[i] = parseFloat(score.midterm[i]);
           score.endTerm[i] = parseFloat(score.endTerm[i]);
         } 
+        $('#container').highcharts({
+          data: {
+              table: 'datatable'
+          },
+          chart: {
+              type: 'column'
+          },
+          title: {
+              text: 'Data extracted from a HTML table in the page'
+          },
+          yAxis: {
+              allowDecimals: false,
+              title: {
+                  text: 'Units'
+              }
+          },
+          tooltip: {
+              formatter: function () {
+                  return '<b>' + this.series.name + '</b><br/>' +
+                      this.point.y + ' ' + this.point.name.toLowerCase();
+              }
+          }
+      });
 		    $('#chart').highcharts({
 		        title: {
 		            text: 'Chart',
@@ -2963,14 +2986,13 @@ angular.module('homeApp.student')
 
     $scope.attendType = [{
       "id": 0,
-      "name": '缺勤'
+      "name": 'absent'
     },{
       "id": 1,
-      "name": '已到'
+      "name": 'present'
     }]
 
     fetchCourseRecord($routeParams, function(result) {
-      console.log(result)
       $scope.courseInfo = result;
       $scope.$apply();
     })

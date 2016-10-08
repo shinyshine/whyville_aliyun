@@ -5,16 +5,14 @@
 				<tr>
 					<th width="300">Course</th>
 					<th width="300">Student Number</th>
-					<th width="300">Week</th>
-					<th width="300">Time</th>
+					<th width="600">Time</th>
 				</tr>		
 		    </thead>
 		    <tbody>
 		    	<tr ng-repeat="course in courseList">
 		    		<td><a href="#/eduStuList/{{course.course_id}}">{{course.course_name}}</a></td>
 		    		<td>{{course.stu_num}}</td>
-		    		<td>{{course.weekday | numberToWeek}}</td>
-		    		<td>{{course.start_time}}~{{course.end_time}}</td>
+		    		<td><p ng-repeat="time in course_time">{{time}}</p></td>
 		    	</tr>
 		    </tbody>
 		</table>
