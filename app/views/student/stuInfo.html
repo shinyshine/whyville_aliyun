@@ -179,7 +179,7 @@
 	            		<tbody>
 	            			<tr ng-repeat="fee in stuInfo.course_fee">
 		            			<td>{{fee.course_name}}</td>
-		            			<td>{{fee.year}} {{fee.session}}</td>
+		            			<td><p>{{fee.year}}</p><p>{{fee.session}}</p></td>
 		            			<td>{{fee.per_price}} 元/节; 打{{fee.discount}}折; 减价:{{fee.cut}}元; 共{{fee.sum_count}}节课</td>
 		            			<td>{{fee.total_price}}</td>
 		            			<td>{{fee.book_fee}}</td>
