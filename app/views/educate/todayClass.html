@@ -2,7 +2,7 @@
 	<div class="info-header">
 		<span>Course: {{data.courseInfo.course_name}}</span>
 		<span>Term: {{data.courseInfo.course_year}} {{data.courseInfo.course_session}}</span>
-		<span>Schedule: {{data.courseInfo.course_weekday | numberToWeek}} {{data.courseInfo.start_time}}~{{data.courseInfo.end_time}}</span>
+		<span>Schedule: {{data.courseInfo.course_time}}</span>
 	</div>
 	<div class="btns">
 	    <div class="add-btn"><a href="#/stuAttendList/{{data.courseInfo.course_id}}">Attendance Sheet</a></div>
