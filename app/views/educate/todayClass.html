@@ -25,7 +25,7 @@
 					<td>{{item.date}} {{item.start_time}}-{{item.end_time}}</td>
 					<td><a href="#/teaStuAttend/{{item.id}}" ng-class="{'warning': !item.attend_state}">{{item.attend_state | checkAttend}}</a></td>
 					<td><a href="#/homework/{{item.id}}" ng-class="{'warning': !item.comment_state}">{{item.comment_state | checkAttend}}</a></td>
-					<td class="input-td" ng-class="{'editing': item.isEditing}"><textarea style="max-width:160px;" type="text" ng-model="item.note" ng-disabled="!item.isEditing"></textarea></td>
+					<td class="input-td" ng-class="{'editing': item.isEditing}"><textarea style="max-width:160px;background-color: transparent;border: none;" type="text" ng-model="item.note" ng-disabled="!item.isEditing"></textarea></td>
 					<td class="operate-btns">
 		    			<a href="javascript:void(0);" ng-click="modify($index)">{{'Edit' | editing: item.isEditing}}</a>
 		    		</td>
