@@ -2487,34 +2487,14 @@ angular.module('homeApp.studentService', [])
           score.entrance[i] = parseFloat(score.entrance[i]);
           score.midterm[i] = parseFloat(score.midterm[i]);
           score.endTerm[i] = parseFloat(score.endTerm[i]);
-        } 
-        $('#container').highcharts({
-          data: {
-              table: 'datatable'
-          },
-          chart: {
-              type: 'column'
-          },
-          title: {
-              text: 'Data extracted from a HTML table in the page'
-          },
-          yAxis: {
-              allowDecimals: false,
-              title: {
-                  text: 'Units'
-              }
-          },
-          tooltip: {
-              formatter: function () {
-                  return '<b>' + this.series.name + '</b><br/>' +
-                      this.point.y + ' ' + this.point.name.toLowerCase();
-              }
-          }
-      });
+        }
 		    $('#chart').highcharts({
+                chart: {
+                    type: 'column'
+                },
 		        title: {
 		            text: 'Chart',
-		            x: -20 
+		            x: -20
 		        },
 
 		        xAxis: {
@@ -2524,11 +2504,16 @@ angular.module('homeApp.studentService', [])
 		            title: {
 		                text: 'Score'
 		            },
-		            plotLines: [{
+                    labels: {//格式化纵坐标的显示风格
+                        formatter: function() {
+                            return this.value ;
+                        }
+                    },
+		            /*plotLines: [{
 		                value: 0,
 		                width: 1,
 		                color: '#808080'
-		            }]
+		            }]*/
 		        },
 		        tooltip: {
 		            valueSuffix: ''
