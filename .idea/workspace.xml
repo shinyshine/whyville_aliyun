@@ -33,11 +33,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.min.css" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="main.min.css" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/css/main.min.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="144">
-              <caret line="0" column="5190" selection-start-line="0" selection-start-column="5186" selection-end-line="0" selection-end-column="5190" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="857">
+              <caret line="0" column="29901" selection-start-line="0" selection-start-column="29901" selection-end-line="0" selection-end-column="29901" />
               <folding />
             </state>
           </provider>
@@ -46,8 +46,8 @@
       <file leaf-file-name="main.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.28" vertical-offset="9267" max-vertical-offset="45600">
-              <caret line="401" column="24" selection-start-line="401" selection-start-column="0" selection-end-line="401" selection-end-column="24" />
+            <state vertical-scroll-proportion="-7.56" vertical-offset="9339" max-vertical-offset="45744">
+              <caret line="397" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="1900" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -65,14 +65,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="todayClass.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="todayClass.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/educate/todayClass.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5759717" vertical-offset="159" max-vertical-offset="1008">
-              <caret line="27" column="156" selection-start-line="27" selection-start-column="156" selection-end-line="27" selection-end-column="156" />
-              <folding>
-                <element signature="n#style#0;n#textarea#0;n#td#4;n#tr#0;n#tbody#0;n#table#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="-17.454546" vertical-offset="72" max-vertical-offset="1008">
+              <caret line="27" column="90" selection-start-line="27" selection-start-column="90" selection-end-line="27" selection-end-column="90" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -94,9 +92,9 @@
         <option value="$PROJECT_DIR$/app/less/index.less" />
         <option value="$PROJECT_DIR$/app/views/operating/employee-info.html" />
         <option value="$PROJECT_DIR$/app/js/min-controller/main.js" />
+        <option value="$PROJECT_DIR$/app/views/educate/todayClass.html" />
         <option value="$PROJECT_DIR$/app/css/main.css" />
         <option value="$PROJECT_DIR$/app/css/main.min.css" />
-        <option value="$PROJECT_DIR$/app/views/educate/todayClass.html" />
       </list>
     </option>
   </component>
@@ -477,14 +475,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.28" vertical-offset="9267" max-vertical-offset="45600">
-          <caret line="401" column="24" selection-start-line="401" selection-start-column="0" selection-end-line="401" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/js/min-controller/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="59902" max-vertical-offset="129528">
@@ -495,21 +485,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/css/main.min.css">
+    <entry file="file://$PROJECT_DIR$/app/views/educate/todayClass.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="857">
-          <caret line="0" column="5190" selection-start-line="0" selection-start-column="5186" selection-end-line="0" selection-end-column="5190" />
+        <state vertical-scroll-proportion="-17.454546" vertical-offset="72" max-vertical-offset="1008">
+          <caret line="27" column="90" selection-start-line="27" selection-start-column="90" selection-end-line="27" selection-end-column="90" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/educate/todayClass.html">
+    <entry file="file://$PROJECT_DIR$/app/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5759717" vertical-offset="159" max-vertical-offset="1008">
-          <caret line="27" column="156" selection-start-line="27" selection-start-column="156" selection-end-line="27" selection-end-column="156" />
-          <folding>
-            <element signature="n#style#0;n#textarea#0;n#td#4;n#tr#0;n#tbody#0;n#table#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-7.56" vertical-offset="9339" max-vertical-offset="45744">
+          <caret line="397" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="1900" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/css/main.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="857">
+          <caret line="0" column="29901" selection-start-line="0" selection-start-column="29901" selection-end-line="0" selection-end-column="29901" />
+          <folding />
         </state>
       </provider>
     </entry>

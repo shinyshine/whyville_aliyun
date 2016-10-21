@@ -401,6 +401,12 @@
 }
 .table .editing textarea{
     border: 1px solid #ddd;
+    resize: none;
+}
+.today-class textarea{
+    max-width:160px;
+    background-color: transparent;
+    border: none;
 }
 
 .table .warning {
