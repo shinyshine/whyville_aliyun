@@ -3359,6 +3359,7 @@ angular.module('homeApp.student')
 			years: getYearSessions.year,
 			sessions: getYearSessions.session
 		}
+        $scope.options.bus_number.unshift({"id": '0', "name": "全部车牌"});
 		fetchStuBus($scope.filter, function(result) {
 			$scope.$apply(function() {
 				$scope.stuBus = result;
