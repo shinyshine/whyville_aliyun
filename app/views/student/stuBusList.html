@@ -22,13 +22,13 @@
 		    <tbody>
 		    	<tr ng-repeat="item in stuBus">
                     <td rowspan="{{item.number}}">{{item.stu_name}}</td>
-		    		<td ng-repeat="num in item.bus_number">{{num}}</td>
-		    		<td ng-repeat="palce in item.place">{{place}}</td>
-		    		<td ng-repeat="type in item.type">{{type | busType}}</td>
-		    		<td ng-repeat="count in item.count">{{count}}</td>
-		    		<td ng-repeat="week in item.weekdays">{{week}}</td>
-		    		<td ng-repeat="serid in item.ser_id" class="operate-btns">
-		    			<a class="btn-delete" href="javascript:void(0);" ng-click="deleteBus(serid)">删除</a>
+		    		<td><p ng-repeat="num in item.bus_number">{{num}}</p></td>
+		    		<td><p ng-repeat="palce in item.place">{{place}}</p></td>
+		    		<td><p ng-repeat="type in item.type">{{type | busType}}</p></td>
+		    		<td><p ng-repeat="count in item.count">{{count}}</p></td>
+		    		<td><p ng-repeat="week in item.weekdays">{{week}}</p></td>
+		    		<td class="operate-btns">
+		    			<p ng-repeat="serid in item.ser_id"><a class="btn-delete" href="javascript:void(0);" ng-click="deleteBus(serid)">删除</a></p>
 		    		</td>
 		    	</tr>
 		    </tbody>
