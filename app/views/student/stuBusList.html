@@ -10,8 +10,8 @@
 		<table class="table table-striped" id="table">
 			<thead>
 				<tr>
+                    <th width="140">学生姓名</th>
 					<th width="140">车牌号码</th>
-					<th width="140">学生姓名</th>
 					<th width="160">地点</th>
 					<th width="100">接送</th>
 					<th width="120">接送次数</th>
@@ -21,14 +21,14 @@
 		    </thead>
 		    <tbody>
 		    	<tr ng-repeat="item in stuBus">
-		    		<td>{{item.bus_number}}</td>
-		    		<td>{{item.stu_name}}</td>
-		    		<td>{{item.place}}</td>
-		    		<td>{{item.type | busType}}</td>
-		    		<td>{{item.finished_num}}/{{item.sum_count}}</td>
-		    		<td><span ng-repeat="week in item.weekdays">{{week.weekday | numberToWeek}} {{week.time}};</span></td>
-		    		<td class="operate-btns">
-		    			<a class="btn-delete" href="javascript:void(0);" ng-click="deleteBus(item.ser_id)">删除</a>
+                    <td rowspan="item.number">{{item.stu_name}}</td>
+		    		<td ng-repeat="num in item.bus_number">{{num}}</td>
+		    		<td ng-repeat="palce in item.place">{{place}}</td>
+		    		<td ng-repeat="type in item.type">{{type | busType}}</td>
+		    		<td ng-repeat="count in item.count">{{count}}</td>
+		    		<td ng-repeat="week in item.weekdays">{{week}}</td>
+		    		<td ng-repeat="serid in item.ser_id" class="operate-btns">
+		    			<a class="btn-delete" href="javascript:void(0);" ng-click="deleteBus(serid)">删除</a>
 		    		</td>
 		    	</tr>
 		    </tbody>
