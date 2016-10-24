@@ -21,7 +21,7 @@
 		    </thead>
 		    <tbody>
 		    	<tr ng-repeat="item in stuBus">
-                    <td rowspan="{{item.number}}">{{item.stu_name}}</td>
+                    <td>{{item.stu_name}}</td>
 		    		<td><p ng-repeat="num in item.bus_number">{{num}}</p></td>
 		    		<td><p ng-repeat="palce in item.place">{{place}}</p></td>
 		    		<td><p ng-repeat="type in item.type">{{type | busType}}</p></td>
