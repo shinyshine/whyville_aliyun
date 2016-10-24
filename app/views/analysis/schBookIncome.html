@@ -14,26 +14,20 @@
 		<table class="table table-striped hover-table" id="table">
 			<thead>
 				<tr>
-					<td width="150">校区</td>
-					<td width="150">年份</td>
-					<td width="150">学期</td>
-					<td width="150">课程类型</td>
-					<td width="150">课程名称</td>
-					<td width="150">报读人数</td>
-					<td width="150">书费单价</td>
-					<td width="150">总价</td>
+					<td width="240">中文名</td>
+					<td width="240">英文名</td>
+					<td width="240">课程类型</td>
+					<td width="240">课程名称</td>
+					<td width="240">总价</td>
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="item in data.list" ng-click="skipToStuBook(item.course_type.id, item.course_name.id, item.course_name.name, item.course_type.name)">
-					<td>{{item.school}}</td>
-					<td>{{item.year}}</td>
-					<td>{{item.session}}</td>
-					<td>{{item.course_type.name}}</td>
-					<td>{{item.course_name.name}}</td>
-					<td>{{item.sign_num}}</td> 
-					<td>{{item.per_price}}</td> 
-					<td>{{item.total_price}}</td> 
+				<tr ng-repeat="item in data.list">
+					<td>{{item.stu_name}}</td>
+					<td>{{item.stu_e_name}}</td>
+					<td>{{item.course_type}}</td>
+					<td>{{item.course_name}}</td>
+					<td>{{item.price}}</td>
 				</tr>
 			</tbody>
 		</table>

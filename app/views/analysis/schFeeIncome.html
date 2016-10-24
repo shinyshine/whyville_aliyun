@@ -14,26 +14,24 @@
 		<table class="table table-striped hover-table" id="table">
 			<thead>
 				<tr>
-					<td width="150">校区</td>
-					<td width="150">年份</td>
-					<td width="150">学期</td>
+					<td width="150">中文名</td>
+					<td width="150">英文名</td>
 					<td width="150">课程类型</td>
 					<td width="150">课程名称</td>
-					<td width="150">报读人数</td>
 					<td width="150">预订次数</td>
+                    <td width="150">已上次数</td>
 					<td width="150">总价</td>
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="item in data.list" ng-click="skipToStuCourse(item.course_type.id, item.course_name.id, item.course_name.name, item.course_type.name)">
-					<td>{{item.school}}</td>
-					<td>{{item.year}}</td>
-					<td>{{item.session}}</td>
-					<td>{{item.course_type.name}}</td>
-					<td>{{item.course_name.name}}</td>
-					<td>{{item.sign_num}}</td> 
-					<td>{{item.total_times}}</td> 
-					<td>{{item.total_price}}</td> 
+				<tr ng-repeat="item in data.list">
+					<td>{{item.stu_name}}</td>
+					<td>{{item.stu_e_name}}</td>
+					<td>{{item.course_type}}</td>
+					<td>{{item.course_name}}</td>
+					<td>{{item.order_time}}</td>
+					<td>{{item.finish_time}}</td>
+					<td>{{price}}</td>
 				</tr>
 			</tbody>
 		</table>
