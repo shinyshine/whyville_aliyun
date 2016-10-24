@@ -3332,7 +3332,7 @@ angular.module('homeApp.student')
 				"id": '0',
 				"name": '全部车牌'
 			},
-			"type": {
+			"week": {
 				"id": '1',
 				"name": '接'
 			},
@@ -3342,20 +3342,38 @@ angular.module('homeApp.student')
 			},
 			"selectYear": {
 				"name": '2016'
-			},
+			}
 		}
 
 		var options = getDataFromStorage('options');
 		$scope.options = {
 			schools: options.schools,
 			bus_number: options.bus_number,
-			type: [{
+			weeks: [{
 				"id": '0',
-				"name": '送'
+				"name": '全部'
 			}, {
 				"id": '1',
-				"name": '接'
-			}],
+				"name": '星期一'
+			},{
+                "id": '2',
+                "name": '星期二'
+            },{
+                "id": '3',
+                "name": '星期三'
+            },{
+                "id": '4',
+                "name": '星期四'
+            },{
+                "id": '5',
+                "name": '星期五'
+            },{
+                "id": '6',
+                "name": '星期六'
+            },{
+                "id": '7',
+                "name": '星期天'
+            }],
 			years: getYearSessions.year,
 			sessions: getYearSessions.session
 		}
