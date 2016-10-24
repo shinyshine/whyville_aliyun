@@ -11,11 +11,11 @@
 			<thead>
 				<tr>
                     <th width="140">学生姓名</th>
-					<th width="140">车牌号码</th>
+					<th width="240">车牌号码</th>
 					<th width="160">地点</th>
 					<th width="100">接送</th>
 					<th width="120">接送次数</th>
-					<th width="300">时间</th>
+					<th width="200">时间</th>
 					<th width="200">操作</th>
 				</tr>		
 		    </thead>
@@ -25,7 +25,7 @@
 		    		<td><p ng-repeat="bus_num in item.bus_number track by $index">{{bus_num}}</p></td>
 		    		<td><p ng-repeat="place in item.place track by $index">{{place}}</p></td>
 		    		<td><p ng-repeat="type in item.type track by $index">{{type | busType}}</p></td>
-		    		<td><p ng-repeat="count in item.sum_count track by $index">{{count}}</p></td>
+		    		<td><p ng-repeat="count in item.count track by $index">{{count}}</p></td>
 		    		<td><p ng-repeat="week in item.weekdays track by $index">{{week}}</p></td>
 		    		<td class="operate-btns">
 		    			<p ng-repeat="serid in item.ser_id track by $index"><a class="btn-delete" href="javascript:void(0);" ng-click="deleteBus(serid)">删除</a></p>
