@@ -12,24 +12,20 @@
 		<table class="table table-striped" id="table">
 			<thead>
 				<tr>
-					<td width="200">校区</td>
-					<td width="160">年份</td>
-					<!-- <td width="160">学期</td> -->
-					<td width="200">校车车牌</td>
-					<td width="160">预订人数</td>
-					<td width="160">预订次数</td>
-					<td width="160">总价</td>
+                    <td width="150">中文名</td>
+                    <td width="100">英文名</td>
+                    <td width="80">预订次数</td>
+                    <td width="100">完成次数</td>
+                    <td width="120">总价</td>
 				</tr>
 			</thead>
 			<tbody>
 				<tr ng-repeat="item in data.list">
-					<td>{{item.school}}</td>
-					<td>{{item.year}}</td>
-					<!-- <td>{{item.session}}</td> -->
-					<td>{{item.bus_number.name}}</td>
-					<td>{{item.order_num}}</td>
-					<td>{{item.order_times}}</td> 
-					<td>{{item.total_price}}</td> 
+                    <td>{{item.stu_name}}</td>
+                    <td>{{item.stu_e_name}}</td>
+                    <td>{{item.order_time}}</td>
+                    <td>{{item.finish_time}}</td>
+                    <td>{{item.total_price | pay_or_not2}}</td>
 				</tr>
 			</tbody>
 		</table>
