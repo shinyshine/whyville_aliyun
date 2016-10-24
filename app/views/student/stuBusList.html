@@ -22,8 +22,8 @@
 		    <tbody>
 		    	<tr ng-repeat="item in stuBus">
                     <td>{{item.stu_name}}</td>
-		    		<td><p ng-repeat="num in item.bus_number">{{num}}</p></td>
-		    		<td><p ng-repeat="palce in item.place">{{place}}</p></td>
+		    		<td><p ng-repeat="bus_num in item.bus_number">{{bus_num}}</p></td>
+		    		<td><p ng-repeat="place in item.place">{{place}}</p></td>
 		    		<td><p ng-repeat="type in item.type">{{type | busType}}</p></td>
 		    		<td><p ng-repeat="count in item.count">{{count}}</p></td>
 		    		<td><p ng-repeat="week in item.weekdays">{{week}}</p></td>
