@@ -3333,8 +3333,8 @@ angular.module('homeApp.student')
 				"name": '全部车牌'
 			},
 			"week": {
-				"id": '1',
-				"name": '接'
+				"id": '0',
+				"name": '全部'
 			},
 			"selectSession": {
 				"id": 0,
