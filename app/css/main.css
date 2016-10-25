@@ -1338,7 +1338,8 @@
 .report-container .head-info-container .colorful-jpg {
     margin-top: 10px;
     height: 100px;
-    background: url(../images/color.jpg) no-repeat;
+    background: url(../images/report_color.png) no-repeat;
+    background-size:1120px 100px;
 }
 
 .report-container #reportTable .report-table {
